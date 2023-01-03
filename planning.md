@@ -1,4 +1,6 @@
-## user story 
+# P3
+
+## User Story 
 
 1. Add User page
 ```bash
@@ -25,7 +27,7 @@
     - Index UserPost "GET"
       - Show UserPost "GET"
     - Update UserPost "PUT"
-    - Destroy UserPost "Delete"
+    - Destroy UserPost "DELETE"
 ```
 5. Search page
 ```bash
@@ -35,5 +37,7 @@
 6. Followers page (linked from profile page)
 ```bash
   - Index Followers "GET"
-  - Destroy Followers "DELETE
+  - Destroy Followers "DELETE"
 ```
+
+## Wire Frame
