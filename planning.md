@@ -61,7 +61,7 @@ A reverse engineering of instagram for posting pictures, commenting, and having 
 ```
 
 ## Wire Frame
-
+![Wireframe](https://imgur.com/DjU69r0.jpg)
 
 ## Component Hierarchy
  - App
@@ -69,7 +69,8 @@ A reverse engineering of instagram for posting pictures, commenting, and having 
     - Home
     - Search
     - Profile
-      - Following
+      - UserPost
+      - UserFollowing
 
 ## Stretch Goals
 - Add followers
