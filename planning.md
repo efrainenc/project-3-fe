@@ -15,11 +15,16 @@ A reverse engineering of instagram for having a user profile, following other us
         - UserPost
         - UserFollowing
 
-
 ## Wire Frame
 ![Wireframe](https://imgur.com/iN8atQD.jpg)
 
-## Sudo Code
+## User Flow Map
+![User Flow Map](https://imgur.com/hb3jXMZ.jpg)
+
+## ERD - Entity Relationship Diagram
+![Entity Relationship Diagram](https://imgur.com/thA2oZr.jpg)
+
+## Sudo Code Features
 1. Add User page - User will sign up and create and account and then be able to login to user profile here.
 ```bash
   - Create User "POST"
