@@ -49,13 +49,11 @@ A reverse engineering of instagram for posting pictures, commenting, and having 
 ```bash
   - User
       {userName: String unique,
-      userImg: String,
-      followers: [{Users}],
-      following: [{Users}]}
+      userImg: String,}
 
-  - UserFollowrs 
-      {userFollowers: [{Users}]}
-      
+  - UserFollowing 
+      {userFollowing: [{userName}]}
+
   - UserPost
       {caption: String,
       Image: String,
@@ -64,6 +62,14 @@ A reverse engineering of instagram for posting pictures, commenting, and having 
 
 ## Wire Frame
 
+
+## Component Hierarchy
+ - App
+  - Add User
+    - Home
+    - Search
+    - Profile
+      - Following
 
 ## Stretch Goals
 - Add followers
