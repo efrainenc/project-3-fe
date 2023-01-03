@@ -1,5 +1,11 @@
 # P3
 
+# Collaborators
+Efrain Encarnacion, Christopher Bowman
+
+# Project Description
+A reverse engineering of instagram for posting pictures, commenting, and having a profile.
+
 ## User Story 
 
 1. Add User page
@@ -41,3 +47,9 @@
 ```
 
 ## Wire Frame
+
+
+## Stretch Goals
+- Like UserPosts
+- Authentication
+- Websockets
