@@ -1,0 +1,27 @@
+## user story 
+
+1. Add User page
+  - Create User "POST"
+  - authentication
+2. Home page
+  - Show UserPost of Followers "GET"
+  - Show Users "GET" (if not following someone)
+  - Create Followers from Users "POST" (if not following someone)
+3. Other Users Profile page
+  - Show User "GET"
+  - Index UserPost "GET"
+  - Destroy Followers "DELETE"
+4. Profile page
+  - Update User "PUT"
+  - Destroy User "DELETE"
+    - Create UserPost "POST"
+    - Index UserPost "GET"
+      - Show UserPost "GET"
+    - Update UserPost "PUT"
+    - Destroy UserPost "Delete"
+5. Search page
+  - Index Users "GET"
+  - Create Followers from Users "POST"
+6. Followers page (linked from profile page)
+  - Index Followers "GET"
+  - Destroy Followers "DELETE
