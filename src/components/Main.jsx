@@ -12,7 +12,7 @@ const Main = ({signup, login, user}) => {
       <Routes>
         <Route path='/' element={<Home />}/>
         <Route path='/post' element={<Post />} />
-        <Route path='/profile/:id' element={<Profile />}/>
+        <Route path='/user/:id' element={<Profile />}/>
         <Route path="/register/" element={<RegisterForm signup={signup}/>}/>
         <Route path="/login/" element={<LoginForm login={login}/>}/>
       </Routes>
