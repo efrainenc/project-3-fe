@@ -10,7 +10,6 @@ const Header = (props) => {
         </Link>
         <div>Instagram Refactor</div>
       </nav>
-      
     </header>
   )
 }
