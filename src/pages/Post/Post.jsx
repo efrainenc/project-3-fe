@@ -5,7 +5,6 @@ import { getUserToken } from '../../utils/authToken';
 
 const Post= ({user})=> 
 {
-  console.log(user)
   // defining state for post and for a new post form input
   const [post, setPost] = useState([]);
   const [newForm, setNewForm] = useState({
@@ -122,15 +121,20 @@ const Post= ({user})=>
       <section className='post-list'>
         {post?.map((post) =>
           {
-            return(
-              <div key={post._id} className='post-card'>
-                <h1>Username</h1>
-                <Link to={`/post/${post._id}`}>
-                  <img src={post.image} alt={post.name}  width={200}/>
-                </Link>
-                <h3>{post.caption}</h3>
-               </div>
-            );
+            // console.log(user.username)
+            // console.log(post.owner.username)
+              if(user.username === post.owner.username){
+                console.log("My Posts");
+                return(
+                  <div key={post._id} className='post-card'>
+                    <h1>Username</h1>
+                    <Link to={`/post/${post._id}`}>
+                      <img src={post.image} alt={post.name}  width={200}/>
+                    </Link>
+                    <h3>{post.caption}</h3>
+                   </div>
+                );
+              }
           })
         }
       </section>
