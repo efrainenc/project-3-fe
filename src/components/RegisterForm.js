@@ -1,14 +1,14 @@
 import  {useNavigate} from 'react-router-dom'
 import {useState} from 'react'
 
-const RegisterForm = (props) => {
+const RegisterForm = ({signUp}) => {
   const initialState = { username: "", password: ""}
   const [input, setInput] = useState(initialState)
 	const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const createdUserToken = await props.signUp(input)
+    const createdUserToken = await signUp(input)
 
     if (createdUserToken) {
       navigate("/home")
