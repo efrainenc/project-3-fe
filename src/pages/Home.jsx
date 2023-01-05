@@ -95,15 +95,6 @@ const Home= (props)=>
               onChange={handleChange}
             />
           </label>
-          <label>
-            <input
-              type="text"
-              value={newForm.owner}
-              name="owner"
-              placeholder="owner"
-              onChange={handleChange}
-            />
-          </label>
           <input type="submit" value="Create Post" />
         </form>
       </section>
@@ -113,8 +104,8 @@ const Home= (props)=>
           {
             return(
               <div key={posts._id} className='posts-card'>
-                {/* <Link to={`/user/${posts.authorID}`}>
-                  <h1>{posts.author}</h1>
+                {/* <Link to={`/user/${posts.owner}`}>
+                  <h1>{posts.owner}</h1>
                 </Link> */}
                 <img src={posts.image} alt={posts.name}  width={200}/>
                 <h3>{posts.caption}</h3>
