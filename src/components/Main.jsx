@@ -1,22 +1,22 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
-import Home from '../pages/Home'
-import Profile from '../pages/Profile'
-import Post from '../pages/Post'
+import Show from '../pages/Show/Show'
+import Post from '../pages/Post/Post'
 import RegisterForm from './RegisterForm'
 import LoginForm from './LoginForm'
 
+
+// passing signup, login, and user through app
 const Main = ({signup, login, user}) => {
   return (
-    <main>
+    <div>
       <Routes>
-        <Route path='/' element={<Home />}/>
-        <Route path='/post' element={<Post />} />
-        <Route path='/user/:id' element={<Profile />}/>
+        <Route path="/" element={<Post/>}/>
+        <Route path="/post/:id" element={<Show/>}/>
         <Route path="/register/" element={<RegisterForm signup={signup}/>}/>
         <Route path="/login/" element={<LoginForm login={login}/>}/>
       </Routes>
-    </main>
+    </div>
   )
 }
 
