@@ -61,7 +61,7 @@ function App() {
         configs
       )
       const user = await response.json()
-      //console.log(user)
+      console.log(user)
 
   // sets local storage
       setUserToken(user.token)

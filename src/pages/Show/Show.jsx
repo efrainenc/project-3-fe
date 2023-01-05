@@ -106,8 +106,8 @@ const Show= (props)=>
       <section>
         <div className="post">
           <h1>Show Page</h1>
-          <h2>{post.name}</h2>
-          <h2>{post.title}</h2>
+          <img src={post.image} width={200}/>
+          <h2>{post.caption}</h2>
           <div>
             <button className="delete" onClick={removePost}>
               Remove Post
@@ -120,16 +120,16 @@ const Show= (props)=>
         <form onSubmit={updatePost}>
           <input
               type="text"
-              value={editForm.name}
-              name="name"
-              placeholder="name"
+              value={editForm.image}
+              name="image"
+              placeholder="image"
               onChange={handleChange}
           />
           <input
               type="text"
-              value={editForm.title}
-              name="title"
-              placeholder="title"
+              value={editForm.caption}
+              name="caption"
+              placeholder="caption"
               onChange={handleChange}
           />
           <input type="submit" value="Update Post" />

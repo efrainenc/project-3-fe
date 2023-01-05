@@ -11,7 +11,7 @@ const Header = (props) => {
 
       
   return (
-    <header className="Header" style={{height: "400px", overflow: 'hidden'}}>
+    <header className="Header" style={{height: "200px", overflow: 'hidden'}}>
       <nav className='nav'>
         <Link to='/'>
           <h1>Home</h1>
