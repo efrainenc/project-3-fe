@@ -3,13 +3,14 @@ import {useState, useEffect} from 'react'
 import { Link } from "react-router-dom";
 import { getUserToken } from '../../utils/authToken';
 
-const Post= (props)=> 
+const Post= ({user})=> 
 {
+  console.log(user)
   // defining state for post and for a new post form input
   const [post, setPost] = useState([]);
   const [newForm, setNewForm] = useState({
     name: "",
-    // image: "",
+    image: "",
     title: "",
   });
 
@@ -87,7 +88,7 @@ const Post= (props)=>
       <section>
         <h2>Create a new post</h2>
         <form onSubmit={handleSubmit}>
-          <label>
+          {/* <label>
             Name
             <input 
               type='text' 
@@ -96,8 +97,8 @@ const Post= (props)=>
               value={newForm.name}
               onChange={handleChange}
             />
-          </label>
-          {/* <label>
+          </label> */}
+          <label>
             <input
               type="text"
               value={newForm.image}
@@ -105,13 +106,13 @@ const Post= (props)=>
               placeholder="img url"
               onChange={handleChange}
             />
-          </label> */}
+          </label>
           <label>
             <input
               type="text"
-              value={newForm.title}
-              name="title"
-              placeholder="title"
+              value={newForm.caption}
+              name="caption"
+              placeholder="caption"
               onChange={handleChange}
             />
           </label>
@@ -123,11 +124,11 @@ const Post= (props)=>
           {
             return(
               <div key={post._id} className='post-card'>
+                <h1>Username</h1>
                 <Link to={`/post/${post._id}`}>
-                  <h1>{post.name}</h1>
+                  <img src={post.image} alt={post.name}  width={200}/>
                 </Link>
-                <img src={post.image} alt={post.name}  width={200}/>
-                <h3>{post.title}</h3>
+                <h3>{post.caption}</h3>
                </div>
             );
           })

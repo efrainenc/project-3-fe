@@ -11,7 +11,7 @@ const Main = ({signup, login, user}) => {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Post/>}/>
+        <Route path="/" element={<Post user={user}/>}/>
         <Route path="/post/:id" element={<Show/>}/>
         <Route path="/register/" element={<RegisterForm signup={signup}/>}/>
         <Route path="/login/" element={<LoginForm login={login}/>}/>
