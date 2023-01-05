@@ -1,61 +1,69 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import { Link } from "react-router-dom";
-import { getUserToken } from '../utils/authToken';
+import { getUserToken } from '../../utils/authToken';
 
-const Home= (props)=> 
+const Post= (props)=> 
 {
-  const [posts, setPosts] = useState([]);
+  // defining state for post and for a new post form input
+  const [post, setPost] = useState([]);
   const [newForm, setNewForm] = useState({
-    image: "",
+    name: "",
+    // image: "",
     title: "",
   });
 
-  // API URL
-  const BASE_URL= "http://localhost:4000";
+  // API BASE URL to mongodb backend 
+  const BASE_URL= "http://localhost:4000/post";
 
-  // Use Post function to call in useEffect
-  const getPosts= async()=>
+  // useEffect to store post JSON as setPost state
+  const getPost= async()=>
   {
     try
     {
       const res= await fetch(BASE_URL)
-      const allPeople= await res.json()
-      setPosts(allPeople)
+      const allPost= await res.json()
+      setPost(allPost)
     }catch(err)
     {
       console.log(err)
     }
   }
 
-  // Handlers
+  // event handler to setNewForm state to inputs when inputs are changed
   const handleChange= (e)=>
   {
     setNewForm({ ...newForm, [e.target.name]: e.target.value });
   };
 
+  // event handler to POST a post with newForm State input
   const handleSubmit= async(e)=>
   {
+  // 0. prevent default (event object method)
     e.preventDefault()
+
+  // setting currentState variable as newForm state input after submit
     const currentState = {...newForm}
+
+  // 1. check any fields for property data types / truthy value (function call - stretch)
     try{
-        const requestOptions ={
+        const requestOptions = {
             method: "POST", 
             headers: {
                 'Authorization': `bearer ${getUserToken()}`,
-                "Content-Type": "application/json"
-            },
+                "Content-Type": "application/json"},
             body: JSON.stringify(currentState)
         } 
         // 2. specify request method , headers, Content-Type
         // 3. make fetch to BE - sending data (requestOptions)
         // 3a fetch sends the data to API - (mongo)
         const response = await fetch(BASE_URL, requestOptions);
-        
+        // 4. check our response - 
+        // 5. parse the data from the response into JS (from JSON) 
         const createdPost = await response.json()
         console.log(createdPost)
         // update local state with response (json from be)
-        setPosts([...posts, createdPost])
+        setPost([...post, createdPost])
         // reset newForm state so that our form empties out
         setNewForm({
             name: "",
@@ -69,15 +77,27 @@ const Home= (props)=>
   }
 
 
-  // Posts are Loaded
+  // Loaded Post function
   const loaded = () =>
   {
+
+    // JSX for creating a new post when post is loaded
     return (
       <>
       <section>
-        <h2>Create a new Post</h2>
+        <h2>Create a new post</h2>
         <form onSubmit={handleSubmit}>
           <label>
+            Name
+            <input 
+              type='text' 
+              name='name' 
+              placeholder="name"
+              value={newForm.name}
+              onChange={handleChange}
+            />
+          </label>
+          {/* <label>
             <input
               type="text"
               value={newForm.image}
@@ -85,22 +105,13 @@ const Home= (props)=>
               placeholder="img url"
               onChange={handleChange}
             />
-          </label>
+          </label> */}
           <label>
             <input
               type="text"
-              value={newForm.caption}
-              name="caption"
-              placeholder="caption"
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            <input
-              type="text"
-              value={newForm.owner}
-              name="owner"
-              placeholder="owner"
+              value={newForm.title}
+              name="title"
+              placeholder="title"
               onChange={handleChange}
             />
           </label>
@@ -108,16 +119,15 @@ const Home= (props)=>
         </form>
       </section>
       <section className='post-list'>
-        <h1>Other User Posts Here</h1>
-        {posts?.map((posts) =>
+        {post?.map((post) =>
           {
             return(
-              <div key={posts._id} className='posts-card'>
-                {/* <Link to={`/user/${posts.authorID}`}>
-                  <h1>{posts.author}</h1>
-                </Link> */}
-                <img src={posts.image} alt={posts.name}  width={200}/>
-                <h3>{posts.caption}</h3>
+              <div key={post._id} className='post-card'>
+                <Link to={`/post/${post._id}`}>
+                  <h1>{post.name}</h1>
+                </Link>
+                <img src={post.image} alt={post.name}  width={200}/>
+                <h3>{post.title}</h3>
                </div>
             );
           })
@@ -127,7 +137,7 @@ const Home= (props)=>
     )
   };
 
-  // Loading
+  // / JSX for creating a new post when post is loading
   const loading = () => (
     <section className="loading">
       <h1>
@@ -142,12 +152,13 @@ const Home= (props)=>
     </section>
   );
 
-  useEffect(()=>{getPosts()}, [])
+  // useEffect to call getPost function on page load
+  useEffect(()=>{getPost()}, [])
 
+  // conditional return to return loading and loaded JSX depending on 
   return (
-    <section className="post-list">{loaded()}</section>
-    // posts && posts.length ? loaded() : loading()
+    <section className="post-list">{post && post.length ? loaded() : loading()}</section>
   );
 }
 
-export default Home
+export default Post

@@ -2,7 +2,7 @@ import React from 'react'
 import {Routes, Route} from 'react-router-dom'
 import Home from '../pages/Home'
 import Profile from '../pages/Profile'
-import Post from '../pages/Post'
+import Post from '../pages/Post/Post'
 import RegisterForm from './RegisterForm'
 import LoginForm from './LoginForm'
 
