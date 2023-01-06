@@ -110,14 +110,12 @@ const Profile= ({user, loggedIn})=>
   
   const postMap=(post)=>{
     return(
-      <>
         <div key={post._id} className='post-card'>
           <Link to={`/post/${post._id}`}>
             <img src={post.image} alt={post.name}  width={200}/>
           </Link>
           <h3>{post.caption}</h3>
         </div>
-      </>
     )
   }
 
