@@ -1,10 +1,10 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
-import Show from '../pages/Show/Show'
-import Profile from '../pages/Profile/Profile'
+import Show from './pages/Show/Show'
+import Profile from './pages/Profile/Profile'
 import RegisterForm from './RegisterForm'
 import LoginForm from './LoginForm'
-import Home from '../pages/Home'
+import Home from './pages/Home'
 
 
 // passing signup, login, and user through app
