@@ -2,7 +2,7 @@ import React from 'react'
 import {useState} from 'react'
 import  {useNavigate} from 'react-router-dom'
 
-const LoginForm = ({login}) => {
+const LoginForm = ({login, user}) => {
 
   // definining the initial state as an object of username and password with empty strings
   const initialState = { username: "", password: ""}
@@ -23,7 +23,7 @@ const LoginForm = ({login}) => {
     const createdUserToken = await login(input)
 
     if (createdUserToken) {
-      navigate("/")
+      navigate(`/user/${user.username}`)
     } else {
       navigate("/login/")
     }
