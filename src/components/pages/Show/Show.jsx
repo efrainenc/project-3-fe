@@ -1,11 +1,11 @@
 import React from 'react'
 import { useState, useEffect } from "react"
 import { Navigate, useParams, useNavigate } from "react-router-dom"
-import { getUserToken } from '../../utils/authToken'
+import { getUserToken } from '../../../utils/authToken'
 
 
 
-const Show= (props)=>
+const Show= ({user})=>
 {
   //set state for post details and form changes for UPDATE ROUTE
   const [post, setPost]= useState(null);
@@ -65,6 +65,7 @@ const Show= (props)=>
       console.log(updatedPost)
       setPost(updatedPost);
       setEditForm(updatedPost);
+      navigate(-1);
     }catch(err)
     { 
       console.log(err)
@@ -87,7 +88,7 @@ const Show= (props)=>
       const response= await fetch(URL, options);
       const deletedPost= await response.json();
       // console.log(deletedPost);
-      navigate("/");
+      navigate(-1);
     }catch(err)
     {
       console.log(err)
@@ -98,24 +99,14 @@ const Show= (props)=>
   // useEffect to get fire getPost function on page load
   useEffect(()=>{getPost()}, [])
 
-  // Show Details Loaded function and JSX
-  const loaded= ()=>
-  {
+  const signedIn= ()=>{
     return(
-      <>
       <section>
-        <div className="post">
-          <h1>Show Page</h1>
-          <img src={post.image} width={200}/>
-          <h2>{post.caption}</h2>
           <div>
             <button className="delete" onClick={removePost}>
               Remove Post
             </button>
           </div>
-        </div>
-      </section>
-      <section>
         <h2>Edit this Post</h2>
         <form onSubmit={updatePost}>
           <input
@@ -135,6 +126,20 @@ const Show= (props)=>
           <input type="submit" value="Update Post" />
         </form> 
       </section>
+    )
+  }
+
+  // Show Details Loaded function and JSX
+  const loaded= ()=>
+  {
+    return(
+      <>
+        <div className="post">
+          <h1>Show Page</h1>
+          <img src={post.image} width={200}/>
+          <h2>{post.caption}</h2>
+          <>{user.username === post.owner.username ? signedIn() : ""}</>
+        </div>
       </>
     )
   }

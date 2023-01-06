@@ -1,9 +1,9 @@
 import './App.css';
-import Header from '../Header/Header'
-import Main from '../Main'
+import Header from '../components/Header/Header'
+import Main from '../components/Main'
 import React from 'react'
 import {useState} from 'react'
-import {getUserToken, setUserToken, clearUserToken} from '../../utils/authToken'
+import {getUserToken, setUserToken, clearUserToken} from '../utils/authToken'
 
 
 function App() {
@@ -33,7 +33,7 @@ function App() {
   // sets local storage
       setUserToken(parsedUser.token)
   // put the returned user object in state for CurrentUser
-      setCurrentUser(parsedUser.currentUser) // currentUser or .user
+      setCurrentUser(parsedUser.user) // currentUser
   // adds a boolean cast of the responses isLoggedIn prop
       setIsAuthenticated(parsedUser.isLoggedIn)
 
@@ -61,12 +61,13 @@ function App() {
         configs
       )
       const user = await response.json()
-      console.log(currentUser)
 
   // sets local storage
       setUserToken(user.token)
   // put the returned user object in state for CurrentUser
-      setCurrentUser(user)
+      setCurrentUser(user.user)
+
+      setIsAuthenticated(user.isLoggedIn)
 
       window.localStorage.setItem('name', user.user.username);
 
@@ -76,11 +77,15 @@ function App() {
       setIsAuthenticated(false)
     }
   }
+  const loginHandler = () => 
+  {
+    setIsAuthenticated(current => !current)
+  }
 
   return (
     <div className="App">
-      <Header user={currentUser}/>
-      <Main signup={registerUser} login={loginUser} user={currentUser} />
+      <Header loggedIn={isAuthenticated} loginHandler={loginHandler} user={currentUser}/>
+      <Main loggedIn={isAuthenticated} signup={registerUser} login={loginUser} user={currentUser} />
     </div>
   )
 }
