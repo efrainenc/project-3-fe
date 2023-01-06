@@ -85,7 +85,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header loggedIn={loginHandler} user={currentUser}/>
+      <Header loggedIn={isAuthenticated} loginHandler={loginHandler} user={currentUser}/>
       <Main loggedIn={isAuthenticated} signup={registerUser} login={loginUser} user={currentUser} />
     </div>
   )

@@ -15,7 +15,7 @@ const Main = ({signup, login, user, loggedIn}) => {
         {/* User Page */}
         <Route path="/" element={<Profile loggedIn={loggedIn} user={user}/>}/>
         {/* post details Page */}
-        <Route path="/post/:id" element={<Show/>}/>
+        <Route path="/post/:id" element={<Show user={user}/>}/>
         {/* Show All Posts Page */}
         <Route path='/home' element={<Home user={user}/>}/>
         {/* Register Page */}

@@ -1,30 +1,33 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-const Header = ({user, loggedIn}) => {
+const Header = ({user, loggedIn, loginHandler}) => {
 
   // a function to clear local storage
   const clearLocalStorage = () =>{
     localStorage.clear();
-    loggedIn();
+    loginHandler();
   }
+
+  const signedIn= ()=>{
+    return(
+      <Link onClick={clearLocalStorage} to='/login/' > signout </Link>
+    )
+  }
+
   
   //conditionally render 
-  return (
-    <header className="Header" style={{height: "200px", overflow: 'hidden'}}>
-      <nav className='nav'>
-        <Link to='/home'>
-          <h1>Home</h1>
-        </Link>
-        <Link to='/'>
-          <h1>User Profile</h1>
-        </Link>
-        <Link to='/login/' > login </Link>
-        <Link to='/register/' > register </Link>
-        <Link onClick={clearLocalStorage} to='/login/' > signout </Link>
-        <div>Instagram Refactor</div>
-      </nav>
-    </header>
+  return(
+    <>
+      <header className="Header" style={{height: "200px", overflow: 'hidden'}}>
+        <nav className='nav'>
+          <Link to='/home'> Home </Link>
+          <Link to='/'> Profile </Link>
+          <>{loggedIn ? signedIn() : ""}</>
+          <div>Instagram Refactor</div>
+        </nav>
+      </header>
+    </>
   )
 }
 

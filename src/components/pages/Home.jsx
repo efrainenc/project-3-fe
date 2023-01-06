@@ -37,8 +37,7 @@ const Home= ({user})=>
       <section className='post-list'>
         {post?.map((post) =>
           {
-            // console.log(post.owner.username)
-              if(post.owner.username === post.owner.username){
+            console.log(post)
                 //console.log("My Posts");
                 return(
                   <div key={post._id} className='post-card'>
@@ -47,9 +46,9 @@ const Home= ({user})=>
                       <img src={post.image} alt={post.name}  width={200}/>
                     </Link>
                     <h3>{post.caption}</h3>
+                    {/* <p>{post.comment}</p> */}
                    </div>
                 );
-              }
           })
         }
       </section>
