@@ -28,7 +28,7 @@ function App() {
       )
 
       const parsedUser = await newUser.json()
-      console.log(parsedUser)
+      console.log(parsedUser + "parsed user")
 
   // sets local storage
       setUserToken(parsedUser.token)
