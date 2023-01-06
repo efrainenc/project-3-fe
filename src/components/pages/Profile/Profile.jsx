@@ -1,8 +1,8 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getUserToken } from '../../../utils/authToken';
-import Welcome from '../Welcome'
+import './Profile.css'
 
 const Profile= ({user, loggedIn})=> 
 {
@@ -115,7 +115,7 @@ const Profile= ({user, loggedIn})=>
           <Link to={`/post/${post._id}`}>
             <img src={post.image} alt={post.name}  width={200}/>
           </Link>
-          <h3>{post.caption}</h3>
+          <p>{post.caption}</p>
         </div>
       </>
     )
@@ -196,8 +196,12 @@ const Profile= ({user, loggedIn})=>
     // JSX for creating a new post when post is loaded
     return (
       <>
-      <>{user.username === id && loggedIn ? myUser() : ""}</>
-      <h1>{user.username === id ? user.username : id}'s page</h1>
+      {/* user.avatar */}
+      <div className='user'>
+        <img className="avatar" src='https://www.w3schools.com/howto/img_avatar.png' width={150}/>
+        <h1>{user.username === id ? user.username : id}</h1>
+        <div className='createPost'>{user.username === id && loggedIn ? myUser() : ""}</div>
+      </div>
       <>{loggedIn ? signedIn() : signedOut()}</>
       </>
     )
@@ -227,7 +231,7 @@ const Profile= ({user, loggedIn})=>
 
   // conditional return to return loading and loaded JSX depending on 
   return (
-    <section className="post-list">
+    <section className="profile">
       {post && post.length ? loaded() : loading()}
     </section>
   );

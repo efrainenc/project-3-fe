@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import { useState } from 'react'
+import "./Header.css"
 
 const Header = ({user, loggedIn, loginHandler}) => {
 
@@ -16,7 +17,7 @@ const Header = ({user, loggedIn, loginHandler}) => {
   const signedIn= ()=>{
     return(
       <>
-        <Link to={`/user/${user.username}`}> Profile </Link>
+        <Link to={`/${user.username}`}> <img width={50} src='https://cdn-icons-png.flaticon.com/512/6522/6522516.png' /> </Link>
         <Link onClick={clearLocalStorage} to='/login/' > signout </Link>
       </>
     )
@@ -45,15 +46,17 @@ const Header = ({user, loggedIn, loginHandler}) => {
   //conditionally render 
   return(
     <>
-      <header className="Header" style={{height: "200px", overflow: 'hidden'}}>
+      <header className="Header">
         <nav className='nav'>
-          <Link to='/home'> Home </Link>
-          <>{loggedIn ? signedIn() : <Link to={'/user'}> Profile </Link>}</>
+          <Link to='/home'> <img width={50} src='https://cdn-icons-png.flaticon.com/512/60/60817.png' /> </Link>
           <div>Instagram Refactor</div>
-          <input type="text" id="myInput" value={searchBarItem} onChange={handleItemChange} placeholder='Search..'/>
-          <Link to={`/user/${searchBarItem}`}> 
-            <button onClick={userClick} className='searchUser' > by username </button>
-          </Link>
+          <div>
+            <input type="text" id="myInput" value={searchBarItem} onChange={handleItemChange} placeholder='Search..'/>
+            <Link to={`/${searchBarItem}`}> 
+              <button onClick={userClick} className='searchUser' > by username </button>
+            </Link>
+          </div>
+          <div className='profileButton'>{loggedIn ? signedIn() : <Link to={'/'}> <img width={50} src='https://cdn-icons-png.flaticon.com/512/6522/6522516.png' /> </Link>}</div>
         </nav>
       </header>
     </>
