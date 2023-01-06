@@ -107,14 +107,24 @@ const Profile= ({user, loggedIn})=>
         console.log(err)
     }
   }
-
-  // Signed In Post function
-  const signedIn = () =>
-  {
-    return (
+  
+  const postMap=(post)=>{
+    return(
       <>
-      <section>
-        <h2>Create a new post</h2>
+        <div key={post._id} className='post-card'>
+          <Link to={`/post/${post._id}`}>
+            <img src={post.image} alt={post.name}  width={200}/>
+          </Link>
+          <h3>{post.caption}</h3>
+        </div>
+      </>
+    )
+  }
+
+  const myUser=()=>{
+    return(
+      <>
+      <h2>Create a new post</h2>
         <form onSubmit={handleSubmit}>
           <label>
             <input
@@ -136,35 +146,33 @@ const Profile= ({user, loggedIn})=>
           </label>
           <input type="submit" value="Create Post" onClick={refreshPageFunction}/>
         </form>
-      </section>
-      <section className='post-list'>
-        {post?.map((post) =>
-          {
-            if(user.username ===! post.owner.username){ // DRY THISSS ALL UPPPP
-              return (
-                <div key={post._id} className='post-card'>
-                  <Link to={`/post/${post._id}`}>
-                    <img src={post.image} alt={post.name}  width={200}/>
-                  </Link>
-                  <h3>{post.caption}</h3>
-                </div>
-              )
-            } else if( id === post.owner.username){
-              return (
-                <div key={post._id} className='post-card'>
-                  <Link to={`/post/${post._id}`}>
-                    <img src={post.image} alt={post.name}  width={200}/>
-                  </Link>
-                  <h3>{post.caption}</h3>
-                </div>
-              )
-            }
-          })
-        }
-      </section>
       </>
     )
-  };
+  }
+
+  // Signed In Post function
+  const signedIn = () =>
+  {
+      return(
+      <>
+        <section className='post-list'>
+          {post?.map((post) =>
+            {if(user.username ===! post.owner.username){ // DRY THISSS ALL UPPPP
+              return (
+                postMap(post)
+              )
+              }else if( id === post.owner.username){
+                return (
+                  postMap(post)
+                )
+              }
+            })
+          }
+        </section>
+      </>
+      )
+  }
+
 
   const signedOut = () =>
   {
@@ -172,15 +180,9 @@ const Profile= ({user, loggedIn})=>
     return (
       <section className='post-list'>
         {post?.map((post) =>
-          {
-            if(id === post.owner.username){
+          {if(id === post.owner.username){
               return (
-                <div key={post._id} className='post-card'>
-                  <Link to={`/post/${post._id}`}>
-                    <img src={post.image} alt={post.name}  width={200}/>
-                  </Link>
-                  <h3>{post.caption}</h3>
-                </div>
+                postMap(post)
               )
             }
           })
@@ -194,6 +196,7 @@ const Profile= ({user, loggedIn})=>
     // JSX for creating a new post when post is loaded
     return (
       <>
+      <>{user.username === id && loggedIn ? myUser() : ""}</>
       <h1>{user.username === id ? user.username : id}'s page</h1>
       <>{loggedIn ? signedIn() : signedOut()}</>
       </>

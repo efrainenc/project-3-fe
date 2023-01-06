@@ -21,7 +21,7 @@ const LoginForm = ({login, user}) => {
 
   // gets user token from login userInput from App.js component
     const createdUserToken = await login(input)
-    console.log(user.username)
+    console.log(user)
     if (createdUserToken) {
       navigate(`/user/${user.username}`) //undefined on first login
     } else {

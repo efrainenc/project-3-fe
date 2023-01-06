@@ -65,6 +65,7 @@ const Show= ({user})=>
       console.log(updatedPost)
       setPost(updatedPost);
       setEditForm(updatedPost);
+      navigate(-1);
     }catch(err)
     { 
       console.log(err)
