@@ -61,12 +61,14 @@ function App() {
         configs
       )
       const user = await response.json()
-      //console.log(user.user)
+      console.log(currentUser)
 
   // sets local storage
       setUserToken(user.token)
   // put the returned user object in state for CurrentUser
-      setCurrentUser(user.user)
+      setCurrentUser(user)
+
+      window.localStorage.setItem('name', user.user.username);
 
       return user
     } catch (err) {
