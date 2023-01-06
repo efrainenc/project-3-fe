@@ -1,12 +1,12 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-const Header = ({user}) => {
+const Header = ({user, loggedIn}) => {
 
   // a function to clear local storage
   const clearLocalStorage = () =>{
     localStorage.clear();
-    user.isLoggedIn = false;
+    loggedIn();
   }
   
   //conditionally render 

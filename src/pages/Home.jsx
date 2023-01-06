@@ -6,18 +6,6 @@ import { getUserToken } from '../utils/authToken';
 const Home= ({user})=> 
 {
   console.log(user)
-  // State variables.    
-  const [refreshPage, setRefreshPage] = useState(false)
-
-  // Function that refreshes the state, thus re rendering the useEffect.
-  const refreshPageFunction = () => 
-  {
-    setRefreshPage(current => !current)
-      setTimeout(function() 
-      {
-        setRefreshPage(current => !current)
-      }, 1);
-  }
 
   // defining state for post and for a new post form input
   const [post, setPost] = useState([]);
@@ -87,7 +75,7 @@ const Home= ({user})=>
 
 
   // useEffect to call getPost function on page load
-  useEffect(()=>{getPost()}, [refreshPage])
+  useEffect(()=>{getPost()}, [])
 
   // conditional return to return loading and loaded JSX depending on 
   return (

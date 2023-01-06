@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 import { getUserToken } from '../../utils/authToken';
 import Welcome from '../Welcome'
 
-const Post= ({user})=> 
+const Profile= ({user, loggedIn})=> 
 {
+  //loggedIn is Boolean
   // State variables.    
   const [refreshPage, setRefreshPage] = useState(false)
-
   // Function that refreshes the state, thus re rendering the useEffect.
   const refreshPageFunction = () => 
   {
@@ -94,7 +94,7 @@ const Post= ({user})=>
     // JSX for creating a new post when post is loaded
     return (
       <>
-      <h1>{user.user.username}'s page</h1>
+      <h1>{user.username}'s page</h1>
       <section>
         <h2>Create a new post</h2>
         <form onSubmit={handleSubmit}>
@@ -124,7 +124,7 @@ const Post= ({user})=>
           {
             // console.log(user)
             // console.log(post.owner.username)
-              if(user.user.username === post.owner.username){
+              if(user.username === post.owner.username){
                 //console.log("My Posts");
                 return(
                   <div key={post._id} className='post-card'>
@@ -167,9 +167,9 @@ const Post= ({user})=>
   return (
     <section className="post-list">
       {/* {post && post.length ? loading() : loaded()} */}
-      {user.isLoggedIn ? loaded() : <Welcome />}
+      {loggedIn ? loaded() : <Welcome />}
     </section>
   );
 }
 
-export default Post
+export default Profile
