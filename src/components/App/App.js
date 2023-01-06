@@ -28,12 +28,12 @@ function App() {
       )
 
       const parsedUser = await newUser.json()
-      console.log(parsedUser + "parsed user")
+      //console.log(parsedUser)
 
   // sets local storage
       setUserToken(parsedUser.token)
   // put the returned user object in state for CurrentUser
-      setCurrentUser(parsedUser.currentUser)
+      setCurrentUser(parsedUser.currentUser) // currentUser or .user
   // adds a boolean cast of the responses isLoggedIn prop
       setIsAuthenticated(parsedUser.isLoggedIn)
 
@@ -61,12 +61,14 @@ function App() {
         configs
       )
       const user = await response.json()
-      console.log(user)
+      console.log(currentUser)
 
   // sets local storage
       setUserToken(user.token)
   // put the returned user object in state for CurrentUser
-      setCurrentUser(user.currentUser)
+      setCurrentUser(user)
+
+      window.localStorage.setItem('name', user.user.username);
 
       return user
     } catch (err) {
