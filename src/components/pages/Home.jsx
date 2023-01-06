@@ -77,7 +77,7 @@ const Home= ({user})=>
                     <Link to={`/post/${post._id}`}>
                       <img src={post.image} alt={post.name}  width={200}/>
                     </Link>
-                    <h3>{post.caption}</h3>
+                    <p>{post.caption}</p>
                     {/* <p>{post.comment}</p> */}
                    </div>
                 );

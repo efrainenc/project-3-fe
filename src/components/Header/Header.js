@@ -17,7 +17,7 @@ const Header = ({user, loggedIn, loginHandler}) => {
   const signedIn= ()=>{
     return(
       <>
-        <Link to={`/${user.username}`}> Profile </Link>
+        <Link to={`/${user.username}`}> <img width={50} src='https://cdn-icons-png.flaticon.com/512/6522/6522516.png' /> </Link>
         <Link onClick={clearLocalStorage} to='/login/' > signout </Link>
       </>
     )
@@ -48,8 +48,7 @@ const Header = ({user, loggedIn, loginHandler}) => {
     <>
       <header className="Header">
         <nav className='nav'>
-          <Link to='/home'> Home </Link>
-          <>{loggedIn ? signedIn() : <Link to={'/'}> Profile </Link>}</>
+          <Link to='/home'> <img width={50} src='https://cdn-icons-png.flaticon.com/512/60/60817.png' /> </Link>
           <div>Instagram Refactor</div>
           <div>
             <input type="text" id="myInput" value={searchBarItem} onChange={handleItemChange} placeholder='Search..'/>
@@ -57,6 +56,7 @@ const Header = ({user, loggedIn, loginHandler}) => {
               <button onClick={userClick} className='searchUser' > by username </button>
             </Link>
           </div>
+          <div className='profileButton'>{loggedIn ? signedIn() : <Link to={'/'}> <img width={50} src='https://cdn-icons-png.flaticon.com/512/6522/6522516.png' /> </Link>}</div>
         </nav>
       </header>
     </>

@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom'
 
 const Welcome = () => {
   return (
-    <div>Welcome
+    <div>
       <Link to='/login'>
           <h1>Login</h1>
-        </Link>
-        <Link to='/register'>
-          <h1>Register</h1>
-        </Link>
+      </Link>
+      <Link to='/register'>
+        <h1>Register</h1>
+      </Link>
     </div>
   )
 }

@@ -115,7 +115,7 @@ const Profile= ({user, loggedIn})=>
           <Link to={`/post/${post._id}`}>
             <img src={post.image} alt={post.name}  width={200}/>
           </Link>
-          <h3>{post.caption}</h3>
+          <p>{post.caption}</p>
         </div>
       </>
     )

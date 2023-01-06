@@ -4,9 +4,6 @@
   justify-content: space-between;
   align-items: center;
 }
-input{
-  height: 16px;
-}
 a{
   text-decoration: none;
   color: black
@@ -15,4 +12,8 @@ a{
 .Header{
   height: 80px;
   background-color:rgb(70, 0, 161);
+}
+
+.profileButton{
+  margin: 8px;
 }
