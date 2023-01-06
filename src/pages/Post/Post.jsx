@@ -2,14 +2,26 @@ import React from 'react'
 import {useState, useEffect} from 'react'
 import { Link } from "react-router-dom";
 import { getUserToken } from '../../utils/authToken';
+import Welcome from '../Welcome'
 
 const Post= ({user})=> 
 {
-  console.log(user)
+  // State variables.    
+  const [refreshPage, setRefreshPage] = useState(false)
+
+  // Function that refreshes the state, thus re rendering the useEffect.
+  const refreshPageFunction = () => 
+  {
+    setRefreshPage(current => !current)
+      setTimeout(function() 
+      {
+        setRefreshPage(current => !current)
+      }, 1);
+  }
+
   // defining state for post and for a new post form input
   const [post, setPost] = useState([]);
   const [newForm, setNewForm] = useState({
-    name: "",
     image: "",
     title: "",
   });
@@ -42,7 +54,6 @@ const Post= ({user})=>
   {
   // 0. prevent default (event object method)
     e.preventDefault()
-
   // setting currentState variable as newForm state input after submit
     const currentState = {...newForm}
 
@@ -67,7 +78,6 @@ const Post= ({user})=>
         setPost([...post, createdPost])
         // reset newForm state so that our form empties out
         setNewForm({
-            name: "",
             image: "",
             title: "",
         })
@@ -78,26 +88,16 @@ const Post= ({user})=>
   }
 
 
-  // Loaded Post function
+  // Signed In Post function
   const loaded = () =>
   {
-
     // JSX for creating a new post when post is loaded
     return (
       <>
+      <h1>{user.user.username}'s page</h1>
       <section>
         <h2>Create a new post</h2>
         <form onSubmit={handleSubmit}>
-          {/* <label>
-            Name
-            <input 
-              type='text' 
-              name='name' 
-              placeholder="name"
-              value={newForm.name}
-              onChange={handleChange}
-            />
-          </label> */}
           <label>
             <input
               type="text"
@@ -116,21 +116,26 @@ const Post= ({user})=>
               onChange={handleChange}
             />
           </label>
-          <input type="submit" value="Create Post" />
+          <input type="submit" value="Create Post" onClick={refreshPageFunction}/>
         </form>
       </section>
       <section className='post-list'>
         {post?.map((post) =>
           {
-            return(
-              <div key={post._id} className='post-card'>
-                <h1>Username</h1>
-                <Link to={`/post/${post._id}`}>
-                  <img src={post.image} alt={post.name}  width={200}/>
-                </Link>
-                <h3>{post.caption}</h3>
-               </div>
-            );
+            // console.log(user)
+            // console.log(post.owner.username)
+              if(user.user.username === post.owner.username){
+                //console.log("My Posts");
+                return(
+                  <div key={post._id} className='post-card'>
+                    <h1>{post.owner.username}</h1>
+                    <Link to={`/post/${post._id}`}>
+                      <img src={post.image} alt={post.name}  width={200}/>
+                    </Link>
+                    <h3>{post.caption}</h3>
+                   </div>
+                );
+              }
           })
         }
       </section>
@@ -152,13 +157,18 @@ const Post= ({user})=>
       </h1>
     </section>
   );
+  
+
 
   // useEffect to call getPost function on page load
-  useEffect(()=>{getPost()}, [])
+  useEffect(()=>{getPost()}, [refreshPage])
 
   // conditional return to return loading and loaded JSX depending on 
   return (
-    <section className="post-list">{post && post.length ? loaded() : loading()}</section>
+    <section className="post-list">
+      {/* {post && post.length ? loading() : loaded()} */}
+      {user.isLoggedIn ? loaded() : <Welcome />}
+    </section>
   );
 }
 
