@@ -1,11 +1,18 @@
 .nav{
-  display: inline;
+  display: flex;
+  height: 80px;
+  justify-content: space-between;
+  align-items: center;
+}
+input{
+  height: 16px;
+}
+a{
+  text-decoration: none;
+  color: black
 }
 
-.nav h1{
-  width: 50px;
-}
-
-.header{
-  display: inline;
+.Header{
+  height: 80px;
+  background-color:rgb(70, 0, 161);
 }

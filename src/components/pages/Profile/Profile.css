@@ -1,0 +1,22 @@
+.profile{
+  display: flex;
+  justify-content: space-around;
+  margin: 15px;
+}
+
+.avatar{
+  justify-self: left;
+  max-height: 150px;
+}
+.user{
+  justify-self: left;
+  display: grid;
+}
+.createPost{
+  max-width: 200px;
+}
+
+.post-list{
+  display: flex;
+  margin: 15px;
+}
