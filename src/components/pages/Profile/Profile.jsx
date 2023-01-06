@@ -140,7 +140,7 @@ const Profile= ({user, loggedIn})=>
       <section className='post-list'>
         {post?.map((post) =>
           {
-            if(user.username && id === post.owner.username){
+            if(user.username ===! post.owner.username){ // DRY THISSS ALL UPPPP
               return (
                 <div key={post._id} className='post-card'>
                   <Link to={`/post/${post._id}`}>
@@ -149,7 +149,7 @@ const Profile= ({user, loggedIn})=>
                   <h3>{post.caption}</h3>
                 </div>
               )
-            } else if(id === post.owner.username){
+            } else if( id === post.owner.username){
               return (
                 <div key={post._id} className='post-card'>
                   <Link to={`/post/${post._id}`}>
