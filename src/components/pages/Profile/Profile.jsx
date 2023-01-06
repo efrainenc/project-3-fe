@@ -1,13 +1,34 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
-import { Link } from "react-router-dom";
-import { getUserToken } from '../../utils/authToken';
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { getUserToken } from '../../../utils/authToken';
 import Welcome from '../Welcome'
 
-const Post= ({user})=> 
+const Profile= ({user, loggedIn})=> 
 {
+  //loggedIn is Boolean
   // State variables.    
   const [refreshPage, setRefreshPage] = useState(false)
+  
+  // take in the ID parameter from router URL linked from Post.jsx
+  const {id} = useParams();
+
+  // const [userState, setUser] = useState([]);
+  // // sets post show route URL as variable and dependent ID from useParams
+  // const URL = `http://localhost:4000/user/${id}`;
+
+  // const getUser= async()=>
+  // {
+  //   try
+  //   {
+  //     const res= await fetch(URL)
+  //     const someUser= await res.json()
+  //     setUser(someUser)
+  //   }catch(err)
+  //   {
+  //     console.log(err)
+  //   }
+  // }
 
   // Function that refreshes the state, thus re rendering the useEffect.
   const refreshPageFunction = () => 
@@ -86,17 +107,24 @@ const Post= ({user})=>
         console.log(err)
     }
   }
-
-
-  // Signed In Post function
-  const loaded = () =>
-  {
-    // JSX for creating a new post when post is loaded
-    return (
+  
+  const postMap=(post)=>{
+    return(
       <>
-      <h1>{user.user.username}'s page</h1>
-      <section>
-        <h2>Create a new post</h2>
+        <div key={post._id} className='post-card'>
+          <Link to={`/post/${post._id}`}>
+            <img src={post.image} alt={post.name}  width={200}/>
+          </Link>
+          <h3>{post.caption}</h3>
+        </div>
+      </>
+    )
+  }
+
+  const myUser=()=>{
+    return(
+      <>
+      <h2>Create a new post</h2>
         <form onSubmit={handleSubmit}>
           <label>
             <input
@@ -118,27 +146,59 @@ const Post= ({user})=>
           </label>
           <input type="submit" value="Create Post" onClick={refreshPageFunction}/>
         </form>
-      </section>
+      </>
+    )
+  }
+
+  // Signed In Post function
+  const signedIn = () =>
+  {
+      return(
+      <>
+        <section className='post-list'>
+          {post?.map((post) =>
+            {if(user.username ===! post.owner.username){ // DRY THISSS ALL UPPPP
+              return (
+                postMap(post)
+              )
+              }else if( id === post.owner.username){
+                return (
+                  postMap(post)
+                )
+              }
+            })
+          }
+        </section>
+      </>
+      )
+  }
+
+
+  const signedOut = () =>
+  {
+    // JSX for creating a new post when post is loaded
+    return (
       <section className='post-list'>
         {post?.map((post) =>
-          {
-            // console.log(user)
-            // console.log(post.owner.username)
-              if(user.user.username === post.owner.username){
-                //console.log("My Posts");
-                return(
-                  <div key={post._id} className='post-card'>
-                    <h1>{post.owner.username}</h1>
-                    <Link to={`/post/${post._id}`}>
-                      <img src={post.image} alt={post.name}  width={200}/>
-                    </Link>
-                    <h3>{post.caption}</h3>
-                   </div>
-                );
-              }
+          {if(id === post.owner.username){
+              return (
+                postMap(post)
+              )
+            }
           })
         }
       </section>
+    )
+  };
+
+  const loaded = () =>
+  {
+    // JSX for creating a new post when post is loaded
+    return (
+      <>
+      <>{user.username === id && loggedIn ? myUser() : ""}</>
+      <h1>{user.username === id ? user.username : id}'s page</h1>
+      <>{loggedIn ? signedIn() : signedOut()}</>
       </>
     )
   };
@@ -162,14 +222,15 @@ const Post= ({user})=>
 
   // useEffect to call getPost function on page load
   useEffect(()=>{getPost()}, [refreshPage])
+  // // useEffect for User
+  // useEffect(()=>{getUser()}, [refreshPage])
 
   // conditional return to return loading and loaded JSX depending on 
   return (
     <section className="post-list">
-      {/* {post && post.length ? loading() : loaded()} */}
-      {user.isLoggedIn ? loaded() : <Welcome />}
+      {post && post.length ? loaded() : loading()}
     </section>
   );
 }
 
-export default Post
+export default Profile
