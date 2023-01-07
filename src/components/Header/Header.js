@@ -18,7 +18,7 @@ const Header = ({user, loggedIn, signOut}) => {
     return(
       <>
         <Link to={`/${user.username}`}> <img width={50} src='https://cdn-icons-png.flaticon.com/512/6522/6522516.png' /> </Link>
-        <Link onClick={clearLocalStorage} to='/login/' > signout </Link>
+        <Link onClick={clearLocalStorage} to='/' > signout </Link>
       </>
     )
   }

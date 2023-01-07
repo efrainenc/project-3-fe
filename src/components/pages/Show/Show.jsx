@@ -13,7 +13,7 @@ const Show= ({user, loggedIn})=>
 
   // take in the ID parameter from router URL linked from Post.jsx
   const {id} = useParams();
-
+  //console.log(id)
   // useNavigate returns an imperative method that you can use for changing location.
   const navigate = useNavigate();
 
