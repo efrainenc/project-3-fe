@@ -148,7 +148,7 @@ const Profile= ({user, loggedIn})=>
     )
   }
 
-  // Signed In Post function
+  // Function to display each post of the signed in users profile
   const signedIn = () =>
   {
       return(
@@ -170,8 +170,8 @@ const Profile= ({user, loggedIn})=>
       </>
       )
   }
-
-
+  
+  // Function to display each post of the signed in users profile
   const signedOut = () =>
   {
     // JSX for creating a new post when post is loaded
@@ -217,11 +217,9 @@ const Profile= ({user, loggedIn})=>
   );
   
 
-
   // useEffect to call getPost function on page load
   useEffect(()=>{getPost()}, [refreshPage])
-  // // useEffect for User
-  // useEffect(()=>{getUser()}, [refreshPage])
+
 
   // conditional return to return loading and loaded JSX depending on 
   return (
