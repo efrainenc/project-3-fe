@@ -104,7 +104,7 @@ const Profile= ({user, loggedIn})=>
     )
   }
 
-  const myUser=()=>{ //ADD EDIT PROFILE PRICTURE TO PROFILE PAGE
+  const signedIn=()=>{ //ADD EDIT PROFILE PRICTURE TO PROFILE PAGE
     return(
       <>
       <h2>Create a new post</h2>
@@ -142,7 +142,7 @@ const Profile= ({user, loggedIn})=>
       <div className='user'>
         <img className="avatar" src='https://www.w3schools.com/howto/img_avatar.png' width={150}/>
         <h1>{user.username === id ? user.username : id}</h1>
-        <div className='createPost'>{user.username === id && loggedIn ? myUser() : ""}</div>
+        <div className='createPost'>{user.username === id && loggedIn ? signedIn() : ""}</div>
       </div>
       <section className='post-list'>
           {post?.map((post) =>

@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import { useState } from 'react'
 import "./Header.css"
 
-const Header = ({user, loggedIn, loginHandler}) => {
+const Header = ({user, loggedIn, signOut}) => {
 
   const [searchBarItem, setSearchBarItem] = useState('')
   const [isSearch, setIsSearch] = useState(false)
@@ -11,7 +11,7 @@ const Header = ({user, loggedIn, loginHandler}) => {
   // a function to clear local storage
   const clearLocalStorage = () =>{
     localStorage.clear();
-    loginHandler();
+    signOut();
   }
 
   const signedIn= ()=>{
