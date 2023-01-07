@@ -13,23 +13,6 @@ const Profile= ({user, loggedIn})=>
   // take in the ID parameter from router URL linked from Post.jsx
   const {id} = useParams();
 
-  // const [userState, setUser] = useState([]);
-  // // sets post show route URL as variable and dependent ID from useParams
-  // const URL = `http://localhost:4000/user/${id}`;
-
-  // const getUser= async()=>
-  // {
-  //   try
-  //   {
-  //     const res= await fetch(URL)
-  //     const someUser= await res.json()
-  //     setUser(someUser)
-  //   }catch(err)
-  //   {
-  //     console.log(err)
-  //   }
-  // }
-
   // Function that refreshes the state, thus re rendering the useEffect.
   const refreshPageFunction = () => 
   {
@@ -121,7 +104,7 @@ const Profile= ({user, loggedIn})=>
     )
   }
 
-  const myUser=()=>{
+  const myUser=()=>{ //ADD EDIT PROFILE PRICTURE TO PROFILE PAGE
     return(
       <>
       <h2>Create a new post</h2>
@@ -150,12 +133,18 @@ const Profile= ({user, loggedIn})=>
     )
   }
 
-  // Signed In Post function
-  const signedIn = () =>
+  const loaded = () =>
   {
-      return(
+    // JSX for creating a new post when post is loaded
+    return (
       <>
-        <section className='post-list'>
+      {/* user.avatar */}
+      <div className='user'>
+        <img className="avatar" src='https://www.w3schools.com/howto/img_avatar.png' width={150}/>
+        <h1>{user.username === id ? user.username : id}</h1>
+        <div className='createPost'>{user.username === id && loggedIn ? myUser() : ""}</div>
+      </div>
+      <section className='post-list'>
           {post?.map((post) =>
             {if(user.username ===! post.owner.username){ // DRY THISSS ALL UPPPP
               return (
@@ -169,40 +158,6 @@ const Profile= ({user, loggedIn})=>
             })
           }
         </section>
-      </>
-      )
-  }
-
-
-  const signedOut = () =>
-  {
-    // JSX for creating a new post when post is loaded
-    return (
-      <section className='post-list'>
-        {post?.map((post) =>
-          {if(id === post.owner.username){
-              return (
-                postMap(post)
-              )
-            }
-          })
-        }
-      </section>
-    )
-  };
-
-  const loaded = () =>
-  {
-    // JSX for creating a new post when post is loaded
-    return (
-      <>
-      {/* user.avatar */}
-      <div className='user'>
-        <img className="avatar" src='https://www.w3schools.com/howto/img_avatar.png' width={150}/>
-        <h1>{user.username === id ? user.username : id}</h1>
-        <div className='createPost'>{user.username === id && loggedIn ? myUser() : ""}</div>
-      </div>
-      <>{loggedIn ? signedIn() : signedOut()}</>
       </>
     )
   };
@@ -226,8 +181,6 @@ const Profile= ({user, loggedIn})=>
 
   // useEffect to call getPost function on page load
   useEffect(()=>{getPost()}, [refreshPage])
-  // // useEffect for User
-  // useEffect(()=>{getUser()}, [refreshPage])
 
   // conditional return to return loading and loaded JSX depending on 
   return (

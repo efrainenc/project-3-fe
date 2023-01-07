@@ -5,7 +5,7 @@ import { getUserToken } from '../../../utils/authToken'
 
 
 
-const Show= ({user})=>
+const Show= ({user, loggedIn})=>
 {
   //set state for post details and form changes for UPDATE ROUTE
   const [post, setPost]= useState(null);
@@ -128,7 +128,7 @@ const Show= ({user})=>
       </section>
     )
   }
-
+// new fetch for post comments
   // Show Details Loaded function and JSX
   const loaded= ()=>
   {
@@ -138,7 +138,7 @@ const Show= ({user})=>
           <h1>Show Page</h1>
           <img src={post.image} width={200}/>
           <p>{post.caption}</p>
-          <>{user.username === post.owner.username ? signedIn() : ""}</>
+          <>{loggedIn && user.username === post.owner.username ? signedIn() : ""}</> 
         </div>
       </>
     )

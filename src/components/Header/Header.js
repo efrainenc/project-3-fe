@@ -49,7 +49,7 @@ const Header = ({user, loggedIn, loginHandler}) => {
       <header className="Header">
         <nav className='nav'>
           <Link to='/home'> <img width={50} src='https://cdn-icons-png.flaticon.com/512/60/60817.png' /> </Link>
-          <div>Instagram Refactor</div>
+          <div>Instaspace LMAO</div>
           <div>
             <input type="text" id="myInput" value={searchBarItem} onChange={handleItemChange} placeholder='Search..'/>
             <Link to={`/${searchBarItem}`}> 
