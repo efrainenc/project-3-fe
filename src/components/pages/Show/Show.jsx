@@ -8,24 +8,37 @@ import { getUserToken } from '../../../utils/authToken'
 const Show= ({user})=>
 {
   //set state for post details and form changes for UPDATE ROUTE
+  // TODO state for comments
   const [post, setPost]= useState(null);
   const [editForm, setEditForm] = useState(post);
-
+  const [commentState, setCommentState] = useState({})
   // take in the ID parameter from router URL linked from Post.jsx
   const {id} = useParams();
-
   // useNavigate returns an imperative method that you can use for changing location.
   const navigate = useNavigate();
-
   // sets post show route URL as variable and dependent ID from useParams
   const URL = `http://localhost:4000/post/${id}`;
+  // TODO comment URL
+  const commentURL = 'http://localhost:4000/comment/'
+
+  const getComment= async()=>
+  {
+    try
+    {
+      const res= await fetch(commentURL)
+      const allComment= await res.json()
+      setCommentState(allComment)
+    }catch(err)
+    {
+      console.log(err)
+    }
+  }
 
   // event handler for when UPDATE name and title are changed
   const handleChange= (e)=>
   {
     setEditForm({ ...editForm, [e.target.name]: e.target.value })
   }
-
   // function to fetch show post details for useEffect - and set post detail JSON to setPost and setEditForm State
   const getPost= async()=>
   {
@@ -44,12 +57,9 @@ const Show= ({user})=>
   // Update Post function with Authorization header - UPDATE
   const updatePost= async(e)=>
   {
-
    // prevent default (event object method)
     e.preventDefault()
-    
-    console.log(getUserToken())
-
+    // console.log(getUserToken())
     try
     { 
       const options = {
@@ -59,7 +69,6 @@ const Show= ({user})=>
           "Content-Type": "application/json"},
         body: JSON.stringify(editForm)
       }
-      
       const response= await fetch(URL, options);
       const updatedPost= await response.json();
       console.log(updatedPost)
@@ -97,7 +106,7 @@ const Show= ({user})=>
   }
 
   // useEffect to get fire getPost function on page load
-  useEffect(()=>{getPost()}, [])
+  useEffect(()=>{getPost(); getComment();}, [])
 
   const signedIn= ()=>{
     return(
@@ -137,7 +146,7 @@ const Show= ({user})=>
         <div className="post">
           <h1>Show Page</h1>
           <img src={post.image} width={200}/>
-          <p>{post.caption}</p>
+          <h2>{post.caption}</h2>
           <>{user.username === post.owner.username ? signedIn() : ""}</>
         </div>
       </>

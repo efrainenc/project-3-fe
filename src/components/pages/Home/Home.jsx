@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import { Link } from "react-router-dom";
-import { getUserToken } from '../../utils/authToken';
+import { getUserToken } from '../../../utils/authToken';
 
 const Home= ({user})=> 
 {
@@ -103,8 +103,6 @@ const Home= ({user})=>
     </section>
   );
   
-
-
   // useEffect to call getPost function on page load
   useEffect(()=>{getPost()}, [])
 

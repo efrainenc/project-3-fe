@@ -45,7 +45,6 @@ function App() {
     }
   }
 
-
   // fetch user JSON from login POST and return it as user
   const loginUser = async (data) => {
     try {
@@ -77,6 +76,7 @@ function App() {
       setIsAuthenticated(false)
     }
   }
+
   const loginHandler = () => 
   {
     setIsAuthenticated(current => !current)
