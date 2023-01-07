@@ -146,7 +146,7 @@ const Show= ({user})=>
         <div className="post">
           <h1>Show Page</h1>
           <img src={post.image} width={200}/>
-          <h2>{post.caption}</h2>
+          <p>{post.caption}</p>
           <>{user.username === post.owner.username ? signedIn() : ""}</>
         </div>
       </>

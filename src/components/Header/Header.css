@@ -1,11 +1,19 @@
 .nav{
-  display: inline;
+  display: flex;
+  height: 80px;
+  justify-content: space-between;
+  align-items: center;
+}
+a{
+  text-decoration: none;
+  color: black
 }
 
-.nav h1{
-  width: 50px;
+.Header{
+  height: 80px;
+  background-color:rgb(70, 0, 161);
 }
 
-.header{
-  display: inline;
+.profileButton{
+  margin: 8px;
 }

@@ -40,7 +40,7 @@ const Home= ({user})=>
                 //console.log("My Posts");
                 return(
                   <div key={post._id} className='post-card'>
-                    <Link to={`/user/${user._id}`}>
+                    <Link to={`/${user._id}`}>
                       <h1>{post.owner.username}</h1>
                     </Link>
                     <Link to={`/post/${post._id}`}>
@@ -71,13 +71,13 @@ const Home= ({user})=>
                 //console.log("My Posts");
                 return(
                   <div key={post._id} className='post-card'>
-                    <Link to={`/user/${post.owner.username}`}>
+                    <Link to={`/${post.owner.username}`}>
                       <h1>{post.owner.username}</h1>
                     </Link>
                     <Link to={`/post/${post._id}`}>
                       <img src={post.image} alt={post.name}  width={200}/>
                     </Link>
-                    <h3>{post.caption}</h3>
+                    <p>{post.caption}</p>
                     {/* <p>{post.comment}</p> */}
                    </div>
                 );

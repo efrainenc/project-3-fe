@@ -1,6 +1,6 @@
 import React from 'react'
 import {useState} from 'react'
-import  {useNavigate} from 'react-router-dom'
+import  {Link, useNavigate} from 'react-router-dom'
 
 const LoginForm = ({login, user}) => {
 
@@ -17,13 +17,20 @@ const LoginForm = ({login, user}) => {
   // gets user token from login userInput from App.js component
     const createdUserToken = await login(input)
     console.log(user)
+<<<<<<< HEAD
     if (createdUserToken) {
       navigate(`/user/${input.username}`) //undefined on first login
+=======
+    
+    if (createdUserToken) {
+      navigate(`/${input.username}`) //undefined on first login
+>>>>>>> 0131fac7df801c2ff267fbfabf6da6471a8ef7a3
     } else {
       navigate("/login/")
     }
     // set state as new username and password on submit
 		setInput(initialState);
+
   };
 
 // save new state with password and value on event change
