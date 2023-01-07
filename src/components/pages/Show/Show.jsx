@@ -2,12 +2,14 @@ import React from 'react'
 import { useState, useEffect } from "react"
 import { Navigate, useParams, useNavigate } from "react-router-dom"
 import { getUserToken } from '../../../utils/authToken'
+import Comment from '../../Comment/Comment'
 
 
 
 const Show= ({user})=>
 {
   //set state for post details and form changes for UPDATE ROUTE
+
   // TODO state for comments
   const [post, setPost]= useState(null);
   const [editForm, setEditForm] = useState(post);
@@ -59,6 +61,7 @@ const Show= ({user})=>
   {
    // prevent default (event object method)
     e.preventDefault()
+    // console.log(getUserToken())
     // console.log(getUserToken())
     try
     { 
@@ -148,6 +151,7 @@ const Show= ({user})=>
           <img src={post.image} width={200}/>
           <h2>{post.caption}</h2>
           <>{user.username === post.owner.username ? signedIn() : ""}</>
+          <Comment />
         </div>
       </>
     )

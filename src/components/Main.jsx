@@ -2,9 +2,9 @@ import React from 'react'
 import {Routes, Route} from 'react-router-dom'
 import Show from './pages/Show/Show'
 import Profile from './pages/Profile/Profile'
-import RegisterForm from './RegisterForm'
-import LoginForm from './LoginForm'
-import Home from './pages/Home'
+import RegisterForm from './AuthForms/RegisterForm'
+import LoginForm from './AuthForms/LoginForm'
+import Home from './pages/Home/Home'
 import Welcome from './pages/Welcome'
 
 
