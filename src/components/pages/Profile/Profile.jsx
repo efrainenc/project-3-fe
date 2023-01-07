@@ -30,7 +30,7 @@ const Profile= ({user, loggedIn})=>
   // API BASE URL to mongodb backend 
   const BASE_URL= "http://localhost:4000/";
   const postURL = BASE_URL + 'post';
-  const userURL = BASE_URL + 'user';
+  let userURL = BASE_URL + 'user';
   if(loggedIn){
     userURL = BASE_URL + `user/${user._id}`;
   }
