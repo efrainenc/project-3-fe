@@ -21,11 +21,8 @@ const Profile= ({user, loggedIn})=>
   });
 
   // form to change user profile data
-  const [userUpdate, setUserUpdate] = useState([])
-  const [userForm, setUserForm] = useState({
-    userImage: "",
-    username: "",
-  });
+  const [userUpdate, setUserUpdate] = useState(null)
+  const [editForm, setEditForm] = useState('');;
 
   // API BASE URL to mongodb backend 
   const BASE_URL= "http://localhost:4000/";
@@ -34,7 +31,7 @@ const Profile= ({user, loggedIn})=>
   if(loggedIn){
     userURL = BASE_URL + `user/${user._id}`;
   }
-  //console.log(userURL)
+  console.log(userUpdate)
 
   // useEffect to store post JSON as setPost state
   const getProfile= async()=>
@@ -49,6 +46,7 @@ const Profile= ({user, loggedIn})=>
       const resUser= await fetch(userURL)
       const allUser= await resUser.json()
       setUserUpdate(allUser)
+      setEditForm(allUser);
     }catch(err)
     {
       console.log(err)
@@ -69,7 +67,7 @@ const Profile= ({user, loggedIn})=>
   const handleChange= (e)=>
   {
     setNewForm({ ...newForm, [e.target.name]: e.target.value });
-    setUserForm({ ...userForm, [e.target.name]: e.target.value });
+    setEditForm({ ...editForm, [e.target.name]: e.target.value });
   };
 
   // event handler to POST a post with newForm State input
@@ -109,32 +107,26 @@ const Profile= ({user, loggedIn})=>
     }
   }
 
-  const handleUser= async(e)=>
+  const updateUser= async(e)=>
   {
-    // prevent default (event object method)
+   // prevent default (event object method)
     e.preventDefault()
-    
-    const currUserState = {...userForm}
-
     try
     { 
-      // USER 
-      const userRequestOptions = {
-        method: "PUT", 
+      const options = {
+        method: "PUT",
         headers: {
-            'Authorization': `bearer ${getUserToken()}`,
-            "Content-Type": "application/json"},
-        body: JSON.stringify(currUserState)
+          'Authorization': `bearer ${getUserToken()}`,
+          "Content-Type": "application/json"},
+        body: JSON.stringify(editForm)
       }
-
-      const userResponse = await fetch(userURL, userRequestOptions)
-      const updatedUser = await userResponse.json()
-      setUserUpdate(updatedUser)
-      setUserForm({
-        userImage: "",
-        username: "",
-      })
-    }catch(err){ 
+      const res= await fetch(userURL, options);
+      const updatedUser= await res.json();
+      console.log(updatedUser)
+      setUserUpdate(updatedUser);
+      setEditForm(updatedUser);
+    }catch(err)
+    { 
       console.log(err)
     }
   }
@@ -154,17 +146,17 @@ const Profile= ({user, loggedIn})=>
     return(
       <>
       <h3>Update Profile</h3>
-      <form onSubmit={handleUser}>
+      <form onSubmit={updateUser}>
         <input
           type="text"
-          value={userForm.avatar}
-          name="avatar"
+          value={editForm.userImage}
+          name="userImage"
           placeholder="img url"
           onChange={handleChange}
         />
         <input
           type="text"
-          value={userForm.username}
+          value={editForm.username}
           name="username"
           placeholder="username"
           onChange={handleChange}
@@ -199,14 +191,15 @@ const Profile= ({user, loggedIn})=>
 
   const loaded = () =>
   {
+    const userMatch = user.username === id;
     // JSX for creating a new post when post is loaded
     return (
       <>
       {/* user.avatar */}
       <div className='user'>
         <img className="avatar" src='https://www.w3schools.com/howto/img_avatar.png' width={150}/>
-        <h1>{user.username === id ? user.username : id}</h1>
-        <div className='createPost'>{user.username === id && loggedIn ? signedIn() : ""}</div>
+        <h1>{userMatch ? user.username : id}</h1>
+        <div className='createPost'>{userMatch && loggedIn ? signedIn() : ""}</div>
       </div>
       <section className='post-list'>
           {post?.map((post) =>
@@ -243,8 +236,6 @@ const Profile= ({user, loggedIn})=>
 
   // useEffect to call getProfile function on page load
   useEffect(()=>{getProfile()}, [refreshPage])
-  // useEffect to call getProfile function on page load
-  // useEffect(()=>{getUser()}, [refreshPage])
 
   // conditional return to return loading and loaded JSX depending on 
   return (
