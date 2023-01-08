@@ -13,28 +13,12 @@ const Show= ({user})=>
   // TODO state for comments
   const [post, setPost]= useState(null);
   const [editForm, setEditForm] = useState(post);
-  const [commentState, setCommentState] = useState({})
   // take in the ID parameter from router URL linked from Post.jsx
   const {id} = useParams();
   // useNavigate returns an imperative method that you can use for changing location.
   const navigate = useNavigate();
   // sets post show route URL as variable and dependent ID from useParams
   const URL = `http://localhost:4000/post/${id}`;
-  // TODO comment URL
-  const commentURL = 'http://localhost:4000/comment/'
-
-  const getComment= async()=>
-  {
-    try
-    {
-      const res= await fetch(commentURL)
-      const allComment= await res.json()
-      setCommentState(allComment)
-    }catch(err)
-    {
-      console.log(err)
-    }
-  }
 
   // event handler for when UPDATE name and title are changed
   const handleChange= (e)=>
@@ -61,8 +45,6 @@ const Show= ({user})=>
   {
    // prevent default (event object method)
     e.preventDefault()
-    // console.log(getUserToken())
-    // console.log(getUserToken())
     try
     { 
       const options = {
@@ -109,7 +91,7 @@ const Show= ({user})=>
   }
 
   // useEffect to get fire getPost function on page load
-  useEffect(()=>{getPost(); getComment();}, [])
+  useEffect(()=>{getPost();}, [])
 
   const signedIn= ()=>{
     return(

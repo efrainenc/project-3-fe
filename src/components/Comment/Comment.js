@@ -38,10 +38,6 @@ const Comment = ({post}) => {
     }
   }
 
-  // console.log("commentState:")
-  // console.log(commentState)
-  console.log("post:")
-  console.log(post._id)
  // useEffect to get fire getPost function on page load
  useEffect(()=>{getComment(); getCurrentPost();}, [])
 
@@ -80,7 +76,7 @@ const Comment = ({post}) => {
       )}
       </>
       :
-      <p> no comments </p>
+      loading()
     )
  }
 
