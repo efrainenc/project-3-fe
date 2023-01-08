@@ -11,7 +11,7 @@ const Profile= ({user, loggedIn})=>
   const [refreshPage, setRefreshPage] = useState(false)
   
   // take in the ID parameter from router URL linked from Post.jsx
-  const {id} = useParams();
+  const {id} = useParams(); // param is username because there is no owner id
 
   // defining state for post and for a new post form input
   const [post, setPost] = useState([]);
@@ -21,17 +21,12 @@ const Profile= ({user, loggedIn})=>
   });
 
   // form to change user profile data
-  const [userUpdate, setUserUpdate] = useState(null)
-  const [editForm, setEditForm] = useState('');;
+  const [allUsers, setAllUsers] = useState(null)
 
   // API BASE URL to mongodb backend 
   const BASE_URL= "http://localhost:4000/";
   const postURL = BASE_URL + 'post';
-  let userURL = BASE_URL + 'user';
-  if(loggedIn){
-    userURL = BASE_URL + `user/${user._id}`;
-  }
-  console.log(userUpdate)
+  const userURL = BASE_URL + 'user';
 
   // useEffect to store post JSON as setPost state
   const getProfile= async()=>
@@ -44,9 +39,8 @@ const Profile= ({user, loggedIn})=>
       setPost(allPost)
       // User
       const resUser= await fetch(userURL)
-      const allUser= await resUser.json()
-      setUserUpdate(allUser)
-      setEditForm(allUser);
+      const getUsers= await resUser.json()
+      setAllUsers(getUsers)
     }catch(err)
     {
       console.log(err)
@@ -67,18 +61,17 @@ const Profile= ({user, loggedIn})=>
   const handleChange= (e)=>
   {
     setNewForm({ ...newForm, [e.target.name]: e.target.value });
-    setEditForm({ ...editForm, [e.target.name]: e.target.value });
   };
 
   // event handler to POST a post with newForm State input
   const handlePost= async(e)=>
   {
-  // 0. prevent default (event object method)
+    // 0. prevent default (event object method)
     e.preventDefault()
-  // setting currentState variable as newForm state input after submit
+    // setting currentState variable as newForm state input after submit
     const currentState = {...newForm}
 
-  // 1. check any fields for property data types / truthy value (function call - stretch)
+    // 1. check any fields for property data types / truthy value (function call - stretch)
     try{
         // 2. specify request method , headers, Content-Type
         const requestOptions = {
@@ -106,30 +99,6 @@ const Profile= ({user, loggedIn})=>
         console.log(err)
     }
   }
-
-  const updateUser= async(e)=>
-  {
-   // prevent default (event object method)
-    e.preventDefault()
-    try
-    { 
-      const options = {
-        method: "PUT",
-        headers: {
-          'Authorization': `bearer ${getUserToken()}`,
-          "Content-Type": "application/json"},
-        body: JSON.stringify(editForm)
-      }
-      const res= await fetch(userURL, options);
-      const updatedUser= await res.json();
-      console.log(updatedUser)
-      setUserUpdate(updatedUser);
-      setEditForm(updatedUser);
-    }catch(err)
-    { 
-      console.log(err)
-    }
-  }
   
   const postMap=(post)=>{
     return(
@@ -145,24 +114,9 @@ const Profile= ({user, loggedIn})=>
   const signedIn=()=>{ //ADD EDIT PROFILE PRICTURE TO PROFILE PAGE
     return(
       <>
-      <h3>Update Profile</h3>
-      <form onSubmit={updateUser}>
-        <input
-          type="text"
-          value={editForm.userImage}
-          name="userImage"
-          placeholder="img url"
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          value={editForm.username}
-          name="username"
-          placeholder="username"
-          onChange={handleChange}
-        />
-        <input type="submit" value="Update" onClick={refreshPageFunction}/>
-      </form>
+      <Link to={`/update/${id}`}>
+        <p>Update Profile</p>
+      </Link>
       <h3>Create a new post</h3>
         <form onSubmit={handlePost}>
           <label>
@@ -189,6 +143,23 @@ const Profile= ({user, loggedIn})=>
     )
   }
 
+  const renderUserImages= ()=>{
+    return ( allUsers ?
+      allUsers?.map((userMap, userIndex) =>
+      {
+        //console.log(userMap)
+        if(userMap.username === id){
+          //console.log(userMap.userImage)
+          return (
+          <div key={userIndex} className='userImage'>
+            <img className="avatar" src={userMap.userImage} width={150}/>
+          </div>
+          )
+        }
+      })
+    : '')
+  }
+
   const loaded = () =>
   {
     const userMatch = user.username === id;
@@ -197,7 +168,9 @@ const Profile= ({user, loggedIn})=>
       <>
       {/* user.avatar */}
       <div className='user'>
-        <img className="avatar" src='https://www.w3schools.com/howto/img_avatar.png' width={150}/>
+        <div className='userImage'>
+          {loggedIn ? <img className="avatar" src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png' width={150}/> : renderUserImages()}
+        </div>
         <h1>{userMatch ? user.username : id}</h1>
         <div className='createPost'>{userMatch && loggedIn ? signedIn() : ""}</div>
       </div>
@@ -235,7 +208,7 @@ const Profile= ({user, loggedIn})=>
   );
 
   // useEffect to call getProfile function on page load
-  useEffect(()=>{getProfile()}, [refreshPage])
+  useEffect(()=>{getProfile();}, [refreshPage])
 
   // conditional return to return loading and loaded JSX depending on 
   return (
