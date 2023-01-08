@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-const Comment = () => {
+const Comment = ({post}) => {
 
   const {id} = useParams();
 
@@ -38,26 +38,51 @@ const Comment = () => {
     }
   }
 
+  // console.log("commentState:")
+  // console.log(commentState)
+  console.log("post:")
+  console.log(post._id)
  // useEffect to get fire getPost function on page load
  useEffect(()=>{getComment(); getCurrentPost();}, [])
+
+
+ const loading= ()=>
+ {
+   return(
+     <section className="loading">
+       <h1>
+         Loading...
+         <span>
+           <img
+             className="spinner"
+             src="https://freesvg.org/img/1544764567.png"
+           />{" "}
+         </span>
+       </h1>
+     </section>
+   )
+ }
  
  const matchCommentToPost = () => { 
-  return ( commentState && currentPostState ?
-    <>
-    {commentState.map((commentStateMap, commentStateIndex) => {
-      
-        return (
-          <div key={commentStateIndex} >
-            {commentStateMap.comment}
-          </div>
-        )  
-    }
-    )}
-    </>
-    :
-    <p> no comments </p>
-  )
-  }
+    return ( commentState && currentPostState ?
+      <>
+      {commentState.map((commentStateMap, commentStateIndex) => {
+          if(commentStateMap.post_id){
+            const commentsMatch = commentStateMap.post_id._id === post._id;
+            console.log(commentsMatch)
+            return ( commentsMatch ?
+              <div key={commentStateIndex} >
+                {commentStateMap.comment}
+              </div>
+            : "")
+          }
+      }
+      )}
+      </>
+      :
+      <p> no comments </p>
+    )
+ }
 
 
   return ( <div>

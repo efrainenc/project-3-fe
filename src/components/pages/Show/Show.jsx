@@ -151,7 +151,7 @@ const Show= ({user})=>
           <img src={post.image} width={200}/>
           <h2>{post.caption}</h2>
           <>{user.username === post.owner.username ? signedIn() : ""}</>
-          <Comment />
+          <Comment post={post}/>
         </div>
       </>
     )
