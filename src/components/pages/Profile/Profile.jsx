@@ -13,23 +13,48 @@ const Profile= ({user, loggedIn})=>
   // take in the ID parameter from router URL linked from Post.jsx
   const {id} = useParams();
 
-  // const [userState, setUser] = useState([]);
-  // // sets post show route URL as variable and dependent ID from useParams
-  // const URL = `http://localhost:4000/user/${id}`;
+  // defining state for post and for a new post form input
+  const [post, setPost] = useState([]);
+  const [newForm, setNewForm] = useState({
+    image: "",
+    title: "",
+  });
 
-  // const getUser= async()=>
-  // {
-  //   try
-  //   {
-  //     const res= await fetch(URL)
-  //     const someUser= await res.json()
-  //     setUser(someUser)
-  //   }catch(err)
-  //   {
-  //     console.log(err)
-  //   }
-  // }
+  // form to change user profile data
+  const [userUpdate, setUserUpdate] = useState([])
+  const [userForm, setUserForm] = useState({
+    userImage: "",
+    username: "",
+  });
 
+  // API BASE URL to mongodb backend 
+  const BASE_URL= "http://localhost:4000/";
+  const postURL = BASE_URL + 'post';
+  let userURL = BASE_URL + 'user';
+  if(loggedIn){
+    userURL = BASE_URL + `user/${user._id}`;
+  }
+  //console.log(userURL)
+
+  // useEffect to store post JSON as setPost state
+  const getProfile= async()=>
+  {
+    try
+    {
+      //Post
+      const resPost= await fetch(postURL)
+      const allPost= await resPost.json()
+      setPost(allPost)
+      // User
+      const resUser= await fetch(userURL)
+      const allUser= await resUser.json()
+      setUserUpdate(allUser)
+    }catch(err)
+    {
+      console.log(err)
+    }
+  }
+  
   // Function that refreshes the state, thus re rendering the useEffect.
   const refreshPageFunction = () => 
   {
@@ -40,38 +65,15 @@ const Profile= ({user, loggedIn})=>
       }, 1);
   }
 
-  // defining state for post and for a new post form input
-  const [post, setPost] = useState([]);
-  const [newForm, setNewForm] = useState({
-    image: "",
-    title: "",
-  });
-
-  // API BASE URL to mongodb backend 
-  const BASE_URL= "http://localhost:4000/post";
-
-  // useEffect to store post JSON as setPost state
-  const getPost= async()=>
-  {
-    try
-    {
-      const res= await fetch(BASE_URL)
-      const allPost= await res.json()
-      setPost(allPost)
-    }catch(err)
-    {
-      console.log(err)
-    }
-  }
-
   // event handler to setNewForm state to inputs when inputs are changed
   const handleChange= (e)=>
   {
     setNewForm({ ...newForm, [e.target.name]: e.target.value });
+    setUserForm({ ...userForm, [e.target.name]: e.target.value });
   };
 
   // event handler to POST a post with newForm State input
-  const handleSubmit= async(e)=>
+  const handlePost= async(e)=>
   {
   // 0. prevent default (event object method)
     e.preventDefault()
@@ -80,6 +82,7 @@ const Profile= ({user, loggedIn})=>
 
   // 1. check any fields for property data types / truthy value (function call - stretch)
     try{
+        // 2. specify request method , headers, Content-Type
         const requestOptions = {
             method: "POST", 
             headers: {
@@ -87,10 +90,9 @@ const Profile= ({user, loggedIn})=>
                 "Content-Type": "application/json"},
             body: JSON.stringify(currentState)
         } 
-        // 2. specify request method , headers, Content-Type
         // 3. make fetch to BE - sending data (requestOptions)
+        const response = await fetch(postURL, requestOptions);
         // 3a fetch sends the data to API - (mongo)
-        const response = await fetch(BASE_URL, requestOptions);
         // 4. check our response - 
         // 5. parse the data from the response into JS (from JSON) 
         const createdPost = await response.json()
@@ -102,9 +104,38 @@ const Profile= ({user, loggedIn})=>
             image: "",
             title: "",
         })
-
-    }catch(err) {
+    }catch(err){
         console.log(err)
+    }
+  }
+
+  const handleUser= async(e)=>
+  {
+    // prevent default (event object method)
+    e.preventDefault()
+    
+    const currUserState = {...userForm}
+
+    try
+    { 
+      // USER 
+      const userRequestOptions = {
+        method: "PUT", 
+        headers: {
+            'Authorization': `bearer ${getUserToken()}`,
+            "Content-Type": "application/json"},
+        body: JSON.stringify(currUserState)
+      }
+
+      const userResponse = await fetch(userURL, userRequestOptions)
+      const updatedUser = await userResponse.json()
+      setUserUpdate(updatedUser)
+      setUserForm({
+        userImage: "",
+        username: "",
+      })
+    }catch(err){ 
+      console.log(err)
     }
   }
   
@@ -119,11 +150,29 @@ const Profile= ({user, loggedIn})=>
     )
   }
 
-  const myUser=()=>{
+  const signedIn=()=>{ //ADD EDIT PROFILE PRICTURE TO PROFILE PAGE
     return(
       <>
-      <h2>Create a new post</h2>
-        <form onSubmit={handleSubmit}>
+      <h3>Update Profile</h3>
+      <form onSubmit={handleUser}>
+        <input
+          type="text"
+          value={userForm.avatar}
+          name="avatar"
+          placeholder="img url"
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          value={userForm.username}
+          name="username"
+          placeholder="username"
+          onChange={handleChange}
+        />
+        <input type="submit" value="Update" onClick={refreshPageFunction}/>
+      </form>
+      <h3>Create a new post</h3>
+        <form onSubmit={handlePost}>
           <label>
             <input
               type="text"
@@ -148,12 +197,18 @@ const Profile= ({user, loggedIn})=>
     )
   }
 
-  // Function to display each post of the signed in users profile
-  const signedIn = () =>
+  const loaded = () =>
   {
-      return(
+    // JSX for creating a new post when post is loaded
+    return (
       <>
-        <section className='post-list'>
+      {/* user.avatar */}
+      <div className='user'>
+        <img className="avatar" src='https://www.w3schools.com/howto/img_avatar.png' width={150}/>
+        <h1>{user.username === id ? user.username : id}</h1>
+        <div className='createPost'>{user.username === id && loggedIn ? signedIn() : ""}</div>
+      </div>
+      <section className='post-list'>
           {post?.map((post) =>
             {if(user.username ===! post.owner.username){ // DRY THISSS ALL UPPPP
               return (
@@ -167,40 +222,6 @@ const Profile= ({user, loggedIn})=>
             })
           }
         </section>
-      </>
-      )
-  }
-  
-  // Function to display each post of the signed in users profile
-  const signedOut = () =>
-  {
-    // JSX for creating a new post when post is loaded
-    return (
-      <section className='post-list'>
-        {post?.map((post) =>
-          {if(id === post.owner.username){
-              return (
-                postMap(post)
-              )
-            }
-          })
-        }
-      </section>
-    )
-  };
-
-  const loaded = () =>
-  {
-    // JSX for creating a new post when post is loaded
-    return (
-      <>
-      {/* user.avatar */}
-      <div className='user'>
-        <img className="avatar" src='https://www.w3schools.com/howto/img_avatar.png' width={150}/>
-        <h1>{user.username === id ? user.username : id}</h1>
-        <div className='createPost'>{user.username === id && loggedIn ? myUser() : ""}</div>
-      </div>
-      <>{loggedIn ? signedIn() : signedOut()}</>
       </>
     )
   };
@@ -219,11 +240,11 @@ const Profile= ({user, loggedIn})=>
       </h1>
     </section>
   );
-  
 
-  // useEffect to call getPost function on page load
-  useEffect(()=>{getPost()}, [refreshPage])
-
+  // useEffect to call getProfile function on page load
+  useEffect(()=>{getProfile()}, [refreshPage])
+  // useEffect to call getProfile function on page load
+  // useEffect(()=>{getUser()}, [refreshPage])
 
   // conditional return to return loading and loaded JSX depending on 
   return (

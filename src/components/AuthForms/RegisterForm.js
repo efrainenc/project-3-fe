@@ -23,8 +23,7 @@ const RegisterForm = ({signup}) => {
     const createdUserToken = await signup(input)
 
     if (createdUserToken) {
-      // navigate("/people")
-      navigate("/")
+      navigate(`/${input.username}`)
     } else {
       navigate("/register/")
     }

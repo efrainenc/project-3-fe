@@ -28,13 +28,12 @@ function App() {
       )
 
       const parsedUser = await newUser.json()
-      //console.log(parsedUser)
 
-  // sets local storage
+      // sets local storage
       setUserToken(parsedUser.token)
-  // put the returned user object in state for CurrentUser
+      // put the returned user object in state for CurrentUser
       setCurrentUser(parsedUser.user) // currentUser
-  // adds a boolean cast of the responses isLoggedIn prop
+      // adds a boolean cast of the responses isLoggedIn prop
       setIsAuthenticated(parsedUser.isLoggedIn)
 
       return parsedUser
@@ -61,9 +60,9 @@ function App() {
       )
       const user = await response.json()
 
-  // sets local storage
+      // sets local storage
       setUserToken(user.token)
-  // put the returned user object in state for CurrentUser
+      // put the returned user object in state for CurrentUser
       setCurrentUser(user.user)
 
       setIsAuthenticated(user.isLoggedIn)
@@ -76,15 +75,17 @@ function App() {
       setIsAuthenticated(false)
     }
   }
-
-  const loginHandler = () => 
+  const signOutHandler = () => 
   {
-    setIsAuthenticated(current => !current)
+    if(isAuthenticated){
+      setIsAuthenticated(current => !current)
+      setCurrentUser({})
+    }
   }
 
   return (
     <div className="App">
-      <Header loggedIn={isAuthenticated} loginHandler={loginHandler} user={currentUser}/>
+      <Header loggedIn={isAuthenticated} signOut={signOutHandler} user={currentUser}/>
       <Main loggedIn={isAuthenticated} signup={registerUser} login={loginUser} user={currentUser} />
     </div>
   )

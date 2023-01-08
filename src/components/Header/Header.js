@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import { useState } from 'react'
 import "./Header.css"
 
-const Header = ({user, loggedIn, loginHandler}) => {
+const Header = ({user, loggedIn, signOut}) => {
 
   const [searchBarItem, setSearchBarItem] = useState('')
   const [isSearch, setIsSearch] = useState(false)
@@ -11,14 +11,14 @@ const Header = ({user, loggedIn, loginHandler}) => {
   // a function to clear local storage
   const clearLocalStorage = () =>{
     localStorage.clear();
-    loginHandler();
+    signOut();
   }
 
   const signedIn= ()=>{
     return(
       <>
         <Link to={`/${user.username}`}> <img width={50} src='https://cdn-icons-png.flaticon.com/512/6522/6522516.png' /> </Link>
-        <Link onClick={clearLocalStorage} to='/login/' > signout </Link>
+        <Link onClick={clearLocalStorage} to='/' > signout </Link>
       </>
     )
   }
@@ -49,7 +49,7 @@ const Header = ({user, loggedIn, loginHandler}) => {
       <header className="Header">
         <nav className='nav'>
           <Link to='/home'> <img width={50} src='https://cdn-icons-png.flaticon.com/512/60/60817.png' /> </Link>
-          <div>Instagram Refactor</div>
+          <div>Instaspace LMAO</div>
           <div>
             <input type="text" id="myInput" value={searchBarItem} onChange={handleItemChange} placeholder='Search..'/>
             <Link to={`/${searchBarItem}`}> 

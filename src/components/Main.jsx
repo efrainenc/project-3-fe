@@ -15,10 +15,10 @@ const Main = ({signup, login, user, loggedIn}) => {
       <Routes>
         {/* Not Signed In */}
         <Route path="/" element={<Welcome/>}/>
-        {/* Other User Pages */}
+        {/* User Pages */}
         <Route path="/:id" element={<Profile loggedIn={loggedIn} user={user}/>}/>
         {/* post details Page */}
-        <Route path="/post/:id" element={<Show user={user}/>}/>
+        <Route path="/post/:id" element={<Show loggedIn={loggedIn} user={user}/>}/>
         {/* Show All Posts Page */}
         <Route path='/home' element={<Home user={user}/>}/>
         {/* Register Page */}

@@ -27,60 +27,27 @@ const Home= ({user})=>
   }
 
   // Loaded Post function
-  const testing = () =>
-  {
-
-    // JSX for creating a new post when post is loaded
-    return (
-      <>
-      <section className='post-list'>
-        {post?.map((post) =>
-          {
-            console.log(user._id)
-                //console.log("My Posts");
-                return(
-                  <div key={post._id} className='post-card'>
-                    <Link to={`/${user._id}`}>
-                      <h1>{post.owner.username}</h1>
-                    </Link>
-                    <Link to={`/post/${post._id}`}>
-                      <img src={post.image} alt={post.name}  width={200}/>
-                    </Link>
-                    <h3>{post.caption}</h3>
-                    {/* <p>{post.comment}</p> */}
-                   </div>
-                );
-          })
-        }
-      </section>
-      </>
-    )
-  };
-
-  // Loaded Post function
   const loaded = () =>
   {
-
     // JSX for creating a new post when post is loaded
     return (
       <>
       <section className='post-list'>
         {post?.map((post) =>
           {
-            console.log(post)
-                //console.log("My Posts");
-                return(
-                  <div key={post._id} className='post-card'>
-                    <Link to={`/${post.owner.username}`}>
-                      <h1>{post.owner.username}</h1>
-                    </Link>
-                    <Link to={`/post/${post._id}`}>
-                      <img src={post.image} alt={post.name}  width={200}/>
-                    </Link>
-                    <p>{post.caption}</p>
-                    {/* <p>{post.comment}</p> */}
-                   </div>
-                );
+            //console.log(post)
+            return(
+              <div key={post._id} className='post-card'>
+                <Link to={`/${post.owner.username}`}>
+                  <h1>{post.owner.username}</h1>
+                </Link>
+                <Link to={`/post/${post._id}`}>
+                  <img src={post.image} alt={post.name}  width={200}/>
+                </Link>
+                <p>{post.caption}</p>
+                {/* <p>{post.comment}</p> */}
+                </div>
+            );
           })
         }
       </section>
@@ -103,6 +70,8 @@ const Home= ({user})=>
     </section>
   );
   
+
+
   // useEffect to call getPost function on page load
   useEffect(()=>{getPost()}, [])
 
