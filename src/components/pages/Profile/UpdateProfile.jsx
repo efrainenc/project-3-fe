@@ -11,10 +11,6 @@ const UpdateProfile = ({user}) => {
   // setting all profiles to state (to update them)
   const [profileState, setProfileState] = useState(null)
   const [editForm, setEditForm] = useState({
-    usernameProfile: '', 
-    imageProfile: '',
-    headerImageProfile: '',
-    bioProfile: '',
     owner: `${user._id}`
   });
 

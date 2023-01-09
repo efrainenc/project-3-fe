@@ -154,6 +154,7 @@ const Profile= ({user, loggedIn})=>
     return ( allProfiles ?
       allProfiles?.map((profileMap, profileMapIndex) =>
       {
+        const updateMatch = user.username === id;
         if(profileMap.owner.username === id){
           console.log(profileMap)
           return (
@@ -162,9 +163,11 @@ const Profile= ({user, loggedIn})=>
             <img className="imageProfile" src={profileMap.imageProfile} width={150}/>
             <h2>{profileMap.usernameProfile}</h2>
             <p>{profileMap.bioProfile}</p>
+            {updateMatch && loggedIn ? 
             <Link to={`/update/${profileMap._id}`}>
               <p>Update Profile</p>
-            </Link>
+            </Link> 
+            : ""}
           </div>
           )
         }
@@ -186,7 +189,7 @@ const Profile= ({user, loggedIn})=>
       </div>
       <section className='post-list'>
           {post?.map((post) =>
-            {if(user.username ===! post.owner.username){ // DRY THISSS ALL UPPPP
+            {if(user.username ===! post.owner.username){
               return (
                 postMap(post)
               )
