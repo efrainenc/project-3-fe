@@ -19,9 +19,10 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
     title: "",
   });
 
+  const [follows, setFollows] = useState([]);
   const [followForm] = useState({
-    following: [],
-    owner: `${user.username}`
+    following: `${user}`,
+    owner: `${user._id}`
   });
 
   // User Profiles State (this is for showing off the profile data/imgs).
@@ -30,6 +31,7 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
   const BASE_URL= "https://project-3-be.herokuapp.com/";
   const postURL = BASE_URL + 'post';
   const profileURL = BASE_URL + 'profile';
+  const followURL = BASE_URL + 'follow'
 
   // Fetches all posts.
   const getPosts= async()=>
@@ -60,7 +62,39 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
       console.log(err)
     }
   }
-  
+
+  // Fetches Followers
+  const getFollow= async()=>
+  {
+    try
+    {
+      // User
+      const resFollow= await fetch(followURL)
+      const getFollows= await resFollow.json()
+      setFollows(getFollows)
+    }catch(err)
+    {
+      console.log(err)
+    }
+  }
+  console.log(follows)
+  console.log(allProfiles)
+
+  const mapFollowers = () => {
+    follows?.map((followsMap, followsMapIndex) => {
+      console.log("Following: " + followsMap.following.username)
+      console.log("Follower: " + followsMap.owner.username)
+      if(followsMap.owner){
+        //const commentsMatch = followsMap.post_id._id === post._id;
+        // return (
+        //   <div key={followsMapIndex} >
+        //     {followsMap.owner}
+        //   </div>
+        // )
+      }
+    }
+  )
+  }
   
   // Function that refreshes the state, thus re rendering the useEffect.
   const refreshPageFunction = () => 
@@ -97,8 +131,6 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
         // post fetch.
         const response = await fetch(postURL, requestOptions);
 
-        // TODO const createdUserFollow = await createFollow(followForm)
-
         // Parse the data from the response into JS (from JSON).
         const createdPost = await response.json()
         // Update local state with response (json from be).
@@ -112,6 +144,20 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
         console.log(err)
     }
   }
+
+  const handleFollow= async(e)=>
+  {
+    e.preventDefault()
+    // setting currentState variable as newForm state input after submit.
+    const createdUserFollow = await createFollow(followForm)
+
+    console.log(createdUserFollow)
+
+    if(createdUserFollow){
+      console.log("Now Following")
+    }
+  }
+
   
   // Function to map over posts.
   const postMap=(post)=>{
@@ -172,6 +218,12 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
             </div>
             <img className="imageProfile" src={profileMap.imageProfile} width={150}/>
             <h2>{profileMap.usernameProfile}</h2>
+            {user.username !== id ? 
+            <>
+              <button onClick={handleFollow}>Follow your first User</button>
+              <button>Follow</button>
+            </>
+            : "You cant follow yourself"}
             <p>{profileMap.bioProfile}</p>
             {updateMatch && loggedIn ? 
             <Link to={`/update/${profileMap._id}`}>
@@ -232,7 +284,7 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
   );
 
   // useEffect to call getPosts function on page load
-  useEffect(()=>{getPosts(); getUser();}, [refreshPage])
+  useEffect(()=>{getPosts(); getUser(); getFollow();}, [refreshPage])
 
   // Conditional return to return loading and loaded depending on posts.
   return (

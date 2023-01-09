@@ -17,7 +17,7 @@ function App() {
   const [currentFollow, setCurrentFollow] = useState({})
 
 
-  const registerProfile = async (data) =>{
+  const registerProfile = async(data) =>{
     try {
       const configs = {
         method: "POST",
@@ -42,7 +42,7 @@ function App() {
   }
 
   // fetch and create Follow for given user (Called in Profile)
-  const registerFollows = async (data) =>{
+  const registerFollows = async(data) =>{
     try {
       const configs = {
         method: "POST",
