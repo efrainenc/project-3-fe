@@ -6,7 +6,6 @@ import { getUserToken } from '../../utils/authToken';
 const Comment = ({post, user}) => {
 
   const {id} = useParams();
-  console.log(user)
 
   // State variables.    
   const [refreshPage, setRefreshPage] = useState(false)
@@ -72,7 +71,6 @@ const Comment = ({post, user}) => {
         // 4. check our response - 
         // 5. parse the data from the response into JS (from JSON) 
         const createdComment = await response.json()
-        console.log(createdComment)
         // update local state with response (json from be)
         setCommentState([...commentState, createdComment])
         // reset newForm state so that our form empties out
@@ -126,7 +124,6 @@ const Comment = ({post, user}) => {
       {commentState.map((commentStateMap, commentStateIndex) => {
           if(commentStateMap.post_id){
             const commentsMatch = commentStateMap.post_id._id === post._id;
-            console.log(commentsMatch)
             return ( commentsMatch ?
               <div key={commentStateIndex} >
                 {commentStateMap.comment}

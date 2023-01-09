@@ -64,7 +64,7 @@ const Profile= ({user, loggedIn})=>
       setTimeout(function() 
       {
         setRefreshPage(current => !current)
-      }, 1);
+      }, 2000);
   }
 
   // event handler to setNewForm state to inputs when inputs are changed
@@ -97,7 +97,6 @@ const Profile= ({user, loggedIn})=>
         // 4. check our response - 
         // 5. parse the data from the response into JS (from JSON) 
         const createdPost = await response.json()
-        console.log(createdPost)
         // update local state with response (json from be)
         setPost([...post, createdPost])
         // reset newForm state so that our form empties out
