@@ -17,7 +17,7 @@ const UpdateProfile = ({user}) => {
   const navigate = useNavigate();
 
 
-  const BASE_URL= "http://localhost:4000/";
+  const BASE_URL= "https://project-3-be.herokuapp.com/";
   const profileURL = BASE_URL + `profile/${id}`;
 
 
