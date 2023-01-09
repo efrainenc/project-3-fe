@@ -6,15 +6,18 @@ import RegisterForm from './AuthForms/RegisterForm'
 import LoginForm from './AuthForms/LoginForm'
 import Home from './pages/Home/Home'
 import Welcome from './pages/Welcome'
+import UpdateProfile from './pages/Profile/UpdateProfile'
 
 
 // passing signup, login, and user through app
 const Main = ({signup, login, user, loggedIn}) => {
   return (
     <div>
-      <Routes>
+      <Routes> // TODO ADD 404 COMPONENT
         {/* Not Signed In */}
         <Route path="/" element={<Welcome/>}/>
+        {/* Not Signed In */}
+        <Route path="/update/:id" element={<UpdateProfile user={user}/>}/>
         {/* User Pages */}
         <Route path="/:id" element={<Profile loggedIn={loggedIn} user={user}/>}/>
         {/* post details Page */}

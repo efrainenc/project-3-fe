@@ -2,7 +2,7 @@ import './App.css';
 import Header from '../components/Header/Header'
 import Main from '../components/Main'
 import React from 'react'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import {getUserToken, setUserToken, clearUserToken} from '../utils/authToken'
 
 
@@ -86,7 +86,7 @@ function App() {
   return (
     <div className="App">
       <Header loggedIn={isAuthenticated} signOut={signOutHandler} user={currentUser}/>
-      <Main loggedIn={isAuthenticated} signup={registerUser} login={loginUser} user={currentUser} />
+      <Main loggedIn={isAuthenticated} signup={registerUser} login={loginUser} user={currentUser}/>
     </div>
   )
 }
