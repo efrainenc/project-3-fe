@@ -6,29 +6,28 @@ import './Profile.css'
 
 const Profile= ({user, loggedIn})=> 
 {
-  //loggedIn is Boolean
-  // State variables.    
+  // State to refresh page.
   const [refreshPage, setRefreshPage] = useState(false)
   
-  // take in the ID parameter from router URL linked from Post.jsx
-  const {id} = useParams(); // param is username because there is no owner id
+  // Take in the ID parameter from router URL linked from Post.jsx.
+  const {id} = useParams();
 
-  // defining state for post and for a new post form input
+  // defining state for post and for a new post form input.
   const [post, setPost] = useState([]);
   const [newForm, setNewForm] = useState({
     image: "",
     title: "",
   });
 
-  // User Profiles State (this is for showing off the profile data/imgs)
+  // User Profiles State (this is for showing off the profile data/imgs).
   const [allProfiles, setAllProfiles] = useState(null)
 
-  // API BASE URL to mongodb backend 
+  // API BASE URL to Heroku BE.
   const BASE_URL= "https://project-3-be.herokuapp.com/";
   const postURL = BASE_URL + 'post';
   const profileURL = BASE_URL + 'profile';
 
-  // useEffect to store post JSON as setPost state
+  // Fetches all posts.
   const getPosts= async()=>
   {
     try
@@ -42,6 +41,8 @@ const Profile= ({user, loggedIn})=>
       console.log(err)
     }
   }
+
+  // Fetches Users.
   const getUser= async()=>
   {
     try
@@ -67,23 +68,21 @@ const Profile= ({user, loggedIn})=>
       }, 2000);
   }
 
-  // event handler to setNewForm state to inputs when inputs are changed
+  // Event handler to setNewForm state to inputs when inputs are changed.
   const handleChange= (e)=>
   {
     setNewForm({ ...newForm, [e.target.name]: e.target.value });
   };
 
-  // event handler to POST a post with newForm State input
+  // Event handler to POST a post with newForm State input.
   const handlePost= async(e)=>
   {
-    // 0. prevent default (event object method)
     e.preventDefault()
-    // setting currentState variable as newForm state input after submit
+    // setting currentState variable as newForm state input after submit.
     const currentState = {...newForm}
 
-    // 1. check any fields for property data types / truthy value (function call - stretch)
     try{
-        // 2. specify request method , headers, Content-Type
+        // Specifying request method , headers, Content-Type.
         const requestOptions = {
             method: "POST", 
             headers: {
@@ -91,15 +90,14 @@ const Profile= ({user, loggedIn})=>
                 "Content-Type": "application/json"},
             body: JSON.stringify(currentState)
         } 
-        // 3. make fetch to BE - sending data (requestOptions)
+        // post fetch.
         const response = await fetch(postURL, requestOptions);
-        // 3a fetch sends the data to API - (mongo)
-        // 4. check our response - 
-        // 5. parse the data from the response into JS (from JSON) 
+
+        // Parse the data from the response into JS (from JSON).
         const createdPost = await response.json()
-        // update local state with response (json from be)
+        // Update local state with response (json from be).
         setPost([...post, createdPost])
-        // reset newForm state so that our form empties out
+        // Reset newForm state so that our form empties out.
         setNewForm({
             image: "",
             title: "",
@@ -109,6 +107,7 @@ const Profile= ({user, loggedIn})=>
     }
   }
   
+  // Function to map over posts.
   const postMap=(post)=>{
     return(
         <div key={post._id} className='post-card'>
@@ -120,7 +119,8 @@ const Profile= ({user, loggedIn})=>
     )
   }
 
-  const signedIn=()=>{ //ADD EDIT PROFILE PRICTURE TO PROFILE PAGE
+  // Function to render only when loggedIn.
+  const signedIn=()=>{
     return(
       <>
       <h3>Create a new post</h3>
@@ -149,11 +149,15 @@ const Profile= ({user, loggedIn})=>
     )
   }
 
+  // Function to render user profiles on the correct pages.
   const renderUserProfiles= ()=>{
     return ( allProfiles ?
       allProfiles?.map((profileMap, profileMapIndex) =>
       {
+        // For if you are on your own profile.
         const updateMatch = user.username === id;
+
+        // Correctly matches profile to other users.
         if(profileMap.owner.username === id){
           return (
           <div key={profileMapIndex} className='userImage'>
@@ -175,13 +179,14 @@ const Profile= ({user, loggedIn})=>
     : '')
   }
 
+  // Function to show profile when all posts are loaded.
   const loaded = () =>
   {
+    // For if you are on your own profile.
     const userMatch = user.username === id;
-    // JSX for creating a new post when post is loaded
+
     return (
       <>
-      {/* user.avatar */}
       <div className='user'>
         {renderUserProfiles()}
         <h3>{userMatch ? "@"+ user.username : "@"+id}</h3>
@@ -205,7 +210,7 @@ const Profile= ({user, loggedIn})=>
     )
   };
 
-  // / JSX for creating a new post when post is loading
+  // For when posts are loading.
   const loading = () => (
     <section className="loading">
       <h1>
@@ -223,7 +228,7 @@ const Profile= ({user, loggedIn})=>
   // useEffect to call getPosts function on page load
   useEffect(()=>{getPosts(); getUser();}, [refreshPage])
 
-  // conditional return to return loading and loaded JSX depending on 
+  // Conditional return to return loading and loaded depending on posts.
   return (
     <section className="profile">
       {post && post.length ? loaded() : loading()}

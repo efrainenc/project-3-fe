@@ -49,17 +49,6 @@ const Home= ({})=>  // TODO ADD 404 COMPONENT
             );
           })
         }
-        {/* {allUsers?.map((allUsersMap, allUsersKey) =>
-        {
-          //console.log(allUsersMap._id)
-          return(
-            <div key={allUsersKey} className='post-card'>
-              <Link to={`/${allUsersMap._id}`}>
-                <h1>{allUsersMap.username}</h1>
-              </Link>
-            </div>
-          )
-        })} */}
       </section>
       </>
     )

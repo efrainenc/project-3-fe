@@ -2,7 +2,13 @@ import React from 'react'
 import {useState} from 'react'
 import  {useNavigate} from 'react-router-dom'
 
-const RegisterForm = ({signup}) => {
+const RegisterForm = ({signup}) =>
+{
+  // TODO SETUP PROFILE ON REGISTER
+  // pull in profile state
+  // create a profile in the same way posts work
+
+
 
   // definining the initial state as an object of username and password with empty strings
   const initialState = { username: "", password: ""}

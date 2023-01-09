@@ -56,7 +56,6 @@ const Show= ({user})=>
       }
       const response= await fetch(URL, options);
       const updatedPost= await response.json();
-      console.log(updatedPost)
       setPost(updatedPost);
       setEditForm(updatedPost);
       navigate(-1);
@@ -81,7 +80,6 @@ const Show= ({user})=>
       }
       const response= await fetch(URL, options);
       const deletedPost= await response.json();
-      // console.log(deletedPost);
       navigate(-1);
     }catch(err)
     {
