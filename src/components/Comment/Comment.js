@@ -91,7 +91,7 @@ const Comment = ({post, user}) => {
       setTimeout(function() 
       {
         setRefreshPage(current => !current)
-      }, 1);
+      }, 1000);
   }
   
   // event handler to setNewForm state to inputs when inputs are changed
