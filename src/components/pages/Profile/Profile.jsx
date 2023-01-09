@@ -20,16 +20,16 @@ const Profile= ({user, loggedIn})=>
     title: "",
   });
 
-  // form to change user profile data
-  const [allUsers, setAllUsers] = useState(null)
+  // User Profiles State (this is for showing off the profile data/imgs)
+  const [allProfiles, setAllProfiles] = useState(null)
 
   // API BASE URL to mongodb backend 
   const BASE_URL= "http://localhost:4000/";
   const postURL = BASE_URL + 'post';
-  const userURL = BASE_URL + 'user';
+  const profileURL = BASE_URL + 'profile';
 
   // useEffect to store post JSON as setPost state
-  const getProfile= async()=>
+  const getPosts= async()=>
   {
     try
     {
@@ -37,15 +37,25 @@ const Profile= ({user, loggedIn})=>
       const resPost= await fetch(postURL)
       const allPost= await resPost.json()
       setPost(allPost)
-      // User
-      const resUser= await fetch(userURL)
-      const getUsers= await resUser.json()
-      setAllUsers(getUsers)
     }catch(err)
     {
       console.log(err)
     }
   }
+  const getUser= async()=>
+  {
+    try
+    {
+      // User
+      const resUser= await fetch(profileURL)
+      const getUsers= await resUser.json()
+      setAllProfiles(getUsers)
+    }catch(err)
+    {
+      console.log(err)
+    }
+  }
+  
   
   // Function that refreshes the state, thus re rendering the useEffect.
   const refreshPageFunction = () => 
@@ -114,9 +124,6 @@ const Profile= ({user, loggedIn})=>
   const signedIn=()=>{ //ADD EDIT PROFILE PRICTURE TO PROFILE PAGE
     return(
       <>
-      <Link to={`/update/${id}`}>
-        <p>Update Profile</p>
-      </Link>
       <h3>Create a new post</h3>
         <form onSubmit={handlePost}>
           <label>
@@ -143,16 +150,21 @@ const Profile= ({user, loggedIn})=>
     )
   }
 
-  const renderUserImages= ()=>{
-    return ( allUsers ?
-      allUsers?.map((userMap, userIndex) =>
+  const renderUserProfiles= ()=>{
+    return ( allProfiles ?
+      allProfiles?.map((profileMap, profileMapIndex) =>
       {
-        //console.log(userMap)
-        if(userMap.username === id){
-          //console.log(userMap.userImage)
+        if(profileMap.owner.username === id){
+          console.log(profileMap)
           return (
-          <div key={userIndex} className='userImage'>
-            <img className="avatar" src={userMap.userImage} width={150}/>
+          <div key={profileMapIndex} className='userImage'>
+            <img className="headerImageProfile" src={profileMap.headerImageProfile} width={150}/>
+            <img className="imageProfile" src={profileMap.imageProfile} width={150}/>
+            <h2>{profileMap.usernameProfile}</h2>
+            <p>{profileMap.bioProfile}</p>
+            <Link to={`/update/${profileMap._id}`}>
+              <p>Update Profile</p>
+            </Link>
           </div>
           )
         }
@@ -168,9 +180,7 @@ const Profile= ({user, loggedIn})=>
       <>
       {/* user.avatar */}
       <div className='user'>
-        <div className='userImage'>
-          {loggedIn ? <img className="avatar" src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png' width={150}/> : renderUserImages()}
-        </div>
+        {renderUserProfiles()}
         <h1>{userMatch ? user.username : id}</h1>
         <div className='createPost'>{userMatch && loggedIn ? signedIn() : ""}</div>
       </div>
@@ -207,8 +217,8 @@ const Profile= ({user, loggedIn})=>
     </section>
   );
 
-  // useEffect to call getProfile function on page load
-  useEffect(()=>{getProfile();}, [refreshPage])
+  // useEffect to call getPosts function on page load
+  useEffect(()=>{getPosts(); getUser();}, [])
 
   // conditional return to return loading and loaded JSX depending on 
   return (
