@@ -10,7 +10,6 @@ const Show= ({user})=>
 {
   //set state for post details and form changes for UPDATE ROUTE
 
-  // TODO state for comments
   const [post, setPost]= useState(null);
   const [editForm, setEditForm] = useState(post);
   // take in the ID parameter from router URL linked from Post.jsx
