@@ -8,8 +8,6 @@ import Comment from '../../Comment/Comment'
 
 const Show= ({user})=>
 {
-  //set state for post details and form changes for UPDATE ROUTE
-
   // TODO state for comments
   const [post, setPost]= useState(null);
   const [editForm, setEditForm] = useState(post);

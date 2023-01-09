@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { getUserToken } from '../../../utils/authToken';
 import './Profile.css'
 
-const Profile= ({user, loggedIn})=> 
+const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you click follow on someones profile
 {
   // State to refresh page.
   const [refreshPage, setRefreshPage] = useState(false)
@@ -19,9 +19,13 @@ const Profile= ({user, loggedIn})=>
     title: "",
   });
 
+  const [followForm] = useState({
+    following: [],
+    owner: `${user.username}`
+  });
+
   // User Profiles State (this is for showing off the profile data/imgs).
   const [allProfiles, setAllProfiles] = useState(null)
-
   // API BASE URL to Heroku BE.
   const BASE_URL= "https://project-3-be.herokuapp.com/";
   const postURL = BASE_URL + 'post';
@@ -65,7 +69,7 @@ const Profile= ({user, loggedIn})=>
       setTimeout(function() 
       {
         setRefreshPage(current => !current)
-      }, 2000);
+      }, 1000);
   }
 
   // Event handler to setNewForm state to inputs when inputs are changed.
@@ -92,6 +96,8 @@ const Profile= ({user, loggedIn})=>
         } 
         // post fetch.
         const response = await fetch(postURL, requestOptions);
+
+        // TODO const createdUserFollow = await createFollow(followForm)
 
         // Parse the data from the response into JS (from JSON).
         const createdPost = await response.json()

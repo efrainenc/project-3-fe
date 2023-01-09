@@ -6,6 +6,7 @@ import { getUserToken } from '../../utils/authToken';
 const Comment = ({post, user}) => {
 
   const {id} = useParams();
+  console.log(user)
 
   // State variables.    
   const [refreshPage, setRefreshPage] = useState(false)
@@ -91,7 +92,7 @@ const Comment = ({post, user}) => {
       setTimeout(function() 
       {
         setRefreshPage(current => !current)
-      }, 1);
+      }, 1000);
   }
   
   // event handler to setNewForm state to inputs when inputs are changed
