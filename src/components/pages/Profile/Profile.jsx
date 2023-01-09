@@ -157,8 +157,8 @@ const Profile= ({user, loggedIn})=>
       <form onSubmit={handleUser}>
         <input
           type="text"
-          value={userForm.avatar}
-          name="avatar"
+          value={userForm.userImage}
+          name="userImage"
           placeholder="img url"
           onChange={handleChange}
         />
