@@ -7,7 +7,6 @@ import LoginForm from './AuthForms/LoginForm'
 import Home from './pages/Home/Home'
 import Welcome from './pages/Welcome'
 import UpdateProfile from './pages/UpdateProfile/UpdateProfile'
-import NotFound from './NotFound'
 
 
 // passing signup, login, and user through app
@@ -22,7 +21,6 @@ const Main = ({signup, login, user, loggedIn}) => {
         <Route path='/home' element={<Home user={user}/>}/>
         <Route path="/register/" element={<RegisterForm signup={signup}/>}/>
         <Route path="/login/" element={<LoginForm user={user} login={login}/>}/>
-        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   )
