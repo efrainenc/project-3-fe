@@ -220,7 +220,7 @@ const Profile= ({user, loggedIn})=>
   );
 
   // useEffect to call getPosts function on page load
-  useEffect(()=>{getPosts(); getUser();}, [])
+  useEffect(()=>{getPosts(); getUser();}, [refreshPage])
 
   // conditional return to return loading and loaded JSX depending on 
   return (
