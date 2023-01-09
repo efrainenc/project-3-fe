@@ -10,7 +10,7 @@ const Home= ({})=>  // TODO ADD 404 COMPONENT
   const [post, setPost] = useState([]);
 
   // API BASE URL to mongodb backend 
-  const BASE_URL= "http://localhost:4000/post";
+  const BASE_URL= "https://project-3-be.herokuapp.com/post";
 
   // useEffect to store post JSON as setPost state
   const getPost= async()=>

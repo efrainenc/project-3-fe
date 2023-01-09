@@ -23,7 +23,7 @@ function App() {
         },
       }
       const newUser = await fetch(
-        "http://localhost:4000/auth/register",
+        "https://project-3-be.herokuapp.com/auth/register",
         configs
       )
 
@@ -55,7 +55,7 @@ function App() {
         },
       }
       const response = await fetch(
-        "http://localhost:4000/auth/login",
+        "https://project-3-be.herokuapp.com/auth/login",
         configs
       )
       const user = await response.json()

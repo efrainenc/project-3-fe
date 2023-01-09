@@ -19,8 +19,8 @@ const Comment = ({post, user}) => {
   const [commentState, setCommentState] = useState([{}])
   const [currentPostState, setCurrentPostState] = useState({})
 
-  const commentURL = 'http://localhost:4000/comment/'
-  const postURL = `http://localhost:4000/post/${id}`
+  const commentURL = 'https://project-3-be.herokuapp.com/comment/'
+  const postURL = `https://project-3-be.herokuapp.com/post/${id}`
 
   const getCurrentPost= async()=>
   {
