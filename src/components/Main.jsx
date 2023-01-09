@@ -13,7 +13,7 @@ import UpdateProfile from './pages/Profile/UpdateProfile'
 const Main = ({signup, login, user, loggedIn}) => {
   return (
     <div>
-      <Routes>
+      <Routes> // TODO ADD 404 COMPONENT
         {/* Not Signed In */}
         <Route path="/" element={<Welcome/>}/>
         {/* Not Signed In */}

@@ -156,7 +156,6 @@ const Profile= ({user, loggedIn})=>
       {
         const updateMatch = user.username === id;
         if(profileMap.owner.username === id){
-          console.log(profileMap)
           return (
           <div key={profileMapIndex} className='userImage'>
             <img className="headerImageProfile" src={profileMap.headerImageProfile} width={150}/>

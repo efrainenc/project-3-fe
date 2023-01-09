@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react'
 import { Link } from "react-router-dom";
 import { getUserToken } from '../../../utils/authToken';
 
-const Home= ({})=> 
+const Home= ({})=>  // TODO ADD 404 COMPONENT
 {
 
   // defining state for post and for a new post form input
@@ -25,8 +25,6 @@ const Home= ({})=>
       console.log(err)
     }
   }
-
-  console.log(post)
 
   // Loaded Post function
   const loaded = () =>
