@@ -64,7 +64,7 @@ const Profile= ({user, loggedIn})=>
       setTimeout(function() 
       {
         setRefreshPage(current => !current)
-      }, 2000);
+      }, 1000);
   }
 
   // event handler to setNewForm state to inputs when inputs are changed

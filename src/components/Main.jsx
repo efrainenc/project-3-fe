@@ -6,7 +6,7 @@ import RegisterForm from './AuthForms/RegisterForm'
 import LoginForm from './AuthForms/LoginForm'
 import Home from './pages/Home/Home'
 import Welcome from './pages/Welcome'
-import UpdateProfile from './pages/Profile/UpdateProfile'
+import UpdateProfile from './pages/UpdateProfile/UpdateProfile'
 
 
 // passing signup, login, and user through app
