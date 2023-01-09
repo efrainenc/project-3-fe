@@ -24,7 +24,7 @@ const Profile= ({user, loggedIn})=>
   const [allProfiles, setAllProfiles] = useState(null)
 
   // API BASE URL to mongodb backend 
-  const BASE_URL= "http://localhost:4000/";
+  const BASE_URL= "https://project-3-be.herokuapp.com/";
   const postURL = BASE_URL + 'post';
   const profileURL = BASE_URL + 'profile';
 
@@ -158,7 +158,9 @@ const Profile= ({user, loggedIn})=>
         if(profileMap.owner.username === id){
           return (
           <div key={profileMapIndex} className='userImage'>
-            <img className="headerImageProfile" src={profileMap.headerImageProfile} width={150}/>
+            <div className='profileHeader'>
+              <img className="headerImageProfile" src={profileMap.headerImageProfile} width={500}/>
+            </div>
             <img className="imageProfile" src={profileMap.imageProfile} width={150}/>
             <h2>{profileMap.usernameProfile}</h2>
             <p>{profileMap.bioProfile}</p>
@@ -183,7 +185,7 @@ const Profile= ({user, loggedIn})=>
       {/* user.avatar */}
       <div className='user'>
         {renderUserProfiles()}
-        <h1>{userMatch ? user.username : id}</h1>
+        <h3>{userMatch ? "@"+ user.username : "@"+id}</h3>
         <div className='createPost'>{userMatch && loggedIn ? signedIn() : ""}</div>
       </div>
       <section className='post-list'>

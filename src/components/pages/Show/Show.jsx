@@ -18,7 +18,7 @@ const Show= ({user})=>
   // useNavigate returns an imperative method that you can use for changing location.
   const navigate = useNavigate();
   // sets post show route URL as variable and dependent ID from useParams
-  const URL = `http://localhost:4000/post/${id}`;
+  const URL = `https://project-3-be.herokuapp.com/post/${id}`;
 
   // event handler for when UPDATE name and title are changed
   const handleChange= (e)=>
