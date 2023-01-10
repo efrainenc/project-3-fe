@@ -95,7 +95,7 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
   };
 
   // Event handler to POST a post with newForm State input.
-  const handlePost= async(e)=>
+  const createPost= async(e)=>
   {
     e.preventDefault()
     // setting currentState variable as newForm state input after submit.
@@ -174,11 +174,15 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
       follows?.map((followsMap, followsMapIndex) => {
         // Grabs user 
         // For Conditionally storing my follows
-        // createFormFunction()
-        const ourFollows = followsMap.owner.username === user.username;
+        const doesOwnerHaveFollowing = followsMap.owner.username === user.username;
         // For conditionally storing users following
-        const usersFollowing = followsMap.following.username === id;
-        const areWeFollowingUser = usersFollowing && ourFollows
+        const isUserProfileBeingFollowed = followsMap.following.username === id;
+        const isUserProfile_NOT_BeingFollowed = followsMap.following.username !== id;
+        const areWeFollowingUser = isUserProfileBeingFollowed && doesOwnerHaveFollowing
+        const areWe_NOT_FollowingUser = isUserProfile_NOT_BeingFollowed && doesOwnerHaveFollowing
+
+        //console.log(id)
+        console.log(followsMap.following.username)
 
         if(areWeFollowingUser){
           followID = followsMap._id
@@ -187,12 +191,13 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
               <button onClick={removeFollow}>Unfollow</button>
             </div>
             )
-        }else{ // TODO FIX THIS CONDITIONAL TO ONLY SHOW IF YOU DONT FOLLOW THE PERSON OR FOLLOW NO ONE
-          return(
-            <div key={followsMapIndex} >
-              <button onClick={handleFollow}>Follow</button>
-            </div>
-          ) 
+        }
+        if(areWe_NOT_FollowingUser){ // TODO FIX THIS CONDITIONAL TO ONLY SHOW IF YOU DONT FOLLOW THE PERSON OR FOLLOW NO ONE
+        return(
+          <div key={followsMapIndex} >
+            <button onClick={handleFollow}>Follow</button>
+          </div>
+        ) 
         }
       }
      ) : ""
@@ -204,7 +209,7 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
     return(
       <>
       <h3>Create a new post</h3>
-        <form onSubmit={handlePost}>
+        <form onSubmit={createPost}>
           <label>
             <input
               type="text"
@@ -321,7 +326,7 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
   );
 
   // useEffect to call getPosts function on page load
-  useEffect(()=>{getPosts(); getProfile(); getFollow();}, [ refreshPage])
+  useEffect(()=>{getPosts(); getProfile(); getFollow();}, [refreshPage])
 
   // Conditional return to return loading and loaded depending on posts.
   return (
