@@ -1,3 +1,4 @@
+/* Profile */
 .profile{
   display: grid;
   grid-template-columns: repeat(2, 50%);
@@ -14,24 +15,19 @@
   max-height: 150px;
 }
 .user{
+  grid-area: profile;
   justify-self: left;
   display: grid;
 }
 .createPost{
   max-width: 200px;
+  justify-self: center;
 }
-.user{
-  grid-area: profile;
-}
-
 .headerImageProfile{
   width: 100%
 }
 
-.createPost{
-  justify-self: center;
-}
-
+/* Posts */
 .post-list{
   grid-area: posts;
   display: flex;
