@@ -8,7 +8,7 @@ import Comment from '../../Comment/Comment'
 
 const Show= ({user})=>
 {
-  // TODO state for comments
+  // TODO on post delete, delete all comments under that post
   const [post, setPost]= useState(null);
   const [editForm, setEditForm] = useState(post);
   // take in the ID parameter from router URL linked from Post.jsx
