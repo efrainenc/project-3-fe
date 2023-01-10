@@ -4,31 +4,36 @@ import { Link, useParams } from "react-router-dom";
 import { getUserToken } from '../../../utils/authToken';
 import './Profile.css'
 
-const Profile= ({user, loggedIn})=> 
+const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you click follow on someones profile
 {
-  //loggedIn is Boolean
-  // State variables.    
+  // State to refresh page.
   const [refreshPage, setRefreshPage] = useState(false)
   
-  // take in the ID parameter from router URL linked from Post.jsx
-  const {id} = useParams(); // param is username because there is no owner id
+  // Take in the ID parameter from router URL linked from Post.jsx.
+  const {id} = useParams();
 
-  // defining state for post and for a new post form input
+  // defining state for post and for a new post form input.
   const [post, setPost] = useState([]);
   const [newForm, setNewForm] = useState({
     image: "",
     title: "",
   });
 
-  // User Profiles State (this is for showing off the profile data/imgs)
+  let profileOwner = ""
+  let followID = ""
+  const [follows, setFollows] = useState([]);
+
+  // User Profiles State (this is for showing off the profile data/imgs).
   const [allProfiles, setAllProfiles] = useState(null)
 
-  // API BASE URL to mongodb backend 
+  // API BASE URL to Heroku BE.
   const BASE_URL= "https://project-3-be.herokuapp.com/";
   const postURL = BASE_URL + 'post';
   const profileURL = BASE_URL + 'profile';
+  const followURL = BASE_URL + 'follow';
 
-  // useEffect to store post JSON as setPost state
+
+  // Fetches all posts.
   const getPosts= async()=>
   {
     try
@@ -42,48 +47,62 @@ const Profile= ({user, loggedIn})=>
       console.log(err)
     }
   }
-  const getUser= async()=>
+
+  // Fetches Users.
+  const getProfile= async()=>
   {
     try
     {
       // User
-      const resUser= await fetch(profileURL)
-      const getUsers= await resUser.json()
-      setAllProfiles(getUsers)
+      const resProfile= await fetch(profileURL)
+      const getProfiles= await resProfile.json()
+      setAllProfiles(getProfiles)
+    }catch(err)
+    {
+      console.log(err)
+    }
+  }
+
+  // Fetches Followers
+  const getFollow= async()=>
+  {
+    try
+    {
+      // User
+      const resFollow= await fetch(followURL)
+      const getFollows= await resFollow.json()
+      setFollows(getFollows)
     }catch(err)
     {
       console.log(err)
     }
   }
   
-  
   // Function that refreshes the state, thus re rendering the useEffect.
   const refreshPageFunction = () => 
   {
     setRefreshPage(current => !current)
-      setTimeout(function() 
-      {
-        setRefreshPage(current => !current)
-      }, 1000);
+    setTimeout(function() 
+    {
+      setRefreshPage(current => !current)
+    }, 1000);
   }
 
-  // event handler to setNewForm state to inputs when inputs are changed
+  // Event handler to setNewForm state to inputs when inputs are changed.
   const handleChange= (e)=>
   {
     setNewForm({ ...newForm, [e.target.name]: e.target.value });
   };
 
-  // event handler to POST a post with newForm State input
-  const handlePost= async(e)=>
+  // Event handler to POST a post with newForm State input.
+  const createPost= async(e)=>
   {
-    // 0. prevent default (event object method)
     e.preventDefault()
-    // setting currentState variable as newForm state input after submit
+    // setting currentState variable as newForm state input after submit.
     const currentState = {...newForm}
 
-    // 1. check any fields for property data types / truthy value (function call - stretch)
     try{
-        // 2. specify request method , headers, Content-Type
+        // Specifying request method , headers, Content-Type.
         const requestOptions = {
             method: "POST", 
             headers: {
@@ -91,15 +110,14 @@ const Profile= ({user, loggedIn})=>
                 "Content-Type": "application/json"},
             body: JSON.stringify(currentState)
         } 
-        // 3. make fetch to BE - sending data (requestOptions)
+        // post fetch.
         const response = await fetch(postURL, requestOptions);
-        // 3a fetch sends the data to API - (mongo)
-        // 4. check our response - 
-        // 5. parse the data from the response into JS (from JSON) 
+
+        // Parse the data from the response into JS (from JSON).
         const createdPost = await response.json()
-        // update local state with response (json from be)
+        // Update local state with response (json from be).
         setPost([...post, createdPost])
-        // reset newForm state so that our form empties out
+        // Reset newForm state so that our form empties out.
         setNewForm({
             image: "",
             title: "",
@@ -108,7 +126,38 @@ const Profile= ({user, loggedIn})=>
         console.log(err)
     }
   }
+
+
+  const handleFollow = async(e)=>
+  {
+    e.preventDefault()
+
+    const createdUserFollow = await createFollow(createFormFunction())
+  }
+
+  // Remove Follow function with Authorization header - DELETE
+  const removeFollow= async(e)=>
+  {
+    const unfollowURL = followURL + `/${followID}`;
+    try
+    {
+      const options= 
+      {
+        method: "DELETE",
+        headers: {
+          'Authorization': `bearer ${getUserToken()}`},
+          "Content-Type": "application/json"
+      }
+      const response= await fetch(unfollowURL, options);
+      const deletedPost= await response.json();
+    }catch(err)
+    {
+      console.log(err)
+    }
+  }
+
   
+  // Function to map over posts.
   const postMap=(post)=>{
     return(
         <div key={post._id} className='post-card'>
@@ -120,11 +169,47 @@ const Profile= ({user, loggedIn})=>
     )
   }
 
-  const signedIn=()=>{ //ADD EDIT PROFILE PRICTURE TO PROFILE PAGE
+  const mapFollowers = () => {
+    return( follows ?
+      follows?.map((followsMap, followsMapIndex) => {
+        // Grabs user 
+        // For Conditionally storing my follows
+        const doesOwnerHaveFollowing = followsMap.owner.username === user.username;
+        // For conditionally storing users following
+        const isUserProfileBeingFollowed = followsMap.following.username === id;
+        const isUserProfile_NOT_BeingFollowed = followsMap.following.username !== id;
+        const areWeFollowingUser = isUserProfileBeingFollowed && doesOwnerHaveFollowing
+        const areWe_NOT_FollowingUser = isUserProfile_NOT_BeingFollowed && doesOwnerHaveFollowing
+
+        //console.log(id)
+        console.log(followsMap.following.username)
+
+        if(areWeFollowingUser){
+          followID = followsMap._id
+          return(
+            <div key={followsMapIndex} >
+              <button onClick={removeFollow}>Unfollow</button>
+            </div>
+            )
+        }
+        if(areWe_NOT_FollowingUser){ // TODO FIX THIS CONDITIONAL TO ONLY SHOW IF YOU DONT FOLLOW THE PERSON OR FOLLOW NO ONE
+        return(
+          <div key={followsMapIndex} >
+            <button onClick={handleFollow}>Follow</button>
+          </div>
+        ) 
+        }
+      }
+     ) : ""
+    )
+  }
+
+  // Function to render only when loggedIn.
+  const signedIn=()=>{
     return(
       <>
       <h3>Create a new post</h3>
-        <form onSubmit={handlePost}>
+        <form onSubmit={createPost}>
           <label>
             <input
               type="text"
@@ -149,12 +234,18 @@ const Profile= ({user, loggedIn})=>
     )
   }
 
+  // Function to render user profiles on the correct pages.
   const renderUserProfiles= ()=>{
     return ( allProfiles ?
       allProfiles?.map((profileMap, profileMapIndex) =>
       {
-        const updateMatch = user.username === id;
-        if(profileMap.owner.username === id){
+        // For if you are on your own profile.
+        const userMatch = user.username === id;
+        const profileMatch = profileMap.owner.username === id
+        // Correctly matches profile to current user page.
+        if(profileMatch){
+          // sets the profile owner once matched
+          profileOwner = profileMap.owner._id
           return (
           <div key={profileMapIndex} className='userImage'>
             <div className='profileHeader'>
@@ -162,8 +253,14 @@ const Profile= ({user, loggedIn})=>
             </div>
             <img className="imageProfile" src={profileMap.imageProfile} width={150}/>
             <h2>{profileMap.usernameProfile}</h2>
+            {/* You cant follow yourself */}
+            {user.username !== id ? 
+            <>
+            {loggedIn? mapFollowers() : "Not Logged In"}
+            </>
+            : "You cant follow yourself"}
             <p>{profileMap.bioProfile}</p>
-            {updateMatch && loggedIn ? 
+            {userMatch && loggedIn ? 
             <Link to={`/update/${profileMap._id}`}>
               <p>Update Profile</p>
             </Link> 
@@ -175,13 +272,14 @@ const Profile= ({user, loggedIn})=>
     : '')
   }
 
+  // Function to show profile when all posts are loaded.
   const loaded = () =>
   {
+    // For if you are on your own profile.
     const userMatch = user.username === id;
-    // JSX for creating a new post when post is loaded
+
     return (
       <>
-      {/* user.avatar */}
       <div className='user'>
         {renderUserProfiles()}
         <h3>{userMatch ? "@"+ user.username : "@"+id}</h3>
@@ -205,7 +303,14 @@ const Profile= ({user, loggedIn})=>
     )
   };
 
-  // / JSX for creating a new post when post is loading
+  const createFormFunction = ()=> {
+    return{
+        following: `${profileOwner}`, // id profile we are on
+        owner: `${user._id}`
+      }
+  }
+
+  // For when posts are loading.
   const loading = () => (
     <section className="loading">
       <h1>
@@ -221,9 +326,9 @@ const Profile= ({user, loggedIn})=>
   );
 
   // useEffect to call getPosts function on page load
-  useEffect(()=>{getPosts(); getUser();}, [refreshPage])
+  useEffect(()=>{getPosts(); getProfile(); getFollow();}, [refreshPage])
 
-  // conditional return to return loading and loaded JSX depending on 
+  // Conditional return to return loading and loaded depending on posts.
   return (
     <section className="profile">
       {post && post.length ? loaded() : loading()}

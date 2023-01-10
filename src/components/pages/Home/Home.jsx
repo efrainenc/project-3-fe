@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react'
 import { Link } from "react-router-dom";
 import { getUserToken } from '../../../utils/authToken';
 
-const Home= ({})=>  // TODO ADD 404 COMPONENT
+const Home= ({})=>
 {
 
   // defining state for post and for a new post form input
@@ -49,17 +49,6 @@ const Home= ({})=>  // TODO ADD 404 COMPONENT
             );
           })
         }
-        {/* {allUsers?.map((allUsersMap, allUsersKey) =>
-        {
-          //console.log(allUsersMap._id)
-          return(
-            <div key={allUsersKey} className='post-card'>
-              <Link to={`/${allUsersMap._id}`}>
-                <h1>{allUsersMap.username}</h1>
-              </Link>
-            </div>
-          )
-        })} */}
       </section>
       </>
     )

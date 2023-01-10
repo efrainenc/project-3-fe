@@ -10,16 +10,16 @@ import UpdateProfile from './pages/UpdateProfile/UpdateProfile'
 
 
 // passing signup, login, and user through app
-const Main = ({signup, login, user, loggedIn}) => {
+const Main = ({signup, login, user, loggedIn, createProfile, createFollow}) => {
   return (
     <div>
       <Routes>
         <Route path="/" element={<Welcome/>}/>
         <Route path="/update/:id" element={<UpdateProfile user={user}/>}/>
-        <Route path="/:id" element={<Profile loggedIn={loggedIn} user={user}/>}/>
+        <Route path="/:id" element={<Profile loggedIn={loggedIn} user={user} createFollow={createFollow}/>}/>
         <Route path="/post/:id" element={<Show loggedIn={loggedIn} user={user}/>}/>
         <Route path='/home' element={<Home user={user}/>}/>
-        <Route path="/register/" element={<RegisterForm signup={signup}/>}/>
+        <Route path="/register/" element={<RegisterForm signup={signup} createProfile={createProfile}/>}/>
         <Route path="/login/" element={<LoginForm user={user} login={login}/>}/>
       </Routes>
     </div>

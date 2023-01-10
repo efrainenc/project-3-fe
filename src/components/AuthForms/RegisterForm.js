@@ -2,13 +2,21 @@ import React from 'react'
 import {useState} from 'react'
 import  {useNavigate} from 'react-router-dom'
 
-const RegisterForm = ({signup}) => {
-
+const RegisterForm = ({signup, createProfile}) =>
+{
   // definining the initial state as an object of username and password with empty strings
   const initialState = { username: "", password: ""}
 
   // defining the state of the input and setting it to initial state username/pw
   const [input, setInput] = useState(initialState)
+  // sets Profile form MAY NEED TO GO INSIDE RegisterForm
+  const [profileForm] = useState({
+    usernameProfile: "", 
+    imageProfile: "",
+    headerImageProfile: "",
+    bioProfile: "",
+    owner: `${input.username}`
+  });
 
   // useNavigate returns an imperative method that you can use for changing location.
 	const navigate = useNavigate()
@@ -22,12 +30,13 @@ const RegisterForm = ({signup}) => {
   // gets user token from register user from App.js component
     const createdUserToken = await signup(input)
 
-    if (createdUserToken) {
+    const createdUserProfile = await createProfile(profileForm)
+
+    if (createdUserToken && createdUserProfile) {
       navigate(`/${input.username}`)
     } else {
       navigate("/register/")
     }
-
     // set state as new username and password on submit
 		setInput(initialState);
   };

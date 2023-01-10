@@ -17,6 +17,6 @@
 }
 
 .post-list{
-  display: flex;
+  display: grid;
   margin: 15px;
 }

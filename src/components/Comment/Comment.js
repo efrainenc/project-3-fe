@@ -6,6 +6,7 @@ import { getUserToken } from '../../utils/authToken';
 const Comment = ({post, user}) => {
 
   const {id} = useParams();
+  console.log(user)
 
   // State variables.    
   const [refreshPage, setRefreshPage] = useState(false)

@@ -8,8 +8,7 @@ import Comment from '../../Comment/Comment'
 
 const Show= ({user})=>
 {
-  //set state for post details and form changes for UPDATE ROUTE
-
+  // TODO on post delete, delete all comments under that post
   const [post, setPost]= useState(null);
   const [editForm, setEditForm] = useState(post);
   // take in the ID parameter from router URL linked from Post.jsx
@@ -55,7 +54,6 @@ const Show= ({user})=>
       }
       const response= await fetch(URL, options);
       const updatedPost= await response.json();
-      console.log(updatedPost)
       setPost(updatedPost);
       setEditForm(updatedPost);
       navigate(-1);
@@ -80,7 +78,6 @@ const Show= ({user})=>
       }
       const response= await fetch(URL, options);
       const deletedPost= await response.json();
-      // console.log(deletedPost);
       navigate(-1);
     }catch(err)
     {
