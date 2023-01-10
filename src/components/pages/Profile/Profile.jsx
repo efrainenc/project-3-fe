@@ -2,7 +2,7 @@ import React from 'react'
 import {useState, useEffect} from 'react'
 import { Link, useParams } from "react-router-dom";
 import { getUserToken } from '../../../utils/authToken';
-import './Profile.css'
+import '../../../css/Profile.css'
 
 const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you click follow on someones profile
 {
