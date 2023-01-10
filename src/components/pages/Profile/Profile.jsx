@@ -191,9 +191,8 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
               <button onClick={removeFollow}>Unfollow</button>
             </div>
             )
-        }
-        if(areWe_NOT_FollowingUser){ // TODO FIX THIS CONDITIONAL TO ONLY SHOW IF YOU DONT FOLLOW THE PERSON OR FOLLOW NO ONE
-        return(
+        }else{ // TODO FIX THIS CONDITIONAL TO ONLY SHOW IF YOU DONT FOLLOW THE PERSON OR FOLLOW NO ONE
+          return(
           <div key={followsMapIndex} >
             <button onClick={handleFollow}>Follow</button>
           </div>
@@ -249,7 +248,7 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
           return (
           <div key={profileMapIndex} className='userImage'>
             <div className='profileHeader'>
-              <img className="headerImageProfile" src={profileMap.headerImageProfile} width={500}/>
+              <img className="headerImageProfile" src={profileMap.headerImageProfile}/>
             </div>
             <img className="imageProfile" src={profileMap.imageProfile} width={150}/>
             <h2>{profileMap.usernameProfile}</h2>

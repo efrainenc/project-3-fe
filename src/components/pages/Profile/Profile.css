@@ -1,7 +1,12 @@
 .profile{
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  grid-template-rows: repeat(2, 50%);
   justify-content: space-around;
   margin: 15px;
+  grid-template-areas: 
+      "profile posts"
+      "profile posts";
 }
 
 .avatar{
@@ -15,8 +20,25 @@
 .createPost{
   max-width: 200px;
 }
+.user{
+  grid-area: profile;
+}
+
+.headerImageProfile{
+  width: 100%
+}
+
+.createPost{
+  justify-self: center;
+}
 
 .post-list{
-  display: grid;
+  grid-area: posts;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  padding-left: 15px;
+}
+.post-card{
   margin: 15px;
 }
