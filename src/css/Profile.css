@@ -1,5 +1,7 @@
 /* Profile */
 .profile{
+  font-family: 'Raleway', sans-serif;
+  color: var(--light);
   display: grid;
   grid-template-columns: repeat(2, 50%);
   grid-template-rows: repeat(2, 50%);
@@ -24,7 +26,32 @@
   justify-self: center;
 }
 .headerImageProfile{
-  width: 100%
+  width: 100%;
+  background-image: url("https://imgur.com/TkHWSVv.jpg");
+}
+
+.imageProfile{
+  margin-top: -30px;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 20%;
+  height: 20%;
+  border: 4px var(--dark) solid;
+  aspect-ratio: 1 / 1;
+}
+
+.userImage h2{
+  margin-top: -5px;
+}
+
+.userImage p{
+  margin-top: -15px;
+  padding: 2px;
+  font-size: 14px;
+}
+
+.createPost{
+  color: var();
 }
 
 /* Posts */
@@ -34,7 +61,6 @@
   flex-wrap: wrap;
   justify-content: start;
   padding-left: 15px;
+  
 }
-.post-card{
-  margin: 15px;
-}
+

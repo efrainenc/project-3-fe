@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import { useState } from 'react'
-import "./Header.css"
+import "../../css/Header.css"
 
 const Header = ({user, loggedIn, signOut}) => {
 
@@ -47,9 +47,10 @@ const Header = ({user, loggedIn, signOut}) => {
   return(
     <>
       <header className="Header">
-        <nav className='nav'>
-          <Link to='/home'> <img width={50} src='https://cdn-icons-png.flaticon.com/512/60/60817.png' /> </Link>
-          <div>Instaspace LMAO</div>
+          <Link to='/home'>
+            <img width={50} src='https://cdn-icons-png.flaticon.com/512/60/60817.png' />
+          </Link>
+          <div className='pageName'>FotoBook</div>
           <div>
             <input type="text" id="myInput" value={searchBarItem} onChange={handleItemChange} placeholder='Search..'/>
             <Link to={`/${searchBarItem}`}> 
@@ -57,7 +58,6 @@ const Header = ({user, loggedIn, signOut}) => {
             </Link>
           </div>
           <div className='profileButton'>{loggedIn ? signedIn() : <Link to={'/'}> <img width={50} src='https://cdn-icons-png.flaticon.com/512/6522/6522516.png' /> </Link>}</div>
-        </nav>
       </header>
     </>
   )

@@ -2,7 +2,7 @@ import React from 'react'
 import {useState, useEffect} from 'react'
 import { Link, useParams } from "react-router-dom";
 import { getUserToken } from '../../../utils/authToken';
-import './Profile.css'
+import '../../../css/Profile.css'
 
 const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you click follow on someones profile
 {
@@ -184,20 +184,20 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
         //console.log(id)
         console.log(followsMap.following.username)
 
-        if(areWeFollowingUser){
-          followID = followsMap._id
-          return(
-            <div key={followsMapIndex} >
-              <button onClick={removeFollow}>Unfollow</button>
-            </div>
-            )
-        }else{ // TODO FIX THIS CONDITIONAL TO ONLY SHOW IF YOU DONT FOLLOW THE PERSON OR FOLLOW NO ONE
-          return(
-          <div key={followsMapIndex} >
-            <button onClick={handleFollow}>Follow</button>
-          </div>
-        ) 
-        }
+        // if(areWeFollowingUser){
+        //   followID = followsMap._id
+        //   return(
+        //     <div key={followsMapIndex} >
+        //       <button onClick={removeFollow}>Unfollow</button>
+        //     </div>
+        //     )
+        // }else{ // TODO FIX THIS CONDITIONAL TO ONLY SHOW IF YOU DONT FOLLOW THE PERSON OR FOLLOW NO ONE
+        //   return(
+        //   <div key={followsMapIndex} >
+        //     <button onClick={handleFollow}>Follow</button>
+        //   </div>
+        // ) 
+        // }
       }
      ) : ""
     )
@@ -248,16 +248,19 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
           return (
           <div key={profileMapIndex} className='userImage'>
             <div className='profileHeader'>
-              <img className="headerImageProfile" src={profileMap.headerImageProfile}/>
+              {profileMap.headerImageProfile? <img className="headerImageProfile" src={profileMap.headerImageProfile}/>: <img className="headerImageProfile" src="https://imgur.com/TkHWSVv.jpg"/>}
             </div>
-            <img className="imageProfile" src={profileMap.imageProfile} width={150}/>
+            <div className='profileImageContainer'>
+            {profileMap.imageProfile? <img className="imageProfile" src={profileMap.imageProfile}/>: <img className="imageProfile" src="https://imgur.com/Ddet24V.jpg"/>}
+            </div>
             <h2>{profileMap.usernameProfile}</h2>
+            <p>{userMatch ? "@"+ user.username : "@"+id}</p>
             {/* You cant follow yourself */}
             {user.username !== id ? 
             <>
-            {loggedIn? mapFollowers() : "Not Logged In"}
+            {loggedIn? mapFollowers() : ""}
             </>
-            : "You cant follow yourself"}
+            : ""}
             <p>{profileMap.bioProfile}</p>
             {userMatch && loggedIn ? 
             <Link to={`/update/${profileMap._id}`}>
@@ -281,7 +284,6 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
       <>
       <div className='user'>
         {renderUserProfiles()}
-        <h3>{userMatch ? "@"+ user.username : "@"+id}</h3>
         <div className='createPost'>{userMatch && loggedIn ? signedIn() : ""}</div>
       </div>
       <section className='post-list'>
