@@ -61,6 +61,8 @@ $ npm install
 
 - Add websockets and live chat capability.
 
+- Add frontend for update and deleting comments.
+
 - Styling tips.
 ```
 

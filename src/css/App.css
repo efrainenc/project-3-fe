@@ -1,18 +1,24 @@
+
 /* Color Palette */
 :root
 {
-  --dark: #0C0D07;
-  --mid: #A7423A;
-  --light: #7DA2B9;
+  --dark: #0c0d07;
+  --mid: #a7423a;
+  --light: #7da2b9;
   --grey: #404040;
-  --yellow: #F0EBAF;
+  --yellow: #f0ebaf;
   --dark-color: #314021;
-  --light-color: #AB93A8;
+  --light-color: #ab93a8;
   --transition: all 0.3s ease-in-out;
 }
 
 .App {
   text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
 }
 
 .App-link {

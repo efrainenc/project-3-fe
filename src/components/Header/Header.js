@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import { useState } from 'react'
 import "../../css/Header.css"
+import "../../css/Header.css"
 
 const Header = ({user, loggedIn, signOut}) => {
 
