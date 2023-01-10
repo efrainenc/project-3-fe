@@ -2,7 +2,7 @@ import React from 'react'
 import {useState, useEffect} from 'react'
 import { Link, useParams } from "react-router-dom";
 import { getUserToken } from '../../../utils/authToken';
-import './Profile.css'
+import '../../../css/Profile.css'
 
 const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you click follow on someones profile
 {
@@ -21,6 +21,7 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
 
   let profileOwner = ""
   let followID = ""
+
   const [follows, setFollows] = useState([]);
 
   // User Profiles State (this is for showing off the profile data/imgs).
@@ -171,19 +172,17 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
 
   const mapFollowers = () => {
     return( follows ?
-      follows?.map((followsMap, followsMapIndex) => {
+      follows?.some((followsMap, followsMapIndex) => {
+
         // Grabs user 
         // For Conditionally storing my follows
         const doesOwnerHaveFollowing = followsMap.owner.username === user.username;
         // For conditionally storing users following
         const isUserProfileBeingFollowed = followsMap.following.username === id;
-        const isUserProfile_NOT_BeingFollowed = followsMap.following.username !== id;
+
         const areWeFollowingUser = isUserProfileBeingFollowed && doesOwnerHaveFollowing
-        const areWe_NOT_FollowingUser = isUserProfile_NOT_BeingFollowed && doesOwnerHaveFollowing
-
-        //console.log(id)
-        console.log(followsMap.following.username)
-
+      
+        console.log(areWeFollowingUser)
         if(areWeFollowingUser){
           followID = followsMap._id
           return(

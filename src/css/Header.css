@@ -1,0 +1,24 @@
+a{
+  text-decoration: none;
+  color: black
+}
+
+.Header{
+  display: flex;
+  height: 80px;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  background-color: var(--yellow);
+  border: 2px rgb(230, 211, 151) groove;
+  background: rgb(214,194,130);
+  background: linear-gradient(90deg, rgba(214,194,130,1) 3%, rgba(180,143,75,1) 23%, rgba(227,205,127,1) 65%, rgba(182,148,77,1) 90%);
+}
+
+.pageName{
+  color: var(--dark)
+}
+
+.profileButton{
+  margin: 8px;
+}

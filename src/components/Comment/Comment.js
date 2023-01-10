@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { getUserToken } from '../../utils/authToken';
+import '../../css/Comment.css'
 
 const Comment = ({post, user}) => {
 
@@ -126,7 +127,7 @@ const Comment = ({post, user}) => {
           if(commentStateMap.post_id){
             const commentsMatch = commentStateMap.post_id._id === post._id;
             return ( commentsMatch ?
-              <div key={commentStateIndex} >
+              <div className="commentsOnPost" key={commentStateIndex} >
                 {commentStateMap.comment}
               </div>
             : "")
@@ -141,7 +142,7 @@ const Comment = ({post, user}) => {
  
  const createComment=()=>{ //ADD EDIT PROFILE PRICTURE TO PROFILE PAGE
   return(
-    <>
+    <div className="createCommentDiv">
     <h3>Create a new comment</h3>
       <form onSubmit={handleComment}>
         <label>
@@ -153,9 +154,9 @@ const Comment = ({post, user}) => {
             onChange={handleChange}
           />
         </label>
-        <input type="submit" value="Create Comment" onClick={refreshPageFunction}/>
+        <input className="commentBtn" type="submit" value="Create Comment" onClick={refreshPageFunction}/>
       </form>
-    </>
+    </ div>
   )
 }
 
