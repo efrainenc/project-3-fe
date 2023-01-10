@@ -248,7 +248,7 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
           return (
           <div key={profileMapIndex} className='userImage'>
             <div className='profileHeader'>
-              {profileMap.headerImageProfile? <img className="headerImageProfile" src={profileMap.headerImageProfile}/>: <img className="headerImageProfile" src="https://imgur.com/TkHWSVv.jpg"/>}
+              {profileMap.headerImageProfile? <img className="headerImageProfile" src={profileMap.headerImageProfile}/>: <img className="headerImageProfile" src="https://imgur.com/IzTvxJ9.jpg"/>}
             </div>
             <div className='profileImageContainer'>
             {profileMap.imageProfile? <img className="imageProfile" src={profileMap.imageProfile}/>: <img className="imageProfile" src="https://imgur.com/Ddet24V.jpg"/>}
@@ -264,7 +264,7 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
             <p>{profileMap.bioProfile}</p>
             {userMatch && loggedIn ? 
             <Link to={`/update/${profileMap._id}`}>
-              <p>Update Profile</p>
+              <p className='updateProfile'>Update Profile</p>
             </Link> 
             : ""}
           </div>

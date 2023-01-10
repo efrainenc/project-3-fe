@@ -22,10 +22,20 @@
   display: grid;
 }
 .createPost{
+  background-color: #314021;
   max-width: 200px;
   justify-self: center;
 }
+.userImage a{
+  display: grid;
+}
+p.updateProfile{
+  width: 100px;
+  justify-self: center;
+  background-color: #314021;
+}
 .headerImageProfile{
+  max-height: 10%;
   width: 100%;
   background-image: url("https://imgur.com/TkHWSVv.jpg");
 }
@@ -45,13 +55,12 @@
 }
 
 .userImage p{
-  margin-top: -15px;
   padding: 2px;
   font-size: 14px;
 }
 
-.createPost{
-  color: var();
+.user{
+  background-color: #101109;
 }
 
 /* Posts */
@@ -60,7 +69,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: start;
-  padding-left: 15px;
-  
+  margin-left: 10px;
+  padding: 15px;
+  background-color: #101109;
 }
 
