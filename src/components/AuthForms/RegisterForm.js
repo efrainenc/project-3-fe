@@ -23,7 +23,7 @@ const RegisterForm = ({signup, createProfile}) =>
 	const navigate = useNavigate()
 
   // event handler for submitted Register info
-  const handleSubmit = async (e) => {
+  const handleRegister = async (e) => {
 
   // Clicking on a "Submit" button, this prevents it from submitting a form
     e.preventDefault()
@@ -51,7 +51,7 @@ const RegisterForm = ({signup, createProfile}) =>
   return (
     <div className="registerDiv">
       <h1>Register</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleRegister}>
         <label htmlFor="username">Name: </label>
         <input
           id="username"

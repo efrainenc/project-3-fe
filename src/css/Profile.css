@@ -108,16 +108,32 @@ p.updateProfile{
 }
 
 .post-card{
+  display: grid;
+  color: var(--light);
+  width: 400px;
   margin: 10px;
+  padding: 10px;
+  background-color: var(--dark);
 }
 
+.post-card p{
+  margin: 0;
+  justify-self: flex-start;
+  color: var(--light);
+}
+.post-card a{
+  justify-self: flex-start;
+  color: var(--light);
+}
+.post-card h1{
+  color: var(--light);
+}
 .createPost input{
   color: var(--mid);
   margin: 2px;
 }
 
 .createPost h3{
-  color: var(--mid);
+  color: var(--light);
 }
-
 

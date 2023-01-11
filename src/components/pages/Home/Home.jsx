@@ -26,6 +26,10 @@ const Home= ({})=>
     }
   }
 
+  const getProfilePictures = () =>{
+    // TODO GET PROFILE PICTURES
+  }
+
   // Loaded Post function
   const loaded = () =>
   {
@@ -40,10 +44,10 @@ const Home= ({})=>
                 <Link to={`/${post.owner.username}`}>
                   <h1>{post.owner.username}</h1>
                 </Link>
-                <Link to={`/post/${post._id}`}>
-                  <img src={post.image} alt={post.name}  width={200}/>
-                </Link>
                 <p>{post.caption}</p>
+                <Link to={`/post/${post._id}`}>
+                  <img src={post.image} alt={post.name}  width={400}/>
+                </Link>
                 {/* <p>{post.comment}</p> */}
               </div>
             );
