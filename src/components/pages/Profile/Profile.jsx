@@ -137,7 +137,7 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
   //   const createdUserFollow = await createFollow(createFormFunction())
   // }
 
-  // // Remove Follow function with Authorization header - DELETE
+  // Remove Follow function with Authorization header - DELETE
   // const removeFollow= async(e)=>
   // {
   //   const unfollowURL = followURL + `/${followID}`;
@@ -147,7 +147,7 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
   //     {
   //       method: "DELETE",
   //       headers: {
-  //         'Authorization': `bearer ${getUserToken()}`},
+  //         'Authorization': `Bearer ${getUserToken()}`},
   //         "Content-Type": "application/json"
   //     }
   //     const response= await fetch(unfollowURL, options);
@@ -209,7 +209,7 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
   // Function to render only when loggedIn.
   const signedIn=()=>{
     return(
-      <>
+      <div className='createPost'>
       <h3>Create a new post</h3>
         <form onSubmit={createPost}>
           <label>
@@ -232,7 +232,7 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
           </label>
           <input className="createPostButton" type="submit" value="Create Post" onClick={refreshPageFunction}/>
         </form>
-      </>
+      </div>
     )
   }
 
@@ -251,10 +251,10 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
           return (
           <div key={profileMapIndex} className='userImage'>
             <div className='profileHeader'>
-              {profileMap.headerImageProfile? <img className="headerImageProfile" src={profileMap.headerImageProfile}/>: <img className="headerImageProfile" src="https://imgur.com/IzTvxJ9.jpg"/>}
+              {profileMap.headerImageProfile? <img className="headerImageProfile" src={profileMap.headerImageProfile}/>: <img className="headerImageProfile" src="https://imgur.com/bn91huk.jpg"/>}
             </div>
             <div className='profileImageContainer'>
-            {profileMap.imageProfile? <img className="imageProfile" src={profileMap.imageProfile}/>: <img className="imageProfile" src="https://imgur.com/Ddet24V.jpg"/>}
+              {profileMap.imageProfile? <img className="imageProfile" src={profileMap.imageProfile}/>: <img className="imageProfile" src="https://imgur.com/Ddet24V.jpg"/>}
             </div>
             <h2>{profileMap.usernameProfile}</h2>
             <p>{userMatch ? "@"+ user.username : "@"+id}</p>
@@ -287,7 +287,7 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
       <>
       <div className='user'>
         {renderUserProfiles()}
-        <div className='createPost'>{userMatch && loggedIn ? signedIn() : ""}</div>
+        <>{userMatch && loggedIn ? signedIn() : ""}</>
       </div>
       <section className='post-list'>
           {post?.map((post) =>
