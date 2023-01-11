@@ -31,7 +31,6 @@
   justify-self: center;
 }
 
-
 .headerImageProfile{
   width: 100%;
   overflow: hidden;
@@ -56,10 +55,15 @@
   padding: 2px;
   font-size: 14px;
 }
+.userImage{
+  max-height: 300px;
+}
 
 .user{
+  display: grid;
   background-color: var(--green);
   padding-bottom: 15px;
+  max-height: 850px;
 }
 
 /* Create post button */
@@ -89,6 +93,7 @@
 .updateProfileContainer{
   width: 150px;
 }
+
 .updateProfile{
   margin: auto;
   max-width: 100px;
@@ -99,6 +104,7 @@
   border: 2px var(--mid) solid;
   transition: all 0.3s ease;
 }
+
 .updateProfile:hover{
   background: var(--light-color);
   border-radius: 2px;
