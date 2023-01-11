@@ -22,7 +22,9 @@
   display: grid;
 }
 .createPost{
-  background-color: #314021;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  background-color: var(--mid);
   max-width: 200px;
   justify-self: center;
 }
@@ -32,7 +34,7 @@
 p.updateProfile{
   width: 100px;
   justify-self: center;
-  background-color: #314021;
+  background-color: #101109;
 }
 .headerImageProfile{
   max-height: 10%;
@@ -46,12 +48,12 @@ p.updateProfile{
   overflow: hidden;
   width: 20%;
   height: 20%;
-  border: 4px var(--dark) solid;
+  border: 6px var(--green) solid;
   aspect-ratio: 1 / 1;
 }
 
 .userImage h2{
-  margin-top: -5px;
+  margin-top: -6px;
 }
 
 .userImage p{
@@ -60,8 +62,23 @@ p.updateProfile{
 }
 
 .user{
-  background-color: #101109;
+  background-color: var(--green);
+  padding-bottom: 15px;
 }
+
+.updateProfile, .createPostButton {
+  overflow: hidden;
+  color: var(--light);
+  border-radius: 2px;
+  border: 2px var(--light) solid;
+  transition: all 0.3s ease;
+}
+.updateProfile:hover, .createPostButton:hover {
+  background: var(--light);
+  border-radius: 2px;
+  color: var(--mid);
+}
+
 
 /* Posts */
 .post-list{
@@ -73,4 +90,5 @@ p.updateProfile{
   padding: 15px;
   background-color: #101109;
 }
+
 
