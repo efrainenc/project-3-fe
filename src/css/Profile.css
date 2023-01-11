@@ -107,6 +107,10 @@ p.updateProfile{
   background-color: #101109;
 }
 
+.post-card{
+  margin: 10px;
+}
+
 .createPost input{
   color: var(--mid);
   margin: 2px;
