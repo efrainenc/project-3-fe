@@ -143,7 +143,6 @@ const Comment = ({post, user}) => {
  const createComment=()=>{ //ADD EDIT PROFILE PRICTURE TO PROFILE PAGE
   return(
     <div className="createCommentDiv">
-    <h3>Create a new comment</h3>
       <form onSubmit={handleComment}>
         <label>
           <input
@@ -154,7 +153,7 @@ const Comment = ({post, user}) => {
             onChange={handleChange}
           />
         </label>
-        <input className="commentBtn" type="submit" value="Create Comment" onClick={refreshPageFunction}/>
+        <input className="commentBtn" type="submit" value="Add Comment" onClick={refreshPageFunction}/>
       </form>
     </ div>
   )
@@ -164,8 +163,8 @@ const Comment = ({post, user}) => {
   useEffect(()=>{getComment(); getCurrentPost();}, [refreshPage])
 
   return ( <div>
-    { matchCommentToPost()}
     {createComment()}
+    {matchCommentToPost()}
   </div>
    
   )

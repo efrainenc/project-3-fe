@@ -1,6 +1,7 @@
 import React from 'react'
 import {useState} from 'react'
 import  {Link, useNavigate} from 'react-router-dom'
+import '../../css/LoginForm.css'
 
 const LoginForm = ({login, user}) => {
 
@@ -33,10 +34,10 @@ const LoginForm = ({login, user}) => {
 
 // Login Form JSX and export
   return (
-    <>
+    <div className="loginDiv">
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Name: </label>
+        <label htmlFor="username"> Name: </label>
         <input
           id="username"
           name="username"
@@ -45,7 +46,7 @@ const LoginForm = ({login, user}) => {
         />
         <br />
         <br />
-        <label htmlFor="password">Password: </label>
+        <label htmlFor="password"> Password: </label>
         <input
           id="password"
           name="password"
@@ -56,7 +57,7 @@ const LoginForm = ({login, user}) => {
         <br />
         <input type="submit" value="login" />
       </form>
-    </>
+    </ div>
   );
 };
 
