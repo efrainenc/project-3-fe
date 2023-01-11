@@ -1,0 +1,7 @@
+.loginDiv h1 {
+color : var(--light);
+}
+
+.loginDiv label {
+  color: var(--light);
+}

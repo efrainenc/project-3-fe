@@ -2,7 +2,8 @@ import React from 'react'
 import {useState, useEffect} from 'react'
 import { Link, useParams } from "react-router-dom";
 import { getUserToken } from '../../../utils/authToken';
-import './Profile.css'
+import '../../../css/Profile.css'
+import '../../../css/Profile.css'
 
 const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you click follow on someones profile
 {
@@ -19,9 +20,10 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
     title: "",
   });
 
-  let profileOwner = ""
-  let followID = ""
-  const [follows, setFollows] = useState([]);
+  // let profileOwner = ""
+  // let followID = ""
+
+  // const [follows, setFollows] = useState([]);
 
   // User Profiles State (this is for showing off the profile data/imgs).
   const [allProfiles, setAllProfiles] = useState(null)
@@ -63,20 +65,20 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
     }
   }
 
-  // Fetches Followers
-  const getFollow= async()=>
-  {
-    try
-    {
-      // User
-      const resFollow= await fetch(followURL)
-      const getFollows= await resFollow.json()
-      setFollows(getFollows)
-    }catch(err)
-    {
-      console.log(err)
-    }
-  }
+  // // Fetches Followers
+  // const getFollow= async()=>
+  // {
+  //   try
+  //   {
+  //     // User
+  //     const resFollow= await fetch(followURL)
+  //     const getFollows= await resFollow.json()
+  //     setFollows(getFollows)
+  //   }catch(err)
+  //   {
+  //     console.log(err)
+  //   }
+  // }
   
   // Function that refreshes the state, thus re rendering the useEffect.
   const refreshPageFunction = () => 
@@ -128,33 +130,33 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
   }
 
 
-  const handleFollow = async(e)=>
-  {
-    e.preventDefault()
+  // const handleFollow = async(e)=>
+  // {
+  //   e.preventDefault()
 
-    const createdUserFollow = await createFollow(createFormFunction())
-  }
+  //   const createdUserFollow = await createFollow(createFormFunction())
+  // }
 
-  // Remove Follow function with Authorization header - DELETE
-  const removeFollow= async(e)=>
-  {
-    const unfollowURL = followURL + `/${followID}`;
-    try
-    {
-      const options= 
-      {
-        method: "DELETE",
-        headers: {
-          'Authorization': `bearer ${getUserToken()}`},
-          "Content-Type": "application/json"
-      }
-      const response= await fetch(unfollowURL, options);
-      const deletedPost= await response.json();
-    }catch(err)
-    {
-      console.log(err)
-    }
-  }
+  // // Remove Follow function with Authorization header - DELETE
+  // const removeFollow= async(e)=>
+  // {
+  //   const unfollowURL = followURL + `/${followID}`;
+  //   try
+  //   {
+  //     const options= 
+  //     {
+  //       method: "DELETE",
+  //       headers: {
+  //         'Authorization': `bearer ${getUserToken()}`},
+  //         "Content-Type": "application/json"
+  //     }
+  //     const response= await fetch(unfollowURL, options);
+  //     const deletedPost= await response.json();
+  //   }catch(err)
+  //   {
+  //     console.log(err)
+  //   }
+  // }
 
   
   // Function to map over posts.
@@ -169,40 +171,40 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
     )
   }
 
-  const mapFollowers = () => {
-    return( follows ?
-      follows?.map((followsMap, followsMapIndex) => {
-        // Grabs user 
-        // For Conditionally storing my follows
-        const doesOwnerHaveFollowing = followsMap.owner.username === user.username;
-        // For conditionally storing users following
-        const isUserProfileBeingFollowed = followsMap.following.username === id;
-        const isUserProfile_NOT_BeingFollowed = followsMap.following.username !== id;
-        const areWeFollowingUser = isUserProfileBeingFollowed && doesOwnerHaveFollowing
-        const areWe_NOT_FollowingUser = isUserProfile_NOT_BeingFollowed && doesOwnerHaveFollowing
+  // const mapFollowers = () => {
+  //   return( follows ?
+  //     follows?.some((followsMap, followsMapIndex) => {
 
-        //console.log(id)
-        console.log(followsMap.following.username)
+  //       // // Grabs user 
+  //       // // For Conditionally storing my follows
+  //       // const doesOwnerHaveFollowing = followsMap.owner.username === user.username;
+  //       // // For conditionally storing users following
+  //       // const isUserProfileBeingFollowed = followsMap.following.username === id;
 
-        if(areWeFollowingUser){
-          followID = followsMap._id
-          return(
-            <div key={followsMapIndex} >
-              <button onClick={removeFollow}>Unfollow</button>
-            </div>
-            )
-        }
-        if(areWe_NOT_FollowingUser){ // TODO FIX THIS CONDITIONAL TO ONLY SHOW IF YOU DONT FOLLOW THE PERSON OR FOLLOW NO ONE
-        return(
-          <div key={followsMapIndex} >
-            <button onClick={handleFollow}>Follow</button>
-          </div>
-        ) 
-        }
-      }
-     ) : ""
-    )
-  }
+  //       // const areWeFollowingUser = isUserProfileBeingFollowed && doesOwnerHaveFollowing
+  //       // const areWe_NOT_FollowingUser = isUserProfile_NOT_BeingFollowed && doesOwnerHaveFollowing
+
+  //       // //console.log(id)
+  //       // console.log(followsMap.following.username)
+
+  //       // if(areWeFollowingUser){
+  //       //   followID = followsMap._id
+  //       //   return(
+  //       //     <div key={followsMapIndex} >
+  //       //       <button onClick={removeFollow}>Unfollow</button>
+  //       //     </div>
+  //       //     )
+  //       // }else{ // TODO FIX THIS CONDITIONAL TO ONLY SHOW IF YOU DONT FOLLOW THE PERSON OR FOLLOW NO ONE
+  //       //   return(
+  //       //   <div key={followsMapIndex} >
+  //       //     <button onClick={handleFollow}>Follow</button>
+  //       //   </div>
+  //       // ) 
+  //       // }
+  //     }
+  //    ) : ""
+  //   )
+  // }
 
   // Function to render only when loggedIn.
   const signedIn=()=>{
@@ -245,24 +247,27 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
         // Correctly matches profile to current user page.
         if(profileMatch){
           // sets the profile owner once matched
-          profileOwner = profileMap.owner._id
+          // profileOwner = profileMap.owner._id
           return (
           <div key={profileMapIndex} className='userImage'>
             <div className='profileHeader'>
-              <img className="headerImageProfile" src={profileMap.headerImageProfile} width={500}/>
+              {profileMap.headerImageProfile? <img className="headerImageProfile" src={profileMap.headerImageProfile}/>: <img className="headerImageProfile" src="https://imgur.com/IzTvxJ9.jpg"/>}
             </div>
-            <img className="imageProfile" src={profileMap.imageProfile} width={150}/>
+            <div className='profileImageContainer'>
+            {profileMap.imageProfile? <img className="imageProfile" src={profileMap.imageProfile}/>: <img className="imageProfile" src="https://imgur.com/Ddet24V.jpg"/>}
+            </div>
             <h2>{profileMap.usernameProfile}</h2>
-            {/* You cant follow yourself */}
+            <p>{userMatch ? "@"+ user.username : "@"+id}</p>
+            {/* You cant follow yourself
             {user.username !== id ? 
             <>
-            {loggedIn? mapFollowers() : "Not Logged In"}
+            {loggedIn? mapFollowers() : ""}
             </>
-            : "You cant follow yourself"}
+            : ""} */}
             <p>{profileMap.bioProfile}</p>
             {userMatch && loggedIn ? 
             <Link to={`/update/${profileMap._id}`}>
-              <p>Update Profile</p>
+              <p className='updateProfile'>Update Profile</p>
             </Link> 
             : ""}
           </div>
@@ -282,7 +287,6 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
       <>
       <div className='user'>
         {renderUserProfiles()}
-        <h3>{userMatch ? "@"+ user.username : "@"+id}</h3>
         <div className='createPost'>{userMatch && loggedIn ? signedIn() : ""}</div>
       </div>
       <section className='post-list'>
@@ -303,12 +307,12 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
     )
   };
 
-  const createFormFunction = ()=> {
-    return{
-        following: `${profileOwner}`, // id profile we are on
-        owner: `${user._id}`
-      }
-  }
+  // const createFormFunction = ()=> {
+  //   return{
+  //       following: `${profileOwner}`, // id profile we are on
+  //       owner: `${user._id}`
+  //     }
+  // }
 
   // For when posts are loading.
   const loading = () => (
@@ -326,7 +330,7 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
   );
 
   // useEffect to call getPosts function on page load
-  useEffect(()=>{getPosts(); getProfile(); getFollow();}, [refreshPage])
+  useEffect(()=>{getPosts(); getProfile();}, [refreshPage])
 
   // Conditional return to return loading and loaded depending on posts.
   return (

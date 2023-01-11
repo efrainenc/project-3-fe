@@ -1,0 +1,7 @@
+.registerDiv h1 {
+  color : var(--light);
+  }
+  
+  .registerDiv label {
+    color: var(--light);
+  }

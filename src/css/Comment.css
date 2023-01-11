@@ -1,0 +1,32 @@
+.commentsOnPost{
+ color : var(--light);
+ grid-area: comments;
+ margin-top: 20px;
+}
+
+.createCommentDiv {
+margin-top: 20px;
+}
+
+
+input, .commentBtn
+{
+  padding: 2px 4px;
+  border: 2px solid;
+  background-color: transparent;
+  color: var(--light-color);
+  filter: brightness(100%);
+  transition: filter .5s;
+  transition: var(--transition);
+  cursor: pointer;
+  letter-spacing: 0.07rem;
+}
+
+.commentBtn :hover
+{
+  filter: brightness(120%);
+  /* background-color: var(--secondary-color); */
+  /* color: var(--light-color); */
+  border: 2px solid var(--yellow);
+  border-radius: 0.5rem;
+}

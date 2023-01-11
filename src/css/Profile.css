@@ -1,0 +1,76 @@
+/* Profile */
+.profile{
+  font-family: 'Raleway', sans-serif;
+  color: var(--light);
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  grid-template-rows: repeat(2, 50%);
+  justify-content: space-around;
+  margin: 15px;
+  grid-template-areas: 
+      "profile posts"
+      "profile posts";
+}
+
+.avatar{
+  justify-self: left;
+  max-height: 150px;
+}
+.user{
+  grid-area: profile;
+  justify-self: left;
+  display: grid;
+}
+.createPost{
+  background-color: #314021;
+  max-width: 200px;
+  justify-self: center;
+}
+.userImage a{
+  display: grid;
+}
+p.updateProfile{
+  width: 100px;
+  justify-self: center;
+  background-color: #314021;
+}
+.headerImageProfile{
+  max-height: 10%;
+  width: 100%;
+  background-image: url("https://imgur.com/TkHWSVv.jpg");
+}
+
+.imageProfile{
+  margin-top: -30px;
+  border-radius: 50%;
+  overflow: hidden;
+  width: 20%;
+  height: 20%;
+  border: 4px var(--dark) solid;
+  aspect-ratio: 1 / 1;
+}
+
+.userImage h2{
+  margin-top: -5px;
+}
+
+.userImage p{
+  padding: 2px;
+  font-size: 14px;
+}
+
+.user{
+  background-color: #101109;
+}
+
+/* Posts */
+.post-list{
+  grid-area: posts;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  margin-left: 10px;
+  padding: 15px;
+  background-color: #101109;
+}
+

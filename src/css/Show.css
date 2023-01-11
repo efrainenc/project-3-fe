@@ -1,0 +1,31 @@
+.postShow h1 {
+  color: var(--mid);
+}
+
+.postShow {
+  color: var(--light);
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  grid-template-rows: repeat(2, 50%);
+  justify-content: space-around;
+  margin: 15px;
+  grid-template-areas: 
+      "posts comments"
+      "posts comments";
+}
+
+ 
+.postDiv {
+  margin: 20px;
+  grid-area: posts;
+  border: solid;
+  border-radius : 20px;
+}
+
+.userNamePostLink{
+color : var(--light);
+}
+
+.postDiv img {
+  width : 80%;
+}
