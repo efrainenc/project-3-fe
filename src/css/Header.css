@@ -1,11 +1,11 @@
 
 a{
   text-decoration: none;
-  color: black
+  color: black;
 }
 
 .Header{
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 1fr;
@@ -25,26 +25,33 @@ button.searchUser{
   border: none;
   cursor: pointer;
 }
-
-/* button.searchUser:hover{
-  background: var(--yellow);
-  color: var(--mid);
-} */
-.searchbarContainer{
-  display: flex;
+.home{
+  width: 50px;
 }
 
 .pageName{
   grid-column: 3;
-  color: var(--dark)
+  color: var(--dark);
+  font-family: 'Space Grotesk', sans-serif;
 }
 
+.searchbarContainer{
+  display: flex;
+  grid-column: 5;
+  justify-content: end;
+  align-items: center;
+}
+#myInput{
+  height: 1.2rem;
+}
 .searchInputContainer{
   grid-column: 4;
 }
 .profileButton{
   display: grid;
+  justify-self: end;
   grid-column: 5;
   font-size: 14px;
   margin: 8px;
+  width: 50px;
 }

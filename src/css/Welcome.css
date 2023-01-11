@@ -9,6 +9,7 @@ h1{
   display: grid;
   justify-self: center;
   background-color: var(--green);
+  border-radius: 40px;
   width: 60%;
   height: 140%;
   margin-top: 8%;

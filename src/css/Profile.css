@@ -1,6 +1,6 @@
 /* Profile */
 .profile{
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   color: var(--light);
   display: grid;
   grid-template-columns: repeat(2, 50%);
@@ -30,9 +30,7 @@
   max-width: 200px;
   justify-self: center;
 }
-.userImage a{
-  display: grid;
-}
+
 p.updateProfile{
   width: 100px;
   justify-self: center;
@@ -92,6 +90,11 @@ p.updateProfile{
   color: var(--mid);
 }
 /* Update Post */
+.updateProfileContainer{
+  display: flex;
+  justify-content: center;
+  width: 150px;
+}
 .updateProfile{
   overflow: hidden;
   color: var(--mid);
@@ -112,7 +115,8 @@ p.updateProfile{
   flex-wrap: wrap;
   justify-content: center;
   justify-self: flex-start;
-  margin-left: 10px;
+  min-width: 90%;
+  margin-left: 20px;
   padding: 15px;
   background-color: var(--green);
 }

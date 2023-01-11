@@ -48,17 +48,17 @@ const Header = ({user, loggedIn, signOut}) => {
   return(
     <>
       <header className="Header">
-          <Link to='/home'>
+          <Link className='home' to='/home'>
             <img width={50} src='https://cdn-icons-png.flaticon.com/512/60/60817.png' />
           </Link>
-          <div className='pageName'>FotoBook</div>
+          <h2 className='pageName'>FotoBook</h2>
           <div className='searchbarContainer'>
             <input type="text" id="myInput" value={searchBarItem} onChange={handleItemChange} placeholder='Search..'/>
             <Link to={`/${searchBarItem}`}> 
               <button onClick={userClick} className='searchUser' ><img width={20} src='https://imgur.com/ltktMwM.jpg' /></button>
             </Link>
+            <div className='profileButton'>{loggedIn ? signedIn() : <Link to={'/'}> <img width={50} src='https://cdn-icons-png.flaticon.com/512/6522/6522516.png' /> </Link>}</div>
           </div>
-          <div className='profileButton'>{loggedIn ? signedIn() : <Link to={'/'}> <img width={50} src='https://cdn-icons-png.flaticon.com/512/6522/6522516.png' /> </Link>}</div>
       </header>
     </>
   )
