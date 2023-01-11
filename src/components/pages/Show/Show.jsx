@@ -133,7 +133,7 @@ const Show= ({user})=>
             <img src={post.image}/>
             <h2>{post.caption}</h2>
           </div>
-          <>{user.username === post.owner.username ? signedIn() : ""}</>
+          {/* <>{user.username === post.owner.username ? signedIn() : ""}</> */}
           <Comment post={post} user={user}/>
         </div>
       </>
