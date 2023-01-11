@@ -31,11 +31,7 @@
   justify-self: center;
 }
 
-p.updateProfile{
-  width: 100px;
-  justify-self: center;
-  background-color: var(--light);
-}
+
 .headerImageProfile{
   width: 100%;
   overflow: hidden;
@@ -91,11 +87,12 @@ p.updateProfile{
 }
 /* Update Post */
 .updateProfileContainer{
-  display: flex;
-  justify-content: center;
   width: 150px;
 }
 .updateProfile{
+  margin: auto;
+  max-width: 100px;
+  background-color: var(--light);
   overflow: hidden;
   color: var(--mid);
   border-radius: 2px;
