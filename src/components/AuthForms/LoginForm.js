@@ -36,19 +36,20 @@ const LoginForm = ({login, user}) => {
   return (
     <div className="loginDiv">
       <form onSubmit={handleLogin}>
-        <label htmlFor="username"> Name: </label>
         <input
           id="username"
           name="username"
+          placeholder="Username.."
           value={input.username}
           onChange={handleChange}
         />
         <br />
         <br />
-        <label htmlFor="password"> Password: </label>
         <input
           id="password"
           name="password"
+          placeholder="Password.."
+          type="password"
           value={input.password}
           onChange={handleChange}
         />

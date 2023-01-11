@@ -3,15 +3,20 @@
 }
 
 .postShow {
-  color: var(--light);
+  color: var(--light-color);
   display: grid;
   grid-template-columns: repeat(2, 50%);
-  grid-template-rows: repeat(2, 50%);
+  grid-template-rows: repeat(3, 1fr);
   justify-content: space-around;
   margin: 15px;
   grid-template-areas: 
       "posts comments"
-      "posts comments";
+      "posts comments"
+      "remove comments";
+}
+
+.deleteButtonContainer{
+  grid-area: remove;
 }
 
  
@@ -27,6 +32,7 @@ color : var(--light);
 }
 
 .postDiv img {
+  box-shadow: var(--light) -5px 5px, var(--mid) -10px 10px;
   width : 80%;
 }
 

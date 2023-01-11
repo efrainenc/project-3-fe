@@ -51,19 +51,19 @@ const RegisterForm = ({signup, createProfile}) =>
   return (
     <div className="registerDiv">
       <form onSubmit={handleRegister}>
-        <label htmlFor="username">Name: </label>
         <input
           id="username"
           name="username"
+          placeholder="Username.."
           value={input.username}
           onChange={handleChange}
         />
         <br />
         <br />
-        <label htmlFor="password">Password: </label>
         <input
           id="password"
           name="password"
+          placeholder="Password.."
           value={input.password}
           onChange={handleChange}
         />
