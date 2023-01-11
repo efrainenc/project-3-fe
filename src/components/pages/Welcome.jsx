@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import '../../css/Welcome.css'
 
 const Welcome = () => {
   return (
-    <div>
+    <div className="welcomeDiv">
       <Link to='/login'>
           <h1>Login</h1>
       </Link>

@@ -1,17 +1,20 @@
 .commentsOnPost{
- color : var(--light)
+ color : var(--light);
+ grid-area: comments;
+ margin-top: 20px;
 }
 
-.createCommentDiv h3 {
-  color: var(--light)
+.createCommentDiv {
+margin-top: 20px;
 }
 
-button, .commentBtn
+
+input, .commentBtn
 {
   padding: 2px 4px;
-  border: 2px solid transparent;
+  border: 2px solid;
   background-color: transparent;
-  color: var(--light);
+  color: var(--light-color);
   filter: brightness(100%);
   transition: filter .5s;
   transition: var(--transition);

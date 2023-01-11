@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from "react"
-import { Navigate, useParams, useNavigate } from "react-router-dom"
+import { Navigate, useParams, useNavigate, Link } from "react-router-dom"
 import { getUserToken } from '../../../utils/authToken'
 import Comment from '../../Comment/Comment'
 import '../../../css/Show.css'
@@ -126,9 +126,13 @@ const Show= ({user})=>
     return(
       <>
         <div className="postShow">
-          <h1>Show Page</h1>
-          <img src={post.image} width={200}/>
-          <h2>{post.caption}</h2>
+          <div className="postDiv">
+          <Link to={`/${post.owner.username}`}>
+            <h2 className="userNamePostLink"> @ {post.owner.username}</h2>
+          </Link>
+            <img src={post.image}/>
+            <h2>{post.caption}</h2>
+          </div>
           <>{user.username === post.owner.username ? signedIn() : ""}</>
           <Comment post={post} user={user}/>
         </div>

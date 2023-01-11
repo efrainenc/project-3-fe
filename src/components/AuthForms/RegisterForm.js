@@ -1,6 +1,7 @@
 import React from 'react'
 import {useState} from 'react'
 import  {useNavigate} from 'react-router-dom'
+import '../../css/RegisterForm.css'
 
 const RegisterForm = ({signup, createProfile}) =>
 {
@@ -48,7 +49,7 @@ const RegisterForm = ({signup, createProfile}) =>
 
   // Register Form JSX and export
   return (
-    <>
+    <div className="registerDiv">
       <h1>Register</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Name: </label>
@@ -71,7 +72,7 @@ const RegisterForm = ({signup, createProfile}) =>
         <br />
         <input type="submit" value="Sign Up" />
       </form>
-    </>
+    </div>
   );
 };
 

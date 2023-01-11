@@ -175,17 +175,17 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
     return( follows ?
       follows?.some((followsMap, followsMapIndex) => {
 
-        // Grabs user 
-        // For Conditionally storing my follows
-        const doesOwnerHaveFollowing = followsMap.owner.username === user.username;
-        // For conditionally storing users following
-        const isUserProfileBeingFollowed = followsMap.following.username === id;
+        // // Grabs user 
+        // // For Conditionally storing my follows
+        // const doesOwnerHaveFollowing = followsMap.owner.username === user.username;
+        // // For conditionally storing users following
+        // const isUserProfileBeingFollowed = followsMap.following.username === id;
 
-        const areWeFollowingUser = isUserProfileBeingFollowed && doesOwnerHaveFollowing
-        const areWe_NOT_FollowingUser = isUserProfile_NOT_BeingFollowed && doesOwnerHaveFollowing
+        // const areWeFollowingUser = isUserProfileBeingFollowed && doesOwnerHaveFollowing
+        // const areWe_NOT_FollowingUser = isUserProfile_NOT_BeingFollowed && doesOwnerHaveFollowing
 
-        //console.log(id)
-        console.log(followsMap.following.username)
+        // //console.log(id)
+        // console.log(followsMap.following.username)
 
         // if(areWeFollowingUser){
         //   followID = followsMap._id
