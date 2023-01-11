@@ -27,6 +27,13 @@ button.searchUser{
 }
 .home{
   width: 50px;
+  margin-left: 20px;
+  filter: brightness(100%);
+  transition: filter .5s;
+}
+
+.home:hover{
+  filter: brightness(150%);
 }
 
 .pageName{
@@ -53,6 +60,6 @@ button.searchUser{
   justify-self: end;
   grid-column: 5;
   font-size: 14px;
-  margin: 8px;
+  margin: 3px 20px 8px 4px;
   width: 50px;
 }

@@ -4,11 +4,10 @@
   color: var(--light);
   display: grid;
   grid-template-columns: repeat(2, 50%);
-  grid-template-rows: repeat(2, 50%);
+  grid-template-rows: 1fr;
   justify-content: space-around;
   margin: 15px;
   grid-template-areas: 
-      "profile posts"
       "profile posts";
 }
 
@@ -28,14 +27,10 @@
   background: rgb(214,194,130);
   background: linear-gradient(90deg, rgba(180,143,75,1) 3%,rgba(214,194,130,1) 90%);
   max-width: 200px;
+  max-height: 150px;
   justify-self: center;
 }
 
-p.updateProfile{
-  width: 100px;
-  justify-self: center;
-  background-color: var(--light);
-}
 .headerImageProfile{
   width: 100%;
   overflow: hidden;
@@ -60,10 +55,15 @@ p.updateProfile{
   padding: 2px;
   font-size: 14px;
 }
+.userImage{
+  max-height: 300px;
+}
 
 .user{
+  display: grid;
   background-color: var(--green);
   padding-bottom: 15px;
+  max-height: 850px;
 }
 
 /* Create post button */
@@ -91,17 +91,20 @@ p.updateProfile{
 }
 /* Update Post */
 .updateProfileContainer{
-  display: flex;
-  justify-content: center;
   width: 150px;
 }
+
 .updateProfile{
+  margin: auto;
+  max-width: 100px;
+  background-color: var(--light);
   overflow: hidden;
   color: var(--mid);
   border-radius: 2px;
   border: 2px var(--mid) solid;
   transition: all 0.3s ease;
 }
+
 .updateProfile:hover{
   background: var(--light-color);
   border-radius: 2px;
