@@ -20,11 +20,6 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
     title: "",
   });
 
-  //let profileOwner = ""
-  //let followID = ""
-
-  //const [follows, setFollows] = useState([]);
-
   // User Profiles State (this is for showing off the profile data/imgs).
   const [allProfiles, setAllProfiles] = useState(null)
 
@@ -174,9 +169,8 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
   // const mapFollowers = () => {
   //   return( follows ?
   //     follows?.some((followsMap, followsMapIndex) => {
-
-  //       // Grabs user 
-  //       // For Conditionally storing my follows
+  //       // // Grabs user 
+  //       // // For Conditionally storing my follows
   //       // const doesOwnerHaveFollowing = followsMap.owner.username === user.username;
   //       // // For conditionally storing users following
   //       // const isUserProfileBeingFollowed = followsMap.following.username === id;
@@ -258,12 +252,12 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
             </div>
             <h2>{profileMap.usernameProfile}</h2>
             <p>{userMatch ? "@"+ user.username : "@"+id}</p>
-            {/* You cant follow yourself */}
+            {/* You cant follow yourself
             {user.username !== id ? 
             <>
             {/* {loggedIn? mapFollowers() : ""} */}
             </>
-            : ""}
+            : ""} */}
             <p>{profileMap.bioProfile}</p>
             {userMatch && loggedIn ? 
             <Link to={`/update/${profileMap._id}`}>

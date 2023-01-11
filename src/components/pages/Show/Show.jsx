@@ -9,7 +9,7 @@ import '../../../css/Show.css'
 
 const Show= ({user})=>
 {
-  // TODO on post delete, delete all comments under that post
+  
   const [post, setPost]= useState(null);
   const [editForm, setEditForm] = useState(post);
   // take in the ID parameter from router URL linked from Post.jsx
@@ -17,6 +17,7 @@ const Show= ({user})=>
   // useNavigate returns an imperative method that you can use for changing location.
   const navigate = useNavigate();
   // sets post show route URL as variable and dependent ID from useParams
+  console.log(id)
   const URL = `https://project-3-be.herokuapp.com/post/${id}`;
 
   // event handler for when UPDATE name and title are changed
@@ -50,10 +51,13 @@ const Show= ({user})=>
         method: "PUT",
         headers: {
           'Authorization': `bearer ${getUserToken()}`,
-          "Content-Type": "application/json"},
+          "Content-Type": "application/json"
+        },
         body: JSON.stringify(editForm)
-      }
+        }
+      console.log(options)
       const response= await fetch(URL, options);
+      console.log(response)
       const updatedPost= await response.json();
       setPost(updatedPost);
       setEditForm(updatedPost);
@@ -159,7 +163,7 @@ const Show= ({user})=>
   }
 
   // returned conditional functions and JSX
-  return post ? loaded() : loading()
+  return post && post.owner ? loaded() : loading()
 }
 
 export default Show
