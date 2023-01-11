@@ -20,10 +20,10 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
     title: "",
   });
 
-  // let profileOwner = ""
-  // let followID = ""
+  //let profileOwner = ""
+  //let followID = ""
 
-  // const [follows, setFollows] = useState([]);
+  //const [follows, setFollows] = useState([]);
 
   // User Profiles State (this is for showing off the profile data/imgs).
   const [allProfiles, setAllProfiles] = useState(null)
@@ -175,8 +175,8 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
   //   return( follows ?
   //     follows?.some((followsMap, followsMapIndex) => {
 
-  //       // // Grabs user 
-  //       // // For Conditionally storing my follows
+  //       // Grabs user 
+  //       // For Conditionally storing my follows
   //       // const doesOwnerHaveFollowing = followsMap.owner.username === user.username;
   //       // // For conditionally storing users following
   //       // const isUserProfileBeingFollowed = followsMap.following.username === id;
@@ -230,7 +230,7 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
               onChange={handleChange}
             />
           </label>
-          <input type="submit" value="Create Post" onClick={refreshPageFunction}/>
+          <input className="createPostButton" type="submit" value="Create Post" onClick={refreshPageFunction}/>
         </form>
       </>
     )
@@ -247,7 +247,7 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
         // Correctly matches profile to current user page.
         if(profileMatch){
           // sets the profile owner once matched
-          // profileOwner = profileMap.owner._id
+          //profileOwner = profileMap.owner._id
           return (
           <div key={profileMapIndex} className='userImage'>
             <div className='profileHeader'>
@@ -258,12 +258,12 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
             </div>
             <h2>{profileMap.usernameProfile}</h2>
             <p>{userMatch ? "@"+ user.username : "@"+id}</p>
-            {/* You cant follow yourself
+            {/* You cant follow yourself */}
             {user.username !== id ? 
             <>
-            {loggedIn? mapFollowers() : ""}
+            {/* {loggedIn? mapFollowers() : ""} */}
             </>
-            : ""} */}
+            : ""}
             <p>{profileMap.bioProfile}</p>
             {userMatch && loggedIn ? 
             <Link to={`/update/${profileMap._id}`}>

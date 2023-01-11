@@ -4,12 +4,9 @@ import { Navigate, useParams, useNavigate, Link } from "react-router-dom"
 import { getUserToken } from '../../../utils/authToken'
 import Comment from '../../Comment/Comment'
 import '../../../css/Show.css'
-
-
-
 const Show= ({user})=>
 {
-  
+ 
   const [post, setPost]= useState(null);
   const [editForm, setEditForm] = useState(post);
   // take in the ID parameter from router URL linked from Post.jsx
@@ -19,7 +16,6 @@ const Show= ({user})=>
   // sets post show route URL as variable and dependent ID from useParams
   console.log(id)
   const URL = `https://project-3-be.herokuapp.com/post/${id}`;
-
   // event handler for when UPDATE name and title are changed
   const handleChange= (e)=>
   {
@@ -39,14 +35,14 @@ const Show= ({user})=>
       console.log(err);
     }
   }
-  
+ 
   // Update Post function with Authorization header - UPDATE
   const updatePost= async(e)=>
   {
    // prevent default (event object method)
     e.preventDefault()
     try
-    { 
+    {
       const options = {
         method: "PUT",
         headers: {
@@ -63,18 +59,17 @@ const Show= ({user})=>
       setEditForm(updatedPost);
       navigate(-1);
     }catch(err)
-    { 
+    {
       console.log(err)
       navigate(URL)
     }
   }
-
   // Remove Post function with Authorization header - DELETE
   const removePost= async(e)=>
   {
     try
     {
-      const options= 
+      const options=
       {
         method: "DELETE",
         headers: {
@@ -90,10 +85,8 @@ const Show= ({user})=>
       navigate(URL)
     }
   }
-
   // useEffect to get fire getPost function on page load
   useEffect(()=>{getPost();}, [])
-
   const signedIn= ()=>{
     return(
       <section>
@@ -119,11 +112,10 @@ const Show= ({user})=>
               onChange={handleChange}
           />
           <input type="submit" value="Update Post" />
-        </form> 
+        </form>
       </section>
     )
   }
-
   // Show Details Loaded function and JSX
   const loaded= ()=>
   {
@@ -143,7 +135,6 @@ const Show= ({user})=>
       </>
     )
   }
-
   // Show Loading and JSX
   const loading= ()=>
   {
@@ -161,9 +152,7 @@ const Show= ({user})=>
       </section>
     )
   }
-
   // returned conditional functions and JSX
   return post && post.owner ? loaded() : loading()
 }
-
 export default Show

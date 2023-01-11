@@ -3,11 +3,12 @@
 :root
 {
   --dark: #0c0d07;
-  --mid: #a7423a;
+  --mid: #b43d34;
   --light: #7da2b9;
   --grey: #404040;
   --yellow: #f0ebaf;
   --light-color: #ab93a8;
+  --green: #101109;
   --transition: all 0.3s ease-in-out;
 }
 
