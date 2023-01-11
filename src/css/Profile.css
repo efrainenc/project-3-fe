@@ -89,6 +89,9 @@
 .createPost h3{
   color: var(--mid);
 }
+.createPost{
+  margin-top: 48px;
+}
 /* Update Post */
 .updateProfileContainer{
   width: 150px;
