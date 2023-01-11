@@ -4,11 +4,10 @@
   color: var(--light);
   display: grid;
   grid-template-columns: repeat(2, 50%);
-  grid-template-rows: repeat(2, 50%);
+  grid-template-rows: 1fr;
   justify-content: space-around;
   margin: 15px;
   grid-template-areas: 
-      "profile posts"
       "profile posts";
 }
 
@@ -28,6 +27,7 @@
   background: rgb(214,194,130);
   background: linear-gradient(90deg, rgba(180,143,75,1) 3%,rgba(214,194,130,1) 90%);
   max-width: 200px;
+  max-height: 150px;
   justify-self: center;
 }
 
