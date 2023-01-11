@@ -19,16 +19,10 @@ const Welcome = ({signup, createProfile, user, login}) => {
         <div>
           <h1>WELCOME</h1>
         </div>
-        {loginOrRegister? <LoginForm user={user} login={login}/> : <RegisterForm signup={signup} createProfile={createProfile}/>}
+        {loginOrRegister? <RegisterForm signup={signup} createProfile={createProfile}/> : <LoginForm user={user} login={login}/>}
         <div>
-          <button className="loginOrRegister" onClick={changeForm}>{loginOrRegister?"Don't have an account ?":"Already have an account ?"}</button> 
+          <button className="loginOrRegister" onClick={changeForm}>{loginOrRegister? "Already have an account ?":"Don't have an account ?"}</button> 
         </div>
-        {/* <Link to='/login'>
-            <h1>Login</h1>
-        </Link> */}
-        {/* <Link to='/register'>
-          <h1>Register</h1>
-        </Link> */}
       </div>
     </section>
   )

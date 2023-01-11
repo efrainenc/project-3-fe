@@ -93,24 +93,6 @@ const Show= ({user})=>
         <button className="delete" onClick={removePost}>
           Remove Post
         </button>
-        {/* <h2>Edit this Post</h2>
-        <form onSubmit={updatePost}>
-          <input
-              type="text"
-              value={editForm.image}
-              name="image"
-              placeholder="image"
-              onChange={handleChange}
-          />
-          <input
-              type="text"
-              value={editForm.caption}
-              name="caption"
-              placeholder="caption"
-              onChange={handleChange}
-          />
-          <input type="submit" value="Update Post" />
-        </form> */}
       </div>
     )
   }
