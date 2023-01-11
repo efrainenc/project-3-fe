@@ -46,7 +46,7 @@ const Show= ({user})=>
       const options = {
         method: "PUT",
         headers: {
-          'Authorization': `bearer ${getUserToken()}`,
+          'Authorization': `Bearer ${getUserToken()}`,
           "Content-Type": "application/json"
         },
         body: JSON.stringify(editForm)
@@ -73,7 +73,7 @@ const Show= ({user})=>
       {
         method: "DELETE",
         headers: {
-          'Authorization': `bearer ${getUserToken()}`},
+          'Authorization': `Bearer ${getUserToken()}`},
           "Content-Type": "application/json"
       }
       const response= await fetch(URL, options);
@@ -87,35 +87,36 @@ const Show= ({user})=>
   }
   // useEffect to get fire getPost function on page load
   useEffect(()=>{getPost();}, [])
-  // const signedIn= ()=>{
-  //   return(
-  //     <section>
-  //         <div>
-  //           <button className="delete" onClick={removePost}>
-  //             Remove Post
-  //           </button>
-  //         </div>
-  //       <h2>Edit this Post</h2>
-  //       <form onSubmit={updatePost}>
-  //         <input
-  //             type="text"
-  //             value={editForm.image}
-  //             name="image"
-  //             placeholder="image"
-  //             onChange={handleChange}
-  //         />
-  //         <input
-  //             type="text"
-  //             value={editForm.caption}
-  //             name="caption"
-  //             placeholder="caption"
-  //             onChange={handleChange}
-  //         />
-  //         <input type="submit" value="Update Post" />
-  //       </form>
-  //     </section>
-  //   )
-  // }
+  const signedIn= ()=>{
+    return(
+      <section>
+          <div>
+            <button className="delete" onClick={removePost}>
+              Remove Post
+            </button>
+          </div>
+        {/* <h2>Edit this Post</h2>
+        <form onSubmit={updatePost}>
+          <input
+              type="text"
+              value={editForm.image}
+              name="image"
+              placeholder="image"
+              onChange={handleChange}
+          />
+          <input
+              type="text"
+              value={editForm.caption}
+              name="caption"
+              placeholder="caption"
+              onChange={handleChange}
+          />
+          <input type="submit" value="Update Post" />
+        </form> */}
+      </section>
+    )
+  }
+
   // Show Details Loaded function and JSX
   const loaded= ()=>
   {
@@ -129,7 +130,7 @@ const Show= ({user})=>
             <img src={post.image}/>
             <h2>{post.caption}</h2>
           </div>
-          {/* <>{user.username === post.owner.username ? signedIn() : ""}</> */}
+          <>{user.username === post.owner.username ? signedIn() : ""}</>
           <Comment post={post} user={user}/>
         </div>
       </>

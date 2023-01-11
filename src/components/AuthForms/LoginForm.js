@@ -12,7 +12,7 @@ const LoginForm = ({login, user}) => {
   // useNavigate returns an imperative method that you can use for changing location.
 	const navigate = useNavigate()
   // event handler for submitted login
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
   // Clicking on a "Submit" button, this prevents it from submitting a form
     e.preventDefault()
   // gets user token from login userInput from App.js component
@@ -36,7 +36,7 @@ const LoginForm = ({login, user}) => {
   return (
     <div className="loginDiv">
       <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleLogin}>
         <label htmlFor="username"> Name: </label>
         <input
           id="username"

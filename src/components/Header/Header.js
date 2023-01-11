@@ -52,10 +52,10 @@ const Header = ({user, loggedIn, signOut}) => {
             <img width={50} src='https://cdn-icons-png.flaticon.com/512/60/60817.png' />
           </Link>
           <div className='pageName'>FotoBook</div>
-          <div>
+          <div className='searchbarContainer'>
             <input type="text" id="myInput" value={searchBarItem} onChange={handleItemChange} placeholder='Search..'/>
             <Link to={`/${searchBarItem}`}> 
-              <button onClick={userClick} className='searchUser' > by username </button>
+              <button onClick={userClick} className='searchUser' ><img width={20} src='https://imgur.com/ltktMwM.jpg' /></button>
             </Link>
           </div>
           <div className='profileButton'>{loggedIn ? signedIn() : <Link to={'/'}> <img width={50} src='https://cdn-icons-png.flaticon.com/512/6522/6522516.png' /> </Link>}</div>
