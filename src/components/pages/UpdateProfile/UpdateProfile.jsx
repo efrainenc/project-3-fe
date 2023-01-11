@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getUserToken } from '../../../utils/authToken';
+import '../../../css/UpdateProfile.css'
 
 const UpdateProfile = ({user}) => {
 
@@ -69,40 +70,40 @@ const UpdateProfile = ({user}) => {
   
   // Returns Update Profile Form.
   return(
-    <>
+    <div className="updateProfileDiv">
     <h3>Update Profile</h3>
     <form onSubmit={updateProfile}>
       <input
         type="text"
         value={editForm.usernameProfile}
         name="usernameProfile"
-        placeholder="username"
+        placeholder="Update Username"
         onChange={handleChange}
       />
       <input
         type="text"
         value={editForm.imageProfile}
         name="imageProfile"
-        placeholder="img url"
+        placeholder="Update Img URL"
         onChange={handleChange}
       />
       <input
         type="text"
         value={editForm.headerImageProfile}
         name="headerImageProfile"
-        placeholder="header img url"
+        placeholder="Update Header Img URL"
         onChange={handleChange}
       />
       <input
         type="text"
         value={editForm.bioProfile}
         name="bioProfile"
-        placeholder="bio"
+        placeholder="Update Bio"
         onChange={handleChange}
       />
-      <input type="submit" value="Update"/>
+      <input className="updateProfileBtn" type="submit" value="Update"/>
     </form>
-    </>
+    </ div>
   )
 }
 

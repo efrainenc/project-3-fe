@@ -91,14 +91,12 @@
 }
 /* Update Post */
 .updateProfileContainer{
-  display: flex;
-  justify-content: center;
-  margin: auto;
+  width: 150px;
 }
 
 .updateProfile{
-  width: 100px;
-  background-color: var(--light);
+  margin: auto;
+  max-width: 100px;
   background-color: var(--light);
   overflow: hidden;
   color: var(--mid);
