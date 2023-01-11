@@ -28,6 +28,12 @@ button.searchUser{
 .home{
   width: 50px;
   margin-left: 20px;
+  filter: brightness(100%);
+  transition: filter .5s;
+}
+
+.home:hover{
+  filter: brightness(150%);
 }
 
 .pageName{

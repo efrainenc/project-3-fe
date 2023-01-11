@@ -31,11 +31,6 @@
   justify-self: center;
 }
 
-p.updateProfile{
-  width: 100px;
-  justify-self: center;
-  background-color: var(--light);
-}
 .headerImageProfile{
   width: 100%;
   overflow: hidden;
@@ -60,10 +55,15 @@ p.updateProfile{
   padding: 2px;
   font-size: 14px;
 }
+.userImage{
+  max-height: 300px;
+}
 
 .user{
+  display: grid;
   background-color: var(--green);
   padding-bottom: 15px;
+  max-height: 850px;
 }
 
 /* Create post button */
@@ -93,15 +93,20 @@ p.updateProfile{
 .updateProfileContainer{
   display: flex;
   justify-content: center;
-  width: 150px;
+  margin: auto;
 }
+
 .updateProfile{
+  width: 100px;
+  background-color: var(--light);
+  background-color: var(--light);
   overflow: hidden;
   color: var(--mid);
   border-radius: 2px;
   border: 2px var(--mid) solid;
   transition: all 0.3s ease;
 }
+
 .updateProfile:hover{
   background: var(--light-color);
   border-radius: 2px;
