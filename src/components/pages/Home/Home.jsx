@@ -8,22 +8,55 @@ const Home= ({})=>
 
   // defining state for post and for a new post form input
   const [post, setPost] = useState([]);
+  // User Profiles State (this is for showing off the profile data/imgs).
+  const [allProfiles, setAllProfiles] = useState(null)
 
+  // API BASE URL to Heroku BE.
+  const PROFILE_URL= "https://project-3-be.herokuapp.com/profile";
   // API BASE URL to mongodb backend 
-  const BASE_URL= "https://project-3-be.herokuapp.com/post";
+  const POST_URL= "https://project-3-be.herokuapp.com/post";
 
   // useEffect to store post JSON as setPost state
   const getPost= async()=>
   {
     try
     {
-      const res= await fetch(BASE_URL)
+      const res= await fetch(POST_URL)
       const allPost= await res.json()
       setPost(allPost)
     }catch(err)
     {
       console.log(err)
     }
+  }
+
+  // Fetches Users.
+  const getProfile= async()=>
+  {
+    try
+    {
+      // User
+      const resProfile= await fetch(PROFILE_URL)
+      const getProfiles= await resProfile.json()
+      setAllProfiles(getProfiles)
+    }catch(err)
+    {
+      console.log(err)
+    }
+  }
+
+  const getProfilePictures = (postMap) =>{
+    return ( allProfiles ?
+      allProfiles?.map((profileMap, profileMapIndex) =>
+      {
+        if(profileMap.owner.username === postMap.owner.username){
+          return(
+            <>
+              {profileMap.imageProfile? <img className="homePfp" width={40} height={40} src={profileMap.imageProfile}/>: <img className="homePfp" width={40} height={40} src="https://imgur.com/Ddet24V.jpg"/>}
+            </>
+          )
+        }
+      }): "")
   }
 
   // Loaded Post function
@@ -33,18 +66,20 @@ const Home= ({})=>
     return (
       <>
       <section className='post-list'>
-        {post?.map((post) =>
+        {post?.map((postMap) =>
           {
             return(
-              <div key={post._id} className='post-card'>
-                <Link to={`/${post.owner.username}`}>
-                  <h1>{post.owner.username}</h1>
+              <div key={postMap._id} className='post-card'>
+                {getProfilePictures(postMap)}
+                <Link className="postCardUsername" to={`/${postMap.owner.username}`}>
+                  <h1>{postMap.owner.username}</h1>
                 </Link>
-                <Link to={`/post/${post._id}`}>
-                  <img src={post.image} alt={post.name}  width={200}/>
+                <div className='postCaption'>
+                  <p>{postMap.caption}</p>
+                </div>
+                <Link className="postImage" to={`/post/${postMap._id}`}>
+                  <img src={postMap.image} alt={postMap.name}  width={400}/>
                 </Link>
-                <p>{post.caption}</p>
-                {/* <p>{post.comment}</p> */}
               </div>
             );
           })
@@ -72,7 +107,7 @@ const Home= ({})=>
 
 
   // useEffect to call getPost function on page load
-  useEffect(()=>{getPost()}, [])
+  useEffect(()=>{getPost(); getProfile();}, [])
 
   // conditional return to return loading and loaded JSX depending on 
   return (

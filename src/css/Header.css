@@ -21,17 +21,15 @@ a{
 
 button.searchUser{
   overflow: hidden;
-  background-color: var(--green);
-  color: var(--yellow);
-  border-radius: 2px;
-  border: 2px var(--green) solid;
-  transition: all 0.3s ease;
+  background-color: transparent;
 }
 
-button.searchUser:hover{
+/* button.searchUser:hover{
   background: var(--yellow);
-  border-radius: 2px;
   color: var(--mid);
+} */
+.searchbarContainer{
+  display: flex;
 }
 
 .pageName{
