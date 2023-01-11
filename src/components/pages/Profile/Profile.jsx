@@ -163,8 +163,10 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
   const postMap=(post)=>{
     return(
         <div key={post._id} className='post-card'>
-          <p>{post.caption}</p>
-          <Link to={`/post/${post._id}`}>
+          <div className='postCaption'>
+            <p>{post.caption}</p>
+          </div>
+          <Link className="postImage" to={`/post/${post._id}`}>
             <img src={post.image} alt={post.name}  width={400}/>
           </Link>
         </div>

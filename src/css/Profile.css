@@ -150,6 +150,7 @@ p.updateProfile{
 }
 
 .post-card p{
+  grid-area: 2 / 1 / 3 / 4;
   margin: 0;
   justify-self: flex-start;
   color: var(--light);
