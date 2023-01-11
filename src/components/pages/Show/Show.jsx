@@ -89,12 +89,10 @@ const Show= ({user})=>
   useEffect(()=>{getPost();}, [])
   const signedIn= ()=>{
     return(
-      <section>
-          <div>
-            <button className="delete" onClick={removePost}>
-              Remove Post
-            </button>
-          </div>
+      <div className='deleteButtonContainer'>
+        <button className="delete" onClick={removePost}>
+          Remove Post
+        </button>
         {/* <h2>Edit this Post</h2>
         <form onSubmit={updatePost}>
           <input
@@ -113,7 +111,7 @@ const Show= ({user})=>
           />
           <input type="submit" value="Update Post" />
         </form> */}
-      </section>
+      </div>
     )
   }
 
