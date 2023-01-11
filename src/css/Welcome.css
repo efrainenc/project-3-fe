@@ -1,6 +1,9 @@
 section{
   display: grid;
 }
+h1{
+  color: var(--mid);
+}
 .welcomeContainer{
   color: var(--mid);
   display: grid;
