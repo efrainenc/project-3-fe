@@ -84,3 +84,8 @@ color : var(--light);
 .welcomeSubmitButton:active {
   transform: scale(0.95);
 }
+
+
+.welcomeContainer button{
+  font-size: 70px;
+}
