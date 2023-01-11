@@ -20,7 +20,9 @@ const Welcome = ({signup, createProfile, user, login}) => {
           <h1>WELCOME</h1>
         </div>
         {loginOrRegister? <LoginForm user={user} login={login}/> : <RegisterForm signup={signup} createProfile={createProfile}/>}
-        <button onClick={changeForm}>Login</button>    
+        <div>
+          <button onClick={changeForm}>{loginOrRegister?"Register":"Login"}</button>  
+        </div>  
         {/* <Link to='/login'>
             <h1>Login</h1>
         </Link> */}

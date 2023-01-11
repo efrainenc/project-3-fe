@@ -101,7 +101,8 @@ p.updateProfile{
   grid-area: posts;
   display: flex;
   flex-wrap: wrap;
-  justify-content: start;
+  justify-content: center;
+  justify-self: flex-start;
   margin-left: 10px;
   padding: 15px;
   background-color: #101109;
@@ -109,11 +110,43 @@ p.updateProfile{
 
 .post-card{
   display: grid;
+  grid-template-columns: 40px repeat(2, 1fr);
+  grid-template-rows: 40px auto 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
   color: var(--light);
   width: 400px;
   margin: 10px;
   padding: 10px;
-  background-color: var(--dark);
+}
+
+/* a.postCardUsername{
+  margin-top: -48px;
+  margin-left: 50px;
+  height: 30px;
+} */
+
+.homePfp{
+  grid-area: 1 / 1 / 2 / 2;
+}
+.postCardUsername{
+  margin-left: 8px;
+  grid-area: 1 / 2 / 2 / 4;
+}
+.postCaption{
+  grid-area: 2 / 1 / 3 / 4;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: flex-start;
+  margin: 8px 8px 8px 0;
+}
+.postCaption p{
+  align-content: flex-start;
+  align-items: flex-start;
+}
+.postImage{
+  grid-area: 3 / 1 / 6 / 4;
 }
 
 .post-card p{
