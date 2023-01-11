@@ -268,7 +268,7 @@ const Profile= ({user, loggedIn, createFollow})=> // TODO Create Follow when you
             : ""}
             <p>{profileMap.bioProfile}</p>
             {userMatch && loggedIn ? 
-            <Link to={`/update/${profileMap._id}`}>
+            <Link className='updateProfileContainer' to={`/update/${profileMap._id}`}>
               <p className='updateProfile'>Update Profile</p>
             </Link> 
             : ""}
