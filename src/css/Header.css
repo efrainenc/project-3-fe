@@ -43,6 +43,7 @@ button.searchUser{
 }
 #myInput{
   height: 1.2rem;
+  border: 2px var(--yellow) inset;
 }
 .searchInputContainer{
   grid-column: 4;
