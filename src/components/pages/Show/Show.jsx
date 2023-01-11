@@ -73,7 +73,7 @@ const Show= ({user})=>
       {
         method: "DELETE",
         headers: {
-          'Authorization': `bearer ${getUserToken()}`},
+          'Authorization': `Bearer ${getUserToken()}`},
           "Content-Type": "application/json"
       }
       const response= await fetch(URL, options);
@@ -89,13 +89,11 @@ const Show= ({user})=>
   useEffect(()=>{getPost();}, [])
   const signedIn= ()=>{
     return(
-      <section>
-          <div>
-            <button className="delete" onClick={removePost}>
-              Remove Post
-            </button>
-          </div>
-        <h2>Edit this Post</h2>
+      <div className='deleteButtonContainer'>
+        <button className="delete" onClick={removePost}>
+          Remove Post
+        </button>
+        {/* <h2>Edit this Post</h2>
         <form onSubmit={updatePost}>
           <input
               type="text"
@@ -112,10 +110,11 @@ const Show= ({user})=>
               onChange={handleChange}
           />
           <input type="submit" value="Update Post" />
-        </form>
-      </section>
+        </form> */}
+      </div>
     )
   }
+
   // Show Details Loaded function and JSX
   const loaded= ()=>
   {

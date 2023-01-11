@@ -149,7 +149,7 @@ const Comment = ({post, user}) => {
             type="text"
             value={newForm.comment}
             name="comment"
-            placeholder="comment"
+            placeholder="Comment.."
             onChange={handleChange}
           />
         </label>

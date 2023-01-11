@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState} from 'react'
 import  {useNavigate} from 'react-router-dom'
-import '../../css/RegisterForm.css'
+// CSS IN WELCOME
 
 const RegisterForm = ({signup, createProfile}) =>
 {
@@ -23,7 +23,7 @@ const RegisterForm = ({signup, createProfile}) =>
 	const navigate = useNavigate()
 
   // event handler for submitted Register info
-  const handleSubmit = async (e) => {
+  const handleRegister = async (e) => {
 
   // Clicking on a "Submit" button, this prevents it from submitting a form
     e.preventDefault()
@@ -50,27 +50,28 @@ const RegisterForm = ({signup, createProfile}) =>
   // Register Form JSX and export
   return (
     <div className="registerDiv">
-      <h1>Register</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Name: </label>
+      <form onSubmit={handleRegister}>
         <input
           id="username"
           name="username"
+          placeholder="Username.."
           value={input.username}
           onChange={handleChange}
         />
         <br />
         <br />
-        <label htmlFor="password">Password: </label>
         <input
           id="password"
           name="password"
+          placeholder="Password.."
           value={input.password}
           onChange={handleChange}
         />
         <br />
         <br />
-        <input type="submit" value="Sign Up" />
+        <div className='welcomeSubmitButtonContainer'>
+          <input className="welcomeSubmitButton" type="submit" value="Register" />
+        </div>
       </form>
     </div>
   );

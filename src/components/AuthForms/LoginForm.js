@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState} from 'react'
 import  {Link, useNavigate} from 'react-router-dom'
-import '../../css/LoginForm.css'
+// CSS IN WELCOME
 
 const LoginForm = ({login, user}) => {
 
@@ -12,7 +12,7 @@ const LoginForm = ({login, user}) => {
   // useNavigate returns an imperative method that you can use for changing location.
 	const navigate = useNavigate()
   // event handler for submitted login
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
   // Clicking on a "Submit" button, this prevents it from submitting a form
     e.preventDefault()
   // gets user token from login userInput from App.js component
@@ -35,27 +35,29 @@ const LoginForm = ({login, user}) => {
 // Login Form JSX and export
   return (
     <div className="loginDiv">
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username"> Name: </label>
+      <form onSubmit={handleLogin}>
         <input
           id="username"
           name="username"
+          placeholder="Username.."
           value={input.username}
           onChange={handleChange}
         />
         <br />
         <br />
-        <label htmlFor="password"> Password: </label>
         <input
           id="password"
           name="password"
+          placeholder="Password.."
+          type="password"
           value={input.password}
           onChange={handleChange}
         />
         <br />
         <br />
-        <input type="submit" value="login" />
+        <div className='welcomeSubmitButtonContainer'>
+          <input className="welcomeSubmitButton" type="submit" value="login" />
+        </div>
       </form>
     </ div>
   );
