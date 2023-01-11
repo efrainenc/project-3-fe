@@ -46,7 +46,7 @@ const Show= ({user})=>
       const options = {
         method: "PUT",
         headers: {
-          'Authorization': `bearer ${getUserToken()}`,
+          'Authorization': `Bearer ${getUserToken()}`,
           "Content-Type": "application/json"
         },
         body: JSON.stringify(editForm)
