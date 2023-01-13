@@ -7,9 +7,8 @@ import Welcome from './pages/Welcome'
 import UpdateProfile from './pages/UpdateProfile/UpdateProfile'
 
 
-// passing signup, login, and user through app
-const Main = ({signup, login, user, loggedIn, createProfile, createFollow}) => {
-  return (
+const Main=({signup, login, user, loggedIn, createProfile, createFollow})=>{
+  return(
     <div>
       <Routes>
         <Route path="/" element={<Welcome signup={signup} createProfile={createProfile} user={user} login={login}/>}/>
