@@ -1,9 +1,9 @@
 import React from 'react'
 import { useState, useEffect } from "react"
 import { useParams, useNavigate, Link } from "react-router-dom"
-import { getUserToken } from '../../../utils/authToken'
-import Comment from '../../Comment/Comment'
-import '../../../css/Show.css'
+import { getUserToken } from '../../utils/authToken'
+import Comment from '../Comment'
+import '../../css/Show.css'
 
 const Show= ({user})=>{
   // Pull Post ID from params

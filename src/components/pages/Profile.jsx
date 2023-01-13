@@ -1,8 +1,8 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import { Link, useParams } from "react-router-dom";
-import { getUserToken } from '../../../utils/authToken';
-import '../../../css/Profile.css'
+import { getUserToken } from '../../utils/authToken';
+import '../../css/Profile.css'
 
 const Profile= ({user, loggedIn, createFollow})=>{
   // Pull Profile ID from params
@@ -86,16 +86,18 @@ const Profile= ({user, loggedIn, createFollow})=>{
         <form onSubmit={createPost}>
           <label>
             <input type="text"
+                   className='postInput'
                    value={newForm.image}
                    name="image"
-                   placeholder="img url"
+                   placeholder="Img url.."
                    onChange={handleChange}/>
           </label>
           <label>
             <input type="text"
+                   className='postInput'
                    value={newForm.caption}
                    name="caption"
-                   placeholder="caption"
+                   placeholder="Caption.."
                    onChange={handleChange}/>
           </label>
           <input className="createPostButton" 

@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { getUserToken } from '../../utils/authToken';
-import '../../css/Comment.css'
+import { getUserToken } from '../utils/authToken';
+import '../css/Comment.css'
 
 const Comment = ({post, user}) => {
 
@@ -122,7 +122,7 @@ const Comment = ({post, user}) => {
   // useEffect to get fire getPost function on page load
   useEffect(()=>{getComment(); getCurrentPost();}, [refreshPage])
 
-  return(<div>{createComment()}{matchCommentToPost()}</div>)
+  return(<div className='commentsContainer'>{createComment()}{matchCommentToPost()}</div>)
 }
 
 export default Comment

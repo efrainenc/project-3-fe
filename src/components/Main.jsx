@@ -1,10 +1,10 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
-import Show from './pages/Show/Show'
-import Profile from './pages/Profile/Profile'
-import Home from './pages/Home/Home'
+import Show from './pages/Show'
+import Profile from './pages/Profile'
+import Home from './pages/Home'
 import Welcome from './pages/Welcome'
-import UpdateProfile from './pages/UpdateProfile/UpdateProfile'
+import UpdateProfile from './pages/UpdateProfile'
 
 
 const Main=({signup, login, user, loggedIn, createProfile, createFollow})=>{

@@ -40,7 +40,7 @@ const Home= ({})=>{
   // Loaded Post function
   const loaded=()=>{
     return(
-      <section className='post-list'>
+      <section>
         {post?.map((postMap) =>{
           return(
             <div key={postMap._id} className='post-card'>

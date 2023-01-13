@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { getUserToken } from '../../../utils/authToken';
-import '../../../css/UpdateProfile.css'
+import { getUserToken } from '../../utils/authToken';
+import '../../css/UpdateProfile.css'
 
 const UpdateProfile=({user})=>{
   // Pull Profile ID from params

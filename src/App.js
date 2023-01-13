@@ -1,9 +1,9 @@
-import '../css/App.css'
-import Header from '../components/Header/Header'
-import Main from '../components/Main'
+import './css/App.css'
+import Header from './components/Header'
+import Main from './components/Main'
 import React from 'react'
 import {useState} from 'react'
-import {getUserToken, setUserToken, clearUserToken} from '../utils/authToken'
+import {getUserToken, setUserToken, clearUserToken} from './utils/authToken'
 
 
 function App(){

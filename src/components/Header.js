@@ -1,8 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import { useState } from 'react'
-import "../../css/Header.css"
-import "../../css/Header.css"
+import "../css/Header.css"
 
 const Header=({user, loggedIn, signOut})=>{
 
@@ -12,12 +11,18 @@ const Header=({user, loggedIn, signOut})=>{
   // a function to clear local storage
   const clearLocalStorage=()=>{localStorage.clear();signOut();}
 
-  const signedIn=()=>{
+  const signedIn=()=>{ // TODO Link to update profile
     return(
-      <>
-        <Link to={`/${user.username}`}><img width={50} src='https://cdn-icons-png.flaticon.com/512/6522/6522516.png' /></Link>
-        <Link onClick={clearLocalStorage} to='/' >Sign Out</Link>
-      </>
+      <div className='profileButton'>
+        <div class="dropdown">
+          <button class="dropbtn">Menu</button>
+          <div class="dropdown-content">
+            <Link to={`/${user.username}`}> Profile</Link>
+            <Link to='/update/PROFILEID' >Update Profile</Link>
+            <Link onClick={clearLocalStorage} to='/' >Sign Out</Link>
+          </div>
+        </div>
+      </div>
     )
   }
 
@@ -38,12 +43,17 @@ const Header=({user, loggedIn, signOut})=>{
         <h2 className='pageName'>FotoBook</h2>
       </Link>
       <div className='searchbarContainer'>
-        <input type="text" id="myInput" value={searchBarItem} onChange={handleItemChange} placeholder='Search..'/>
+        <input type="text" id="myInput" value={searchBarItem} onChange={handleItemChange} placeholder='Search Users..'/>
         <Link to={`/${searchBarItem}`}> 
           <button onClick={userClick} className='searchUser' ><img width={20} src='https://imgur.com/ltktMwM.jpg' /></button>
         </Link>
-        <div className='profileButton'>{loggedIn ? signedIn() : <Link to={'/'}><img width={50} src='https://cdn-icons-png.flaticon.com/512/6522/6522516.png' /></Link>}</div>
       </div>
+      <>{loggedIn ? signedIn() 
+        : <div className='loggedOutOptions'>
+            <Link to={'/'}>Log In </Link>
+            <Link to={'/'}>Sign Up</Link>
+          </div>}
+      </>
     </header>
   )
 }
