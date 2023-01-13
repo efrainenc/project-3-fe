@@ -152,7 +152,7 @@ const Profile= ({user, loggedIn, createFollow})=>{
         {renderUserProfiles()}
         <>{userMatch && loggedIn ? signedIn() : ""}</>
       </div>
-      <section className='post-list'>
+      <section className='profile-post-list'>
           {post?.map((post) =>
             {if(user.username ===! post.owner.username){return (postMap(post))
             }else if( id === post.owner.username){return(postMap(post))}
