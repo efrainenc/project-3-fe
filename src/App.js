@@ -26,7 +26,7 @@ function App(){
           "Content-Type": "application/json",
         },
       }
-      const newProfile = await fetch("https://project-3-be.herokuapp.com/profile",configs)
+      const newProfile = await fetch("https://foto-book.herokuapp.com/profile",configs)
       const createdProfile = await newProfile.json()
       // put the returned user object in state for CurrentUser
       setCurrentProfile(createdProfile)
@@ -45,7 +45,7 @@ function App(){
           "Content-Type": "application/json",
         },
       }
-      const newFollows = await fetch("https://project-3-be.herokuapp.com/follow",configs)
+      const newFollows = await fetch("https://foto-book.herokuapp.com/follow",configs)
       const createdFollows = await newFollows.json()
       // put the returned user object in state for CurrentUser
       setCurrentFollow(createdFollows)
@@ -61,7 +61,7 @@ function App(){
         body: JSON.stringify(data),
         headers: {"Content-Type": "application/json",},
       }
-      const newUser = await fetch("https://project-3-be.herokuapp.com/auth/register",configs)
+      const newUser = await fetch("https://foto-book.herokuapp.com/auth/register",configs)
       const parsedUser = await newUser.json()
       // sets local storage
       setUserToken(parsedUser.token)
@@ -86,7 +86,7 @@ function App(){
         body: JSON.stringify(data),
         headers:{"Content-Type": "application/json",},
       }
-      const response = await fetch("https://project-3-be.herokuapp.com/auth/login",configs);
+      const response = await fetch("https://foto-book.herokuapp.com/auth/login",configs);
       const user = await response.json();
       // sets local storage
       setUserToken(user.token);
