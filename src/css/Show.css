@@ -9,6 +9,7 @@
   grid-template-rows: repeat(3, 1fr);
   justify-content: space-around;
   margin: 15px;
+  margin-top: 104px;
   grid-template-areas: 
       "posts comments"
       "posts comments"
@@ -20,7 +21,7 @@
 }
 
 .postDiv {
-  margin: 20px;
+  margin: 0 24px;
   grid-area: posts;
   border: solid;
   background-color: var(--green);
