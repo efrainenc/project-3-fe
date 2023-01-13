@@ -13,15 +13,20 @@ const Header=({user, loggedIn, signOut})=>{
 
   const signedIn=()=>{ // TODO Link to update profile
     return(
-      <div className='profileButton'>
-        <div class="dropdown">
-          <button class="dropbtn">Menu</button>
-          <div class="dropdown-content">
-            <Link to={`/${user.username}`}> Profile</Link>
-            <Link to='/update/W_I_P' >Update Profile WIP</Link>
-            <Link onClick={clearLocalStorage} to='/' >Sign Out</Link>
-          </div>
-        </div>
+      <div id="menuToggle">
+        <input type="checkbox" />
+        {/* a span for each layer of hamburbger */}
+        <span></span>
+        <span></span>
+        <span></span>
+        <ul id="menu">
+          <Link to="/"><li>Home</li></Link>
+          <Link to={`/${user.username}`}><li>Profile</li></Link>
+          <Link to='/update/W_I_P' ><li>Update Profile WIP</li></Link>
+          <Link to="/"><li>About</li></Link>
+          <Link to="/"><li>Contact</li></Link>
+          <Link onClick={clearLocalStorage} to='/' ><li>Sign Out</li></Link>
+        </ul>
       </div>
     )
   }
