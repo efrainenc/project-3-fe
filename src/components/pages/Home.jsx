@@ -12,7 +12,7 @@ const Home= ({})=>{
 
   // useEffect to store post JSON as setPost state
   const fetchPost= async()=>{
-    try{const res= await fetch("https://project-3-be.herokuapp.com/post")
+    try{const res= await fetch("https://foto-book.herokuapp.com/post")
         const allPost= await res.json()
         setPost(allPost)
     }catch(err){console.log(err)}
@@ -20,7 +20,7 @@ const Home= ({})=>{
 
   // Fetches Users.
   const fetchProfile= async()=>{
-    try{const res= await fetch("https://project-3-be.herokuapp.com/profile")
+    try{const res= await fetch("https://foto-book.herokuapp.com/profile")
         const getProfiles= await res.json()
         setAllProfiles(getProfiles)
     }catch(err){console.log(err)}

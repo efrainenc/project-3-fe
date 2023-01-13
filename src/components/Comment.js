@@ -18,8 +18,8 @@ const Comment = ({post, user}) => {
     owner: `${user._id}`
   });
 
-  const commentURL = 'https://project-3-be.herokuapp.com/comment/'
-  const postURL = `https://project-3-be.herokuapp.com/post/${id}`
+  const commentURL = 'https://foto-book.herokuapp.com/comment/'
+  const postURL = `https://foto-book.herokuapp.com/post/${id}`
 
   const getCurrentPost= async()=>{
     try{const res= await fetch(postURL);
