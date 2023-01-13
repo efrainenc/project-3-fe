@@ -18,7 +18,7 @@ const Header=({user, loggedIn, signOut})=>{
           <button class="dropbtn">Menu</button>
           <div class="dropdown-content">
             <Link to={`/${user.username}`}> Profile</Link>
-            <Link to='/update/PROFILEID' >Update Profile</Link>
+            <Link to='/update/W_I_P' >Update Profile WIP</Link>
             <Link onClick={clearLocalStorage} to='/' >Sign Out</Link>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import { Link } from "react-router-dom";
+// Post css on Profile.css
 
 const Home= ({})=>{
   // defining state for post and for a new post form input
@@ -40,7 +41,7 @@ const Home= ({})=>{
   // Loaded Post function
   const loaded=()=>{
     return(
-      <section>
+      <>
         {post?.map((postMap) =>{
           return(
             <div key={postMap._id} className='post-card'>
@@ -58,7 +59,7 @@ const Home= ({})=>{
           );
           })
         }
-      </section>
+      </>
     )
   };
 

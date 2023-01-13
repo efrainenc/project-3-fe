@@ -1,9 +1,10 @@
-section{
-  display: grid;
-}
 
 h1{
   color: var(--mid);
+}
+
+.gridWrapper{
+  display: grid;
 }
 
 .welcomeContainer{
