@@ -14,7 +14,7 @@ const UpdateProfile=({user})=>{
   const [editForm, setEditForm]= useState({owner:`${user._id}`});
 
   // URL to fetch by ID
-  const profileURL=  `https://project-3-be.herokuapp.com/profile/${id}`;
+  const profileURL=  `https://foto-book.herokuapp.com/profile/${id}`;
 
   // Event handler to setNewForm state to inputs when inputs are changed.
   const handleChange= (e)=>{setEditForm({...editForm,[e.target.name]:e.target.value });};
