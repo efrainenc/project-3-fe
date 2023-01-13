@@ -19,7 +19,6 @@
   grid-area: remove;
 }
 
- 
 .postDiv {
   margin: 20px;
   grid-area: posts;
@@ -62,12 +61,11 @@ color : var(--light);
   transition: var(--transition);
 }
 
-.delete:hover,
-.delete:active {
+.delete:hover,.delete:active {
   background-color: initial;
   background-position: 0 0;
   color: var(--mid);
 }
-.delete:active {
+.delete:active{
   opacity: .1;
 }

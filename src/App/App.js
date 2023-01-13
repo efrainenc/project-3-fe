@@ -7,7 +7,6 @@ import {getUserToken, setUserToken, clearUserToken} from '../utils/authToken'
 
 
 function App(){
-
   // import start for the current user object and for isAuthenticated.
   const [currentUser, setCurrentUser] = useState({})
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -15,7 +14,6 @@ function App(){
   // State for current Profile and follow.
   const [currentProfile, setCurrentProfile] = useState({})
   const [currentFollow, setCurrentFollow] = useState({})
-
 
   const registerProfile = async(data) =>{
     try {
@@ -28,7 +26,6 @@ function App(){
         },
       }
       const newProfile = await fetch("https://project-3-be.herokuapp.com/profile",configs)
-
       const createdProfile = await newProfile.json()
       // put the returned user object in state for CurrentUser
       setCurrentProfile(createdProfile)
@@ -48,9 +45,7 @@ function App(){
         },
       }
       const newFollows = await fetch("https://project-3-be.herokuapp.com/follow",configs)
-
       const createdFollows = await newFollows.json()
-
       // put the returned user object in state for CurrentUser
       setCurrentFollow(createdFollows)
       return createdFollows
@@ -66,9 +61,7 @@ function App(){
         headers: {"Content-Type": "application/json",},
       }
       const newUser = await fetch("https://project-3-be.herokuapp.com/auth/register",configs)
-
       const parsedUser = await newUser.json()
-
       // sets local storage
       setUserToken(parsedUser.token)
       // put the returned user object in state for CurrentUser
@@ -100,7 +93,6 @@ function App(){
       setCurrentUser(user.user);
       setIsAuthenticated(user.isLoggedIn);
       window.localStorage.setItem('name', user.user.username);
-
       return user
     }catch(err){
       clearUserToken();

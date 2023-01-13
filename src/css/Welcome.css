@@ -1,9 +1,11 @@
 section{
   display: grid;
 }
+
 h1{
   color: var(--mid);
 }
+
 .welcomeContainer{
   color: var(--mid);
   display: grid;
@@ -54,6 +56,7 @@ color : var(--light);
   display: flex;
   justify-content: center;
 }
+
 .welcomeSubmitButton {
   margin: 10px;
   padding: 15px 30px;
@@ -76,7 +79,6 @@ color : var(--light);
 
 .welcomeSubmitButton:hover {
   background-position: right center;
-  /* change the direction of the change here */
   color: white;
   text-decoration: none;
 }

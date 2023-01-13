@@ -48,13 +48,16 @@ button.searchUser{
   justify-content: end;
   align-items: center;
 }
+
 #myInput{
   height: 1.2rem;
   border: 2px var(--yellow) inset;
 }
+
 .searchInputContainer{
   grid-column: 4;
 }
+
 .profileButton{
   display: grid;
   justify-self: end;
