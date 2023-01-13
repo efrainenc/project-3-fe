@@ -161,6 +161,8 @@
 .postCardUsername{
   margin-left: 8px;
   grid-area: 1 / 2 / 2 / 4;
+  display: flex;
+  align-self: end;
 }
 
 .postCaption{
@@ -199,6 +201,7 @@
 
 .post-card h1{
   color: var(--light);
+  margin: 0;
 }
 
 .postInput{
