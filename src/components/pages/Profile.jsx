@@ -119,7 +119,7 @@ const Profile= ({user, loggedIn, createFollow})=>{
 
         // Correctly matches profile to current user page.
         if(profileMatch){
-          // sets the profile owner once matched
+          // Profile display
           return (
           <div key={profileMapIndex} className='userImage'>
             <div className='profileHeader'>
@@ -132,8 +132,8 @@ const Profile= ({user, loggedIn, createFollow})=>{
             <p>{userMatch ? "@"+ user.username : "@"+id}</p>
             <p>{profileMap.bioProfile}</p>
             {userMatch && loggedIn ? 
-            <Link className='updateProfileContainer' to={`/update/${profileMap._id}`}>
-              <p className='updateProfile'>Update Profile</p>
+            <Link className='editProfileContainer' to={`/edit/${profileMap._id}`}>
+              <p className='editProfile'>Edit Profile</p>
             </Link> 
             : ""}
           </div>

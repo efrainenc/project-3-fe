@@ -20,7 +20,7 @@ const Header=({user, loggedIn, signOut})=>{
         <span></span>
         <span></span>
         <ul id="menu">
-          <Link to="/"><li>Home</li></Link>
+          <Link to="/home"><li>Home</li></Link>
           <Link to={`/${user.username}`}><li>Profile</li></Link>
           <Link to='/update/W_I_P' ><li>Update Profile WIP</li></Link>
           <Link to="/"><li>About</li></Link>

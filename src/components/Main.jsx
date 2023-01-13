@@ -3,7 +3,7 @@ import {Routes, Route} from 'react-router-dom'
 import Show from './pages/Show'
 import Profile from './pages/Profile'
 import Home from './pages/Home'
-import UpdateProfile from './pages/UpdateProfile'
+import EditProfile from './pages/EditProfile'
 import Login from './AuthForms/Login'
 import SignUp from './AuthForms/SignUp'
 import Page_404 from './pages/Page_404'
@@ -15,7 +15,7 @@ const Main=({signup, login, user, loggedIn, createProfile, createFollow})=>{// T
     <div className='main'>
       <Routes>
           <Route path="/" element={<Login user={user} login={login}/>}/>
-          <Route path="/update/:id" element={<UpdateProfile user={user}/>}/>
+          <Route path="/edit/:id" element={<EditProfile user={user}/>}/>
           <Route path="/:id" element={<Profile loggedIn={loggedIn} user={user} createFollow={createFollow}/>}/>
           <Route path="/post/:id" element={<Show loggedIn={loggedIn} user={user}/>}/>
           <Route path='/home' element={<Home user={user}/>}/>
