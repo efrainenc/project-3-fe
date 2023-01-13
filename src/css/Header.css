@@ -117,22 +117,23 @@ button.searchUser{
   padding: 7px 14px;
   background-color: var(--mid);
   border-radius: 8px;
-  cursor: pointer;
-  filter: brightness(100%);
-  transition: filter .5s;
   transition: var(--transition);
   cursor: pointer;
 }
 
-.logIn:hover{
-  background-position: right center;
-  color: white;
+.logIn a:hover{
+  background-color: #be473e;
   text-decoration: none;
 }
 
 .signUp a{
+  transition: var(--transition);
   color: var(--mid);
 }
+.signUp a:hover{
+  color: #c24a41;
+}
+
 
 /* Menu hamburger button */
 #menuToggle{

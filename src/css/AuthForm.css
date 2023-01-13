@@ -92,5 +92,9 @@ h1{
 }
 
 .signInTxt, .signUpTxt{
-  color: var(--light)
+  color: var(--light);
+}
+
+.signInTxt:hover, .signUpTxt:hover{
+  color: #8bb0c7;
 }
