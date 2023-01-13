@@ -20,7 +20,7 @@ const Profile= ({user, loggedIn, createFollow})=>{
   });
 
   // API BASE URL to Heroku BE.
-  const BASE_URL= "https://project-3-be.herokuapp.com/";
+  const BASE_URL= "https://foto-book.herokuapp.com/";
   const postURL = BASE_URL + 'post';
   const profileURL = BASE_URL + 'profile';
   const followURL = BASE_URL + 'follow';

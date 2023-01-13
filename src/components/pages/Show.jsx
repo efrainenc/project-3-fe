@@ -15,7 +15,7 @@ const Show= ({user})=>{
   const [editForm, setEditForm] = useState(post);
 
   // sets post show route URL as variable and dependent ID from useParams
-  const URL=`https://project-3-be.herokuapp.com/post/${id}`;
+  const URL=`https://foto-book.herokuapp.com/post/${id}`;
 
   // event handler for when UPDATE name and title are changed
   const handleChange=(e)=>{setEditForm({ ...editForm, [e.target.name]: e.target.value })}
