@@ -4,13 +4,25 @@
  margin-top: 20px;
 }
 
-.createCommentDiv {
+.createCommentDiv{
 margin-top: 20px;
 }
 
+.commentsContainer{
+  margin-top: 20px;
+  background-color: var(--green);
+  border-radius: 4px;
+  border: 1px rgb(13, 13, 13) solid;
+}
 
-input.commentBtn
-{
+label input{
+  height: 1.2rem;
+  border-radius: 1px;
+  background: rgba(88, 88, 88, 0.15);
+}
+
+
+input.commentBtn{
   margin: 10px;
   padding: 15px 30px;
   text-align: center;
@@ -35,18 +47,14 @@ input.commentBtn
   touch-action: manipulation;
 }
 
-input.commentBtn:hover {
+input.commentBtn:hover{
   background-position: right center;
-  /* change the direction of the change here */
   color: white;
   text-decoration: none;
 }
 
-.commentBtn :hover
-{
+.commentBtn :hover{
   filter: brightness(120%);
-  /* background-color: var(--secondary-color); */
-  /* color: var(--light-color); */
   border: 2px solid var(--yellow);
   border-radius: 0.5rem;
 }

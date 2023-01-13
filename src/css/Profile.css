@@ -15,11 +15,13 @@
   justify-self: left;
   max-height: 150px;
 }
+
 .user{
   grid-area: profile;
   justify-self: left;
   display: grid;
 }
+
 .createPost{
   padding-bottom: 5px;
   border-radius: 5px;
@@ -64,12 +66,15 @@
   background-color: var(--green);
   padding-bottom: 15px;
   max-height: 850px;
+  border-radius: 2px;
+  border: 1px rgb(13, 13, 13) solid;
 }
 
 /* Create post button */
 .createPostButton {
+  color: rgb(29, 29, 29);
+  text-shadow: 1px 1px 1px rgba(44, 44, 44, .4);
   overflow: hidden;
-  color: white;
   border-radius: 2px;
   border: 2px rgb(184, 160, 81) inset;
   box-shadow: 0px 0px 14px -7px rgba(182,148,77,1);
@@ -83,34 +88,40 @@
   color: var(--mid);
   text-decoration: none;
 }
+
 .createPost input{
   margin: 2px;
 }
+
 .createPost h3{
-  color: var(--mid);
+  color: rgb(22, 22, 22);
+  
 }
+
 .createPost{
   margin-top: 150px;
 }
-/* Update Post */
-.updateProfileContainer{
+
+/* Edit Post */
+.editProfileContainer{
   width: 150px;
 }
 
-.updateProfile{
+.editProfile{
   margin: auto;
   max-width: 100px;
-  background-color: var(--light);
+  background-color: rgba(44, 44, 44, .4);
   overflow: hidden;
-  color: var(--mid);
+  color: var(--light);
   border-radius: 2px;
-  border: 2px var(--mid) solid;
+  border: 2px #6094be91 solid;
   transition: all 0.3s ease;
 }
 
-.updateProfile:hover{
-  background: var(--light-color);
+.editProfile:hover{
+  background: rgba(71, 71, 71, 0.7);
   border-radius: 2px;
+  border: 2px var(--mid) solid;
   color: var(--mid);
 }
 
@@ -118,13 +129,17 @@
 .post-list{
   grid-area: posts;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
   justify-content: center;
-  justify-self: flex-start;
+  align-content: flex-start;
   min-width: 90%;
-  margin-left: 20px;
+  margin: 0 64px 64px 64px;
   padding: 15px;
+  padding-bottom: 48px;
   background-color: var(--green);
+  border-radius: 4px;
+  border: 1px rgb(15, 15, 15) solid;
 }
 
 .post-card{
@@ -142,10 +157,12 @@
 .homePfp{
   grid-area: 1 / 1 / 2 / 2;
 }
+
 .postCardUsername{
   margin-left: 8px;
   grid-area: 1 / 2 / 2 / 4;
 }
+
 .postCaption{
   grid-area: 2 / 1 / 3 / 4;
   display: flex;
@@ -154,16 +171,19 @@
   align-items: flex-start;
   margin: 8px 8px 8px 0;
 }
+
 .postCaption p{
   align-content: flex-start;
   align-items: flex-start;
 }
+
 .postImage{
   grid-area: 3 / 1 / 6 / 4;
 }
-.postImage img{
-  box-shadow: var(--light) -5px 5px, var(--mid) -10px 10px;
-}
+
+/* .postImage img{
+  box-shadow: var(--dark) -4px 4px, var(--dark) 8px -4px;
+} */
 
 .post-card p{
   grid-area: 2 / 1 / 3 / 4;
@@ -171,11 +191,19 @@
   justify-self: flex-start;
   color: var(--light);
 }
+
 .post-card a{
   justify-self: flex-start;
   color: var(--light);
 }
+
 .post-card h1{
   color: var(--light);
 }
 
+.postInput{
+  height: 1.1rem;
+  border-radius: 1px;
+  background: rgba(37, 37, 37, .15);
+  border: 2px var(--yellow) inset;
+}
