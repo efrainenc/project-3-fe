@@ -27,7 +27,7 @@ const Login = ({login, user}) => {
     <section className='gridWrapper'>
       <div className='welcomeContainer'>
         <h2>FotoBook</h2>
-        <div className="loginDiv">
+        <div className="loginSignUp">
           <form onSubmit={handleLogin}>
             <input id="username"
                   name="username"

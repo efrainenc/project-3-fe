@@ -14,28 +14,22 @@ h1{
   border-radius: 8px;
   border: 1px rgb(13, 13, 13) solid;
   width: 32%;
-  height: 140%;
+  height: 120%;
   margin-top: 8%;
 }
 
-.registerDiv h1 {
-color : var(--light);
-}
-  
-.registerDiv label {
+.loginSignUp{
   color: var(--light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.loginDiv h1 {
-color : var(--light);
-}
-
-.loginDiv label {
-  color: var(--light);
-}
 
 /* Button */
 .loginOrRegister {
+  display: flex;
+  align-self: flex-end;
   background-color: transparent;
   color: var(--mid);
   cursor: pointer;
@@ -91,7 +85,7 @@ color : var(--light);
 }
 
 #username, #password{
-  height: 1.2rem;
+  height: 1.4rem;
   background: rgb(32, 32, 32);
   border-radius: 1px;
 }

@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import UpdateProfile from './pages/UpdateProfile'
 import Login from './AuthForms/Login'
 import SignUp from './AuthForms/SignUp'
+import Page_404 from './pages/Page_404'
 import "../css/AuthForm.css"
 
 
@@ -13,13 +14,14 @@ const Main=({signup, login, user, loggedIn, createProfile, createFollow})=>{// T
   return(<>
     <div className='main'>
       <Routes>
-        <Route path="/" element={<Login user={user} login={login}/>}/>
-        <Route path="/update/:id" element={<UpdateProfile user={user}/>}/>
-        <Route path="/:id" element={<Profile loggedIn={loggedIn} user={user} createFollow={createFollow}/>}/>
-        <Route path="/post/:id" element={<Show loggedIn={loggedIn} user={user}/>}/>
-        <Route path='/home' element={<Home user={user}/>}/>
-        <Route path='/login' element={<Login user={user} login={login}/>}/>
-        <Route path='/signup' element={<SignUp signup={signup} createProfile={createProfile}/>}/>
+          <Route path="/" element={<Login user={user} login={login}/>}/>
+          <Route path="/update/:id" element={<UpdateProfile user={user}/>}/>
+          <Route path="/:id" element={<Profile loggedIn={loggedIn} user={user} createFollow={createFollow}/>}/>
+          <Route path="/post/:id" element={<Show loggedIn={loggedIn} user={user}/>}/>
+          <Route path='/home' element={<Home user={user}/>}/>
+          <Route path='/login' element={<Login user={user} login={login}/>}/>
+          <Route path='/signup' element={<SignUp signup={signup} createProfile={createProfile}/>}/>
+          <Route path='*' element={<Page_404 />}/>
       </Routes>
     </div>
   </>)
