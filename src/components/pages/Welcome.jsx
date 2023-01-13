@@ -1,19 +1,13 @@
 import { React, useState} from 'react'
+import { Link } from 'react-router-dom'
 import "../../css/Welcome.css"
+import Login from '../AuthForms/Login'
 
 const Welcome=({signup, createProfile, user, login})=>{
-  // Boolean state to toggle between Login or Register Forms
-  const [loginOrRegister, setLoginOrRegister]=useState(true)
-  // Function to toggle state
-  const changeForm=()=>{setLoginOrRegister(current=>!current)}
   
-  return(
+  return( // TODO make landing page similar to ig
     <section>
-      <div className='welcomeContainer'>
-        <div>
-          <h1>WELCOME</h1>
-        </div>
-      </div>
+      <Login user={user} login={login}/>
     </section>
   )
 }
