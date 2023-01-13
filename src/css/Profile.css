@@ -7,6 +7,8 @@
   grid-template-rows: 1fr;
   justify-content: space-around;
   margin: 15px;
+  margin-left: 48px;
+  margin-top: 104px;
   grid-template-areas: 
       "profile posts";
 }
@@ -57,9 +59,6 @@
   padding: 2px;
   font-size: 14px;
 }
-.userImage{
-  max-height: 300px;
-}
 
 .user{
   display: grid;
@@ -99,7 +98,7 @@
 }
 
 .createPost{
-  margin-top: 150px;
+  margin: 48px 0;
 }
 
 /* Edit Post */
@@ -133,9 +132,25 @@
   flex-wrap: wrap-reverse;
   justify-content: center;
   align-content: flex-start;
-  min-width: 90%;
-  margin: 0 64px 64px 64px;
+  max-width: 90%;
+  margin: 104px 64px 64px 64px;
   padding: 15px;
+  padding-bottom: 48px;
+  background-color: var(--green);
+  border-radius: 4px;
+  border: 1px rgb(15, 15, 15) solid;
+}
+
+.profile-post-list{
+  grid-area: posts;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+  justify-content: center;
+  align-content: flex-start;
+  max-width: 90%;
+  margin: 0 32px 64px 36px;
+  padding: 14px;
   padding-bottom: 48px;
   background-color: var(--green);
   border-radius: 4px;
@@ -181,6 +196,11 @@
 
 .postImage{
   grid-area: 3 / 1 / 6 / 4;
+}
+
+.postImage img{
+  max-width:100%;
+  height:auto;
 }
 
 /* .postImage img{
