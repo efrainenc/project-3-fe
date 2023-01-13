@@ -2,7 +2,7 @@
 
 ## Link to Deployment
 
-https://fotobook-1031ec.netlify.app/
+https://foto-book.netlify.app
 
 ## Description
 
