@@ -26,35 +26,36 @@ const Login = ({login, user}) => {
   const handleChange=(e)=>{setInput({ ...input, [e.target.name]: e.target.value });};
 
   return (
-    <div className='welcomeContainer'>
-      <div className="loginDiv">
-        <form onSubmit={handleLogin}>
-          <input id="username"
-                name="username"
-                placeholder="Username.."
-                value={input.username}
-                onChange={handleChange}/>
-          <br />
-          <br />
-          <input id="password"
-                name="password"
-                placeholder="Password.."
-                type="password"
-                value={input.password}
-                onChange={handleChange}/>
-          <br />
-          <br />
-          <div className='welcomeSubmitButtonContainer'>
-            <input className="welcomeSubmitButton" type="submit" value="login" />
-          </div>
-        </form>
-        <div>
-          <Link to='/signup' className="loginOrRegister">
-          <div>Don't have an account?  <span className='signUpTxt'>Sign Up</span></div>
-          </Link> 
+    <section className='gridWrapper'>
+      <div className='welcomeContainer'>
+        <h2>FotoBook</h2>
+        <div className="loginDiv">
+          <form onSubmit={handleLogin}>
+            <input id="username"
+                  name="username"
+                  placeholder="Username.."
+                  value={input.username}
+                  onChange={handleChange}/>
+            <br />
+            <br />
+            <input id="password"
+                  name="password"
+                  placeholder="Password.."
+                  type="password"
+                  value={input.password}
+                  onChange={handleChange}/>
+            <br />
+            <br />
+            <div className='welcomeSubmitButtonContainer'>
+              <input className="welcomeSubmitButton" type="submit" value="login" />
+            </div>
+          </form>
         </div>
-      </ div>
-    </div>
+        <Link to='/signup' className="loginOrRegister">
+          <div>Don't have an account?  <span className='signUpTxt'>Sign Up</span></div>
+        </Link> 
+      </div>
+    </section>
   );
 };
 

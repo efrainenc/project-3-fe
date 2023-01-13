@@ -35,36 +35,40 @@ const SignUp=({signup, createProfile}) =>{
 
   // Register Form JSX and export
   return (
-    <div className='welcomeContainer'>
-      <div className="registerDiv">
-        <form onSubmit={handleRegister}>
-          <input
-            id="username"
-            name="username"
-            placeholder="Username.."
-            value={input.username}
-            onChange={handleChange}
-          />
-          <br />
-          <br />
-          <input
-            id="password"
-            name="password"
-            placeholder="Password.."
-            value={input.password}
-            onChange={handleChange}
-          />
-          <br />
-          <br />
-          <div className='welcomeSubmitButtonContainer'>
-            <input className="welcomeSubmitButton" type="submit" value="Register" />
-          </div>
-        </form>
+    <section className='gridWrapper'>
+      <div className='welcomeContainer'>
+        <h2>FotoBook</h2>
+        <div className="registerDiv">
+          <form onSubmit={handleRegister}>
+            <input
+              id="username"
+              name="username"
+              placeholder="Username.."
+              value={input.username}
+              onChange={handleChange}
+            />
+            <br />
+            <br />
+            <input
+              id="password"
+              name="password"
+              placeholder="Password.."
+              value={input.password}
+              onChange={handleChange}
+            />
+            <br />
+            <br />
+            <div className='welcomeSubmitButtonContainer'>
+              <input className="welcomeSubmitButton" type="submit" value="Register" />
+            </div>
+          </form>
+        </div>
+        <Link to='/login' className="loginOrRegister">
+          <div>Have an account? <span className='signInTxt'>Log In</span></div>
+        </Link>
       </div>
-      <Link to='/login' className="loginOrRegister">
-        <div>Have an account? <span className='signInTxt'>Log In</span></div>
-      </Link>
-    </div>);
+    </section>
+    );
 };
 
 export default SignUp;

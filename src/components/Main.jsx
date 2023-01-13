@@ -11,7 +11,7 @@ import SignUp from './AuthForms/SignUp'
 
 const Main=({signup, login, user, loggedIn, createProfile, createFollow})=>{
   return(
-    <div>
+    <div className='main'>
       <Routes>
         <Route path="/" element={<Welcome signup={signup} createProfile={createProfile} user={user} login={login}/>}/>
         <Route path="/update/:id" element={<UpdateProfile user={user}/>}/>
