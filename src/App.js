@@ -1,9 +1,10 @@
-import './css/App.css'
-import Header from './components/Header'
-import Main from './components/Main'
 import React from 'react'
 import {useState} from 'react'
 import {getUserToken, setUserToken, clearUserToken} from './utils/authToken'
+import Header from './components/Header'
+import Main from './components/Main'
+import Footer from './components/Footer'
+import './css/App.css'
 
 
 function App(){
@@ -111,6 +112,7 @@ function App(){
     <div className="App">
       <Header loggedIn={isAuthenticated} signOut={signOutHandler} user={currentUser}/>
       <Main loggedIn={isAuthenticated} signup={registerUser} login={loginUser} user={currentUser} createProfile={registerProfile} createFollow={registerFollows}/>
+      <Footer />
     </div>
   )
 }

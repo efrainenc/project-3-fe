@@ -15,4 +15,20 @@
   text-align: center;
 }
 
+.footer{
+  display: flex;
+  justify-content: space-evenly;
+  color: rgb(197, 197, 197);
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer a{
+  text-decoration: none;
+  color: rgb(197, 197, 197);
+  align-self: center;
+}
+
 
