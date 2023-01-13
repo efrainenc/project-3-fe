@@ -81,31 +81,31 @@ const Profile= ({user, loggedIn, createFollow})=>{
   // Function to render only when loggedIn.
   const signedIn=()=>{
     return(
-      <div className='createPost'>
-      <h3>Create a new post</h3>
-        <form onSubmit={createPost}>
-          <label>
-            <input type="text"
-                   className='postInput'
-                   value={newForm.image}
-                   name="image"
-                   placeholder="Img url.."
-                   onChange={handleChange}/>
-          </label>
-          <label>
-            <input type="text"
-                   className='postInput'
-                   value={newForm.caption}
-                   name="caption"
-                   placeholder="Caption.."
-                   onChange={handleChange}/>
-          </label>
-          <input className="createPostButton" 
-                 type="submit" 
-                 value="Create Post" 
-                 onClick={refreshPageFunction}/>
-        </form>
-      </div>
+        <div className='createPost'>
+          <h3>Create a new post</h3>
+          <form onSubmit={createPost}>
+            <label>
+              <input type="text"
+                    className='postInput'
+                    value={newForm.image}
+                    name="image"
+                    placeholder="Img url.."
+                    onChange={handleChange}/>
+            </label>
+            <label>
+              <input type="text"
+                    className='postInput'
+                    value={newForm.caption}
+                    name="caption"
+                    placeholder="Caption.."
+                    onChange={handleChange}/>
+            </label>
+            <input className="createPostButton" 
+                  type="submit" 
+                  value="Create Post" 
+                  onClick={refreshPageFunction}/>
+            </form>
+        </div>
     )
   }
 
