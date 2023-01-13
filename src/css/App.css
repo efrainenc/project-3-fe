@@ -43,3 +43,11 @@
   cursor:pointer;
 }
 
+.PNF_Container{
+  color: var(--mid);
+}
+
+.pnfLink a{
+  color: var(--mid);
+}
+
