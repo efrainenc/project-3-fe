@@ -26,7 +26,7 @@ const SignUp=({signup, createProfile}) =>{
 
     if(createdUserToken && createdUserProfile){navigate(`/${input.username}`)}
     else{navigate("/register/")}
-
+    
 		setInput(initialState);
   };
 
@@ -59,7 +59,7 @@ const SignUp=({signup, createProfile}) =>{
             <br />
             <br />
             <div className='welcomeSubmitButtonContainer'>
-              <input className="welcomeSubmitButton" type="submit" value="Register" />
+              <input className="welcomeSubmitButton" type="submit" value="Sign Up" />
             </div>
           </form>
         </div>

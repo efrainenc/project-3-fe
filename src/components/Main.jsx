@@ -10,7 +10,7 @@ import "../css/AuthForm.css"
 
 
 const Main=({signup, login, user, loggedIn, createProfile, createFollow})=>{// TODO make landing page similar to ig
-  return(
+  return(<>
     <div className='main'>
       <Routes>
         <Route path="/" element={<Login user={user} login={login}/>}/>
@@ -22,7 +22,7 @@ const Main=({signup, login, user, loggedIn, createProfile, createFollow})=>{// T
         <Route path='/signup' element={<SignUp signup={signup} createProfile={createProfile}/>}/>
       </Routes>
     </div>
-  )
+  </>)
 }
 
 export default Main

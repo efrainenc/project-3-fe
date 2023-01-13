@@ -13,9 +13,8 @@ a{
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 1fr;
-  height: 80px;
+  height: 60px;
   align-items: center;
-  height: 80px;
   background-color: var(--yellow);
   border: 2px rgb(230, 211, 151) groove;
   background: rgb(214,194,130);
@@ -36,6 +35,8 @@ button.searchUser{
 
 .pageName{
   grid-column: 3;
+  align-self: center;
+  margin: auto;
   color: var(--dark);
   font-family: 'Space Grotesk', sans-serif;
 }
@@ -121,9 +122,10 @@ button.searchUser{
 .logIn a{
   text-align: center;
   color: white;
-  padding: 4px 12px;
+  font-size: 14px;
+  padding: 7px 14px;
   background-color: var(--mid);
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
   filter: brightness(100%);
   transition: filter .5s;
