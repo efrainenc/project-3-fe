@@ -112,5 +112,31 @@ button.searchUser{
 
 .loggedOutOptions{
   grid-column: 5;
+  display: flex;
+  justify-self: end;
+  justify-content: space-evenly;
   width: 150px;
+}
+
+.logIn a{
+  text-align: center;
+  color: white;
+  padding: 4px 12px;
+  background-color: var(--mid);
+  border-radius: 5px;
+  cursor: pointer;
+  filter: brightness(100%);
+  transition: filter .5s;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.logIn:hover{
+  background-position: right center;
+  color: white;
+  text-decoration: none;
+}
+
+.signUp a{
+  color: var(--mid);
 }

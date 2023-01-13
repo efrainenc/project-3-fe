@@ -5,6 +5,8 @@ import Profile from './pages/Profile'
 import Home from './pages/Home'
 import Welcome from './pages/Welcome'
 import UpdateProfile from './pages/UpdateProfile'
+import Login from './AuthForms/Login'
+import SignUp from './AuthForms/SignUp'
 
 
 const Main=({signup, login, user, loggedIn, createProfile, createFollow})=>{
@@ -16,6 +18,8 @@ const Main=({signup, login, user, loggedIn, createProfile, createFollow})=>{
         <Route path="/:id" element={<Profile loggedIn={loggedIn} user={user} createFollow={createFollow}/>}/>
         <Route path="/post/:id" element={<Show loggedIn={loggedIn} user={user}/>}/>
         <Route path='/home' element={<Home user={user}/>}/>
+        <Route path='/login' element={<Login user={user} login={login}/>}/>
+        <Route path='/signup' element={<SignUp signup={signup} createProfile={createProfile}/>}/>
       </Routes>
     </div>
   )

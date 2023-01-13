@@ -50,8 +50,12 @@ const Header=({user, loggedIn, signOut})=>{
       </div>
       <>{loggedIn ? signedIn() 
         : <div className='loggedOutOptions'>
-            <Link to={'/'}>Log In </Link>
-            <Link to={'/'}>Sign Up</Link>
+            <div className='logIn'>
+              <Link to={'/login'}>Log In </Link>
+            </div>
+            <div className='signUp'>
+              <Link to={'/signup'}>Sign Up</Link>
+            </div>
           </div>}
       </>
     </header>

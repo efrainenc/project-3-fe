@@ -127,11 +127,13 @@
 .post-list{
   grid-area: posts;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
   justify-content: center;
-  justify-self: flex-start;
+  align-content: flex-start;
   min-width: 90%;
-  margin-left: 20px;
+  margin-left: 32px;
+  margin-right: 32px;
   padding: 15px;
   background-color: var(--green);
   border-radius: 4px;
