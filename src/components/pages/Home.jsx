@@ -28,7 +28,7 @@ const Home= ({})=>{
 
   const getProfilePictures=(postMap)=>{
     return ( allProfiles ?
-      allProfiles?.map((profileMap, profileMapIndex) =>{
+      allProfiles?.map((profileMap) =>{
         if(profileMap.owner.username === postMap.owner.username){
           return(
           <>

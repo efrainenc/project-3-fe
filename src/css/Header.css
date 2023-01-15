@@ -48,7 +48,7 @@ button.searchUser{
 .searchbarContainer{
   display: flex;
   grid-column: 3;
-  justify-content: end;
+  justify-content: center;
   align-items: center;
 }
 
