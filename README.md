@@ -2,7 +2,7 @@
 
 ## Link to Deployment
 
-https://fotobook-dark.netlify.app/
+https://foto-book.netlify.app
 
 ## Description
 
