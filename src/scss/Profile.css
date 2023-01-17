@@ -35,16 +35,21 @@
   margin-top: -48px;
   border-radius: 50%;
   overflow: hidden;
-  width: 40%;
+  width: 42%;
   border: 6px var(--green) solid;
   aspect-ratio: 1 / 1;
 }
 
-.userProfile h2{
-  margin: 0;
+.profileName{
+  margin: 0 0 0 24%;
+  align-self: flex-start;
+}
+.userName{
+  margin: 0 0 0 24%;
+  align-self: flex-start;
 }
 
-.userProfile p{
+.profileBio{
   margin: 0;
   padding: 2px;
   font-size: 14px;
@@ -62,11 +67,8 @@
   border: 1px rgb(13, 13, 13) solid;
 }
 
-.profileHeader{
-
-}
 .profileImageContainer{
-  width: 30%;
+  width: 28%;
 }
 
 /* Create post button */
@@ -111,8 +113,10 @@
 
 /* Edit Post */
 .editProfileContainer{
-  width: 150px;
-  justify-content: end;
+  width: fit-content;
+  margin-top: -6%;
+  margin-right: 16px;
+  align-self: end;
 }
 
 .editProfile{
@@ -120,9 +124,10 @@
   max-width: 100px;
   background-color: rgba(44, 44, 44, .4);
   overflow: hidden;
-  color: var(--light);
+  color: rgb(207, 163, 67);
   border-radius: 2px;
-  border: 2px #6094be91 solid;
+  border: 2px rgb(207, 163, 67) solid;
+  padding: 2px 6px;
   transition: all 0.3s ease;
 }
 
