@@ -19,7 +19,7 @@ const Main=({signup, login, user, loggedIn, createProfile, createFollow})=>{// T
           <Route path="/edit/:id" element={<EditProfile user={user}/>}/>
           <Route path="/:id" element={<Profile loggedIn={loggedIn} user={user} createFollow={createFollow}/>}/>
           <Route path="/post/:id" element={<Show loggedIn={loggedIn} user={user}/>}/>
-          <Route path='/home' element={<Home user={user}/>}/>
+          <Route path='/home' element={<Home user={user} loggedIn={loggedIn} />}/>
           <Route path='/login' element={<Login user={user} login={login}/>}/>
           <Route path='/signup' element={<SignUp signup={signup} createProfile={createProfile}/>}/>
           <Route path='*' element={<Page_404 />}/>

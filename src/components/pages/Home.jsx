@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Post from './Post';
 // Post css on Profile.css
 
-const Home= ({})=>{
+const Home= ({user, loggedIn})=>{
   // defining state for post and for a new post form input
   const [post, setPost] = useState([]);
   // User Profiles State (this is for showing off the profile data/imgs).
@@ -61,7 +61,7 @@ const Home= ({})=>{
           );
           })
         }
-        <Post setRefreshPageState={setRefreshPage}/>
+        {loggedIn?<Post setRefreshPageState={setRefreshPage}/>:''}
       </>
     )
   };
