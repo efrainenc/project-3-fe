@@ -7,7 +7,8 @@ import EditProfile from './pages/EditProfile'
 import Login from './AuthForms/Login'
 import SignUp from './AuthForms/SignUp'
 import Page_404 from './pages/Page_404'
-import "../css/AuthForm.css"
+import Post from './pages/Post'
+import "../scss/AuthForm.css"
 
 
 const Main=({signup, login, user, loggedIn, createProfile, createFollow})=>{// TODO make landing page similar to ig
@@ -22,6 +23,7 @@ const Main=({signup, login, user, loggedIn, createProfile, createFollow})=>{// T
           <Route path='/login' element={<Login user={user} login={login}/>}/>
           <Route path='/signup' element={<SignUp signup={signup} createProfile={createProfile}/>}/>
           <Route path='*' element={<Page_404 />}/>
+          <Route path='/post' element={<Post />} />
       </Routes>
     </div>
   </>)

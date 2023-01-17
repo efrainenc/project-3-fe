@@ -5,6 +5,7 @@
 .postShow {
   color: var(--light-color);
   display: grid;
+  font-size: 2vw;
   grid-template-columns: repeat(2, 50%);
   grid-template-rows: repeat(3, 1fr);
   justify-content: space-around;
@@ -30,11 +31,11 @@
 }
 
 .userNamePostLink{
-color : var(--light);
+color : rgb(212, 212, 212);
+font-size: 2.5vw;
 }
 
 .postDiv img {
-  box-shadow: var(--light) -5px 5px, var(--mid) -10px 10px;
   width : 80%;
 }
 

@@ -4,7 +4,7 @@ import {getUserToken, setUserToken, clearUserToken} from './utils/authToken'
 import Header from './components/Header'
 import Main from './components/Main'
 import Footer from './components/Footer'
-import './css/App.css'
+import './scss/App.css'
 
 
 function App(){
@@ -17,14 +17,13 @@ function App(){
   const [currentFollow, setCurrentFollow] = useState({})
 
   const registerProfile = async(data) =>{
-    try {
-      const configs = {
+    try{
+      const configs={
         method: "POST",
         body: JSON.stringify(data),
-        headers: {
-          'Authorization': `bearer ${getUserToken()}`,
-          "Content-Type": "application/json",
-        },
+        headers:{'Authorization': `bearer ${getUserToken()}`,
+                  "Content-Type": "application/json",
+                },
       }
       const newProfile = await fetch("https://foto-book.herokuapp.com/profile",configs)
       const createdProfile = await newProfile.json()
@@ -37,13 +36,11 @@ function App(){
   // fetch and create Follow for given user (Called in Profile)
   const registerFollows = async(data) =>{
     try{
-      const configs = {
-        method: "POST",
+      const configs={
+        method: "POST", 
         body: JSON.stringify(data),
-        headers:{
-          'Authorization': `bearer ${getUserToken()}`,
-          "Content-Type": "application/json",
-        },
+        headers:{'Authorization': `bearer ${getUserToken()}`,
+                  "Content-Type": "application/json",},
       }
       const newFollows = await fetch("https://foto-book.herokuapp.com/follow",configs)
       const createdFollows = await newFollows.json()
@@ -81,7 +78,7 @@ function App(){
   // fetch user JSON from login POST and return it as user
   const loginUser=async(data)=>{
     try{
-      const configs = {
+      const configs={
         method: "POST",
         body: JSON.stringify(data),
         headers:{"Content-Type": "application/json",},

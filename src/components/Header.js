@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import { useState } from 'react'
-import "../css/Header.css"
+import "../scss/Header.css"
 
 const Header=({user, loggedIn, signOut})=>{
 
@@ -22,9 +22,7 @@ const Header=({user, loggedIn, signOut})=>{
         <ul id="menu">
           <Link to="/home"><li>Home</li></Link>
           <Link to={`/${user.username}`}><li>Profile</li></Link>
-          <Link to='/update/W_I_P' ><li>Update Profile WIP</li></Link>
-          <Link to="/home"><li>About</li></Link>
-          <Link to="/home"><li>Contact</li></Link>
+          <Link to='/update/W_I_P' ><li>Settings</li></Link>
           <Link onClick={clearLocalStorage} to='/' ><li>Sign Out</li></Link>
         </ul>
       </div>

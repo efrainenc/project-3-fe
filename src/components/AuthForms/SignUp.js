@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import  {useNavigate, Link} from 'react-router-dom'
-import "../../css/AuthForm.css"
+import "../../scss/AuthForm.css"
 
 const SignUp=({signup, createProfile}) =>{
 	const navigate= useNavigate()

@@ -8,7 +8,7 @@ h1{
 }
 
 .welcomeContainer{
-  color: var(--mid);
+  color: rgb(207, 163, 67);
   display: grid;
   justify-self: center;
   background-color: var(--green);
@@ -32,7 +32,7 @@ h1{
   display: flex;
   align-self: flex-end;
   background-color: transparent;
-  color: var(--mid);
+  color: rgb(207, 163, 67);
   cursor: pointer;
   display: inline-block;
   font-size: 16px;
@@ -61,14 +61,15 @@ h1{
   text-transform: uppercase;
   transition: 0.5s;
   background-size: 200% auto;
-  color: white;
+  color: var(--dark);
   border-radius: 5px;
   border: 0px;
   font-weight: 700;
   height: 30px;
   box-shadow: 0px 0px 14px -7px rgba(182,148,77,1);
-  background-image: linear-gradient(45deg, rgba(180,143,75,1) 0%, rgba(214,194,130,1)  51%, rgba(182,148,77,1)  100%);
-  border: 2px rgba(180,143,75,1) ridge;
+  background-color: rgb(207, 163, 67);
+  /* background-image: linear-gradient(45deg, rgba(180,143,75,1) 0%, rgba(214,194,130,1)  51%, rgba(182,148,77,1)  100%);
+  border: 2px rgba(180,143,75,1) ridge; */
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
@@ -92,9 +93,9 @@ h1{
 }
 
 .signInTxt, .signUpTxt{
-  color: var(--light);
+  color: var(--mid);
 }
 
 .signInTxt:hover, .signUpTxt:hover{
-  color: #8bb0c7;
+  color: rgb(199, 68, 68);
 }

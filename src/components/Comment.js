@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { getUserToken } from '../utils/authToken';
-import '../css/Comment.css'
+import '../scss/Comment.css'
 
 const Comment = ({post, user}) => {
 

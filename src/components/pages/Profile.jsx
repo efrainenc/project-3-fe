@@ -2,7 +2,8 @@ import React from 'react'
 import {useState, useEffect} from 'react'
 import { Link, useParams } from "react-router-dom";
 import { getUserToken } from '../../utils/authToken';
-import '../../css/Profile.css'
+import '../../scss/Profile.css'
+import Post from './Post';
 
 const Profile= ({user, loggedIn, createFollow})=>{
   // Pull Profile ID from params
@@ -11,13 +12,9 @@ const Profile= ({user, loggedIn, createFollow})=>{
   // User Profiles State (this is for showing off the profile data/imgs).
   const [allProfiles, setAllProfiles] = useState(null)
   // Posts set into state
-  const [post, setPost] = useState([]);
+  const [post, setPost] = useState([]); // TODO pass this state to Post child to reduce state usage?
   // State to refresh page.
-  const [refreshPage, setRefreshPage] = useState(false)
-  const [newForm, setNewForm] = useState({
-    image: "",
-    title: "",
-  });
+  const [refreshPage, setRefreshPage] = useState(false) // TODO refresh page when post component submits
 
   // API BASE URL to Heroku BE.
   const BASE_URL= "https://foto-book.herokuapp.com/";
@@ -26,7 +23,7 @@ const Profile= ({user, loggedIn, createFollow})=>{
   const followURL = BASE_URL + 'follow';
 
   // Fetches all posts.
-  const getPosts= async()=>{
+  const fetchPosts= async()=>{
     try{const resPost= await fetch(postURL);
         const allPost= await resPost.json();
         setPost(allPost);
@@ -34,40 +31,17 @@ const Profile= ({user, loggedIn, createFollow})=>{
   }
 
   // Fetches Users.
-  const getProfile=async()=>{
+  const fetchProfile=async()=>{
     try{const resProfile= await fetch(profileURL);
         const getProfiles= await resProfile.json();
         setAllProfiles(getProfiles);
     }catch(err){console.log(err)}
   }
   
-  // Function that refreshes the state, thus re rendering the useEffect.
-  const refreshPageFunction=()=>{
-    setRefreshPage(current=>!current);
-    setTimeout(function(){setRefreshPage(current=>!current)}, 1000);
-  }
-
-  // Event handler to setNewForm state to inputs when inputs are changed.
-  const handleChange=(e)=>{setNewForm({ ...newForm, [e.target.name]: e.target.value });};
-
-  // Event handler to POST a post with newForm State input.
-  const createPost= async(e)=>{
-    e.preventDefault()
-    // setting currentState variable as newForm state input after submit.
-    const currentState = {...newForm}
-
-    try{const requestOptions={method:"POST",headers: {'Authorization': `bearer ${getUserToken()}`,"Content-Type": "application/json"},body: JSON.stringify(currentState)} 
-        const response = await fetch(postURL, requestOptions);
-        const createdPost = await response.json()
-        setPost([...post, createdPost])
-        setNewForm({image: "",title: "",})
-    }catch(err){console.log(err)}
-  }
-  
   // Function to map over posts.
   const postMap=(post)=>{
     return(
-      <div key={post._id} className='post-card'>
+      <div key={post._id} className='profile-post-card'>
         <div className='postCaption'>
           <p>{post.caption}</p>
         </div>
@@ -75,37 +49,6 @@ const Profile= ({user, loggedIn, createFollow})=>{
           <img src={post.image} alt={post.name}  width={400}/>
         </Link>
       </div>
-    )
-  }
-
-  // Function to render only when loggedIn.
-  const signedIn=()=>{
-    return(
-        <div className='createPost'>
-          <h3>Create a new post</h3>
-          <form onSubmit={createPost}>
-            <label>
-              <input type="text"
-                    className='postInput'
-                    value={newForm.image}
-                    name="image"
-                    placeholder="Img url.."
-                    onChange={handleChange}/>
-            </label>
-            <label>
-              <input type="text"
-                    className='postInput'
-                    value={newForm.caption}
-                    name="caption"
-                    placeholder="Caption.."
-                    onChange={handleChange}/>
-            </label>
-            <input className="createPostButton" 
-                  type="submit" 
-                  value="Create Post" 
-                  onClick={refreshPageFunction}/>
-            </form>
-        </div>
     )
   }
 
@@ -121,21 +64,21 @@ const Profile= ({user, loggedIn, createFollow})=>{
         if(profileMatch){
           // Profile display
           return (
-          <div key={profileMapIndex} className='userImage'>
+          <div key={profileMapIndex} className='userProfile'>
             <div className='profileHeader'>
               {profileMap.headerImageProfile? <img className="headerImageProfile" src={profileMap.headerImageProfile}/>: <img className="headerImageProfile" src="https://imgur.com/bn91huk.jpg"/>}
             </div>
             <div className='profileImageContainer'>
               {profileMap.imageProfile? <img className="imageProfile" src={profileMap.imageProfile}/>: <img className="imageProfile" src="https://imgur.com/Ddet24V.jpg"/>}
             </div>
-            <h2>{profileMap.usernameProfile}</h2>
-            <p>{userMatch ? "@"+ user.username : "@"+id}</p>
-            <p>{profileMap.bioProfile}</p>
             {userMatch && loggedIn ? 
             <Link className='editProfileContainer' to={`/edit/${profileMap._id}`}>
               <p className='editProfile'>Edit Profile</p>
             </Link> 
             : ""}
+            <h2 className='profileName'>{profileMap.usernameProfile}</h2>
+            <p className='userName'>{userMatch ? "@"+ user.username : "@"+id}</p>
+            <p className='profileBio'>{profileMap.bioProfile}</p>
           </div>
           )}
       }) : '')
@@ -146,15 +89,13 @@ const Profile= ({user, loggedIn, createFollow})=>{
     // For if you are on your own profile.
     const userMatch= user.username === id;
 
-    return (
+    return ( // TODO CSS for createPost on profile
       <>
-      <div className='user'>
         {renderUserProfiles()}
-        <>{userMatch && loggedIn ? signedIn() : ""}</>
-      </div>
-      <section className='profile-post-list'>
+        <>{userMatch && loggedIn ? <Post setRefreshPageState={setRefreshPage}/> : ""}</> 
+        <section className='profile-post-list'>
           {post?.map((post) =>
-            {if(user.username ===! post.owner.username){return (postMap(post))
+            {if(user.username ===! post.owner.username){return(postMap(post))
             }else if( id === post.owner.username){return(postMap(post))}
             })
           }
@@ -180,7 +121,7 @@ const Profile= ({user, loggedIn, createFollow})=>{
   );
 
   // useEffect to call getPosts function on page load
-  useEffect(()=>{getPosts(); getProfile();}, [refreshPage])
+  useEffect(()=>{fetchPosts(); fetchProfile();}, [refreshPage])
 
   // Conditional return to return loading and loaded depending on posts.
   return(<section className="profile">{post && post.length ? loaded() : loading()}</section>);

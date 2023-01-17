@@ -1,40 +1,57 @@
-.updateProfileDiv{
-  margin-top: 50px;
-  color: var(--mid)
+.commentsOnPost{
+ color : var(--light);
+ grid-area: comments;
+ margin-top: 20px;
 }
 
-input.updateProfileBtn{
+.createCommentDiv{
+  margin-top: 20px;
+}
+
+.commentsContainer{
+  margin: 0 24px;
+  padding-bottom: 16px;
+  background-color: var(--green);
+  border-radius: 4px;
+  border: 1px rgb(13, 13, 13) solid;
+}
+
+label input{
+  height: 1.2rem;
+  border-radius: 1px;
+  background: rgba(88, 88, 88, 0.15);
+}
+
+input.commentBtn{
   margin: 10px;
-  padding: 15px 30px;
   text-align: center;
   text-transform: uppercase;
   background-size: 200% auto;
   color: white;
   background-color: transparent;
-  border-radius: 5px;
   font-weight: 700;
   box-shadow: 0px 0px 14px -7px rgba(182,148,77,1);
   background-image: linear-gradient(45deg, rgba(180,143,75,1) 0%, rgb(202, 182, 114)  51%, rgba(182,148,77,1)  100%);
   border: 2px rgba(180,143,75,1) ridge;
+  border-radius: 5px;
   cursor: pointer;
   padding: 2px 4px;
   filter: brightness(100%);
   transition: filter .5s;
   transition: var(--transition);
-  cursor: pointer;
-  letter-spacing: 0.06rem;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  z-index: 0;
 }
 
-input.updateProfileBtn:hover {
+input.commentBtn:hover{
   background-position: right center;
   color: white;
   text-decoration: none;
 }
 
-.updateProfileBtn :hover{
+.commentBtn :hover{
   filter: brightness(120%);
   border: 2px solid var(--yellow);
   border-radius: 0.5rem;

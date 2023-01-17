@@ -2,9 +2,9 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getUserToken } from '../../utils/authToken';
-import '../../css/UpdateProfile.css'
+import '../../scss/UpdateProfile.css'
 
-const UpdateProfile=({user})=>{
+const EditProfile=({user})=>{
   // Pull Profile ID from params
   const {id}= useParams();
   const navigate= useNavigate();
@@ -73,4 +73,4 @@ const UpdateProfile=({user})=>{
   )
 }
 
-export default UpdateProfile
+export default EditProfile

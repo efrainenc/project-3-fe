@@ -1,6 +1,7 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
 import { Link } from "react-router-dom";
+import Post from './Post';
 // Post css on Profile.css
 
 const Home= ({})=>{
@@ -8,6 +9,7 @@ const Home= ({})=>{
   const [post, setPost] = useState([]);
   // User Profiles State (this is for showing off the profile data/imgs).
   const [allProfiles, setAllProfiles] = useState(null)
+  const [refreshPage, setRefreshPage] = useState(false)
 
 
   // useEffect to store post JSON as setPost state
@@ -39,7 +41,7 @@ const Home= ({})=>{
   }
 
   // Loaded Post function
-  const loaded=()=>{
+  const loaded=()=>{ // TODO CSS for create post on homepage
     return(
       <>
         {post?.map((postMap) =>{
@@ -59,6 +61,7 @@ const Home= ({})=>{
           );
           })
         }
+        <Post setRefreshPageState={setRefreshPage}/>
       </>
     )
   };
@@ -81,7 +84,7 @@ const Home= ({})=>{
 
 
   // useEffect to call fetchPost function on page load
-  useEffect(()=>{fetchPost(); fetchProfile();}, [])
+  useEffect(()=>{fetchPost(); fetchProfile();}, [refreshPage])
 
   // conditional return to return loading and loaded JSX depending on 
   return(<section className="post-list">{post && post.length ? loaded() : loading()}</section>);

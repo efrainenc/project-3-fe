@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import '../css/App.css'
+import '../scss/App.css'
 
 const Footer = () => { // TODO make an About us page and Contact Us page
 

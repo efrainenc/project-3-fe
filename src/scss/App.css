@@ -1,12 +1,12 @@
 /* Color Palette */
-:root{
-  --dark: #0f0f0f;
+:root {
+  --dark: #121212;
   --mid: #b43d34;
   --light: #7da2b9;
   --grey: #404040;
   --yellow: #f0ebaf;
   --light-color: #ab93a8;
-  --green: #141414;
+  --green: #161616;
   --transition: all 0.3s ease-in-out;
 }
 
@@ -14,39 +14,36 @@
   text-align: center;
 }
 
-.footer{
+.footer {
   display: flex;
   justify-content: space-evenly;
   color: rgb(197, 197, 197);
-  background-color: #111111;
-  position:fixed;
+  background-color: #141414;
+  position: fixed;
   height: 32px;
   left: 0;
   bottom: 0;
   width: 100%;
 }
-
-.footer a{
+.footer a {
   text-decoration: none;
   font-size: 12px;
   color: rgb(197, 197, 197);
   align-self: center;
 }
-
-.footer p{
+.footer p {
   font-size: 12px;
   align-self: center;
 }
 
-.topOfPage{
-  cursor:pointer;
+.topOfPage {
+  cursor: pointer;
 }
 
-.PNF_Container{
+.PNF_Container {
   color: var(--mid);
 }
 
-.pnfLink a{
+.pnfLink a {
   color: var(--mid);
 }
-

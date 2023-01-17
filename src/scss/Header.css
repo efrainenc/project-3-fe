@@ -18,10 +18,10 @@ a{
   top: 0;
   position: fixed;
   align-items: center;
+  box-shadow: 0 2px 8px 0 rgba(44, 44, 44, 0.2);
   background-color: var(--yellow);
-  border: 2px rgb(230, 211, 151) groove;
-  background: rgb(214,194,130);
-  background: linear-gradient(90deg, rgba(214,194,130,1) 3%, rgba(180,143,75,1) 23%, rgba(227,205,127,1) 65%, rgba(182,148,77,1) 90%);
+  background: #242424;
+  /* background: linear-gradient(90deg, rgba(214,194,130,1) 3%, rgba(180,143,75,1) 23%, rgba(227,205,127,1) 65%, rgba(182,148,77,1) 90%); */
   z-index: 1;
 }
 
@@ -41,7 +41,7 @@ button.searchUser{
   grid-column: 3;
   align-self: center;
   margin: auto;
-  color: var(--dark);
+  color: rgb(207, 163, 67);
   font-family: 'Space Grotesk', sans-serif;
 }
 
@@ -54,9 +54,9 @@ button.searchUser{
 
 #myInput{
   height: 1.4rem;
-  border-radius: 4px;
-  background: rgba(37, 37, 37, .15);
-  border: 2px var(--yellow) inset;
+  border-radius: 8px;
+  background: rgba(75, 75, 75, 0.15);
+  border: 2px var(--grey) inset;
 }
 
 .searchInputContainer{
@@ -115,26 +115,26 @@ button.searchUser{
 
 .logIn a{
   text-align: center;
-  color: white;
+  color: var(--dark);
   font-size: 14px;
   padding: 7px 14px;
-  background-color: var(--mid);
+  background-color: rgb(207, 163, 67);
   border-radius: 8px;
   transition: var(--transition);
   cursor: pointer;
 }
 
 .logIn a:hover{
-  background-color: #be473e;
+  background-color: rgb(226, 188, 105);
   text-decoration: none;
 }
 
 .signUp a{
   transition: var(--transition);
-  color: var(--mid);
+  color: rgb(207, 163, 67);
 }
 .signUp a:hover{
-  color: #c24a41;
+  color: rgb(226, 188, 105);
 }
 
 
@@ -152,12 +152,12 @@ button.searchUser{
 
 #menuToggle a{
   text-decoration: none;
-  color: var(--light);
+  color: rgb(212, 212, 212);
   transition: color 0.3s ease;
 }
 
 #menuToggle a:hover{
-  color: var(--mid);
+  color: rgb(207, 163, 67);
 }
 
 
@@ -181,7 +181,7 @@ button.searchUser{
   height: 4px;
   margin-bottom: 5px;
   position: relative;
-  background: var(--dark);
+  background: rgb(207, 163, 67);
   border-radius: 3px;
   z-index: 1;
   transform-origin: 4px 0px;
@@ -202,7 +202,7 @@ button.searchUser{
 #menuToggle input:checked ~ span{
   opacity: 1;
   transform: rotate(45deg) translate(-2px, -1px);
-  background: #232323;
+  background: var(--mid);
 }
 
 #menuToggle input:checked ~ span:nth-last-child(3){
