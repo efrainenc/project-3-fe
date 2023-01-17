@@ -4,13 +4,14 @@
   color: rgb(212, 212, 212);
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-rows: 1fr .36fr 1fr; 
   justify-content: space-around;
   margin: 15px;
   margin-left: 48px;
   margin-top: 104px;
   grid-template-areas: 
       "profile"
+      "create"
       "posts";
 }
 
@@ -73,27 +74,21 @@
 
 /* Create post button */
 .createPostButton {
-  text-shadow: 1px 1px 1px rgba(44, 44, 44, .4);
   overflow: hidden;
   text-align: center;
   color: var(--dark);
-  font-size: 14px;
+  font-weight: 600;
   padding: 7px 14px;
+  margin: 0 4px;
+  border: none;
   background-color: rgb(207, 163, 67);
   border-radius: 8px;
   transition: all 0.3s ease;
 }
 .createPostButton:hover {
-  background-position: right center;
-  border: 2px var(--mid) outset;
-  border-radius: 2px;
-  color: var(--mid);
+  background-color: rgb(221, 181, 94);
+  color: white;
   text-decoration: none;
-}
-
-.createPost input{
-  margin: 2px;
-  border-radius: 8px;
 }
 
 .createPost h3{
@@ -101,8 +96,8 @@
   
 }
 .createPost{
-  grid-area: posts;
-  padding-bottom: 5px;
+  grid-area: create;
+  padding-bottom: 24px;
   border-radius: 8px;
   background: var(--green);
   width: 76%;
@@ -150,9 +145,6 @@
   margin: 104px 64px 64px 64px;
   padding: 15px;
   padding-bottom: 48px;
-  /* background-color: var(--green);
-  border-radius: 4px;
-  border: 1px rgb(15, 15, 15) solid; */
 }
 
 .profile-post-list{
@@ -161,14 +153,11 @@
   flex-direction: row;
   flex-wrap: wrap-reverse;
   justify-content: center;
-  align-content: flex-start;
+  align-content: flex-end;
   max-width: 90%;
   margin: 0 32px 64px 36px;
   padding: 14px;
   padding-bottom: 48px;
-  /* background-color: var(--green);
-  border-radius: 4px;
-  border: 1px rgb(15, 15, 15) solid; */
 }
 
 .post-card{
@@ -248,8 +237,8 @@
 }
 
 .postInput{
-  height: 1.1rem;
-  border-radius: 1px;
+  height: 1.2rem;
+  border-radius: 8px;
   background: rgba(37, 37, 37, .15);
   border: 2px var(--grey) inset;
 }

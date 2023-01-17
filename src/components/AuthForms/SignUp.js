@@ -37,7 +37,7 @@ const SignUp=({signup, createProfile}) =>{
   return (
     <section className='gridWrapper'>
       <div className='welcomeContainer'>
-        <h2>FotoBook</h2>
+        <h2>Welcome</h2>
         <div className="loginSignUp">
           <form onSubmit={handleRegister}>
             <input
