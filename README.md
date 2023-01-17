@@ -15,7 +15,7 @@ FotoBook is a reverse engineering of Instagram with login/ authentication, profi
 
 ## Link to Database
 
-https://project-3-be.herokuapp.com/
+https://foto-book.herokuapp.com/
 
 
 ## Technologies Used:
