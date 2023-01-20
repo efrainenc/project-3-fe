@@ -14,7 +14,7 @@ a{
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 1fr;
   height: 60px;
-  width: 100%;
+  width: 100vw;
   top: 0;
   position: fixed;
   align-items: center;
@@ -237,4 +237,22 @@ button.searchUser{
 
 #menuToggle input:checked ~ ul{
   transform: translate(-50%, 0);
+}
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3) { 
+    .loggedOutOptions{
+      scale: 64%;
+      margin-left: -64px;
+    }
+    .searchbarContainer{
+      scale: 64%;
+      margin-left: -32px;
+    }
+    .pageName{
+      scale: 72%;
+    }
 }

@@ -14,7 +14,8 @@ h1{
   background-color: var(--green);
   border-radius: 8px;
   border: 1px rgb(13, 13, 13) solid;
-  width: 32%;
+  padding: 32px;
+  width: 24vw;
   height: 120%;
   margin-top: 104px;
 }
@@ -98,4 +99,22 @@ h1{
 
 .signInTxt:hover, .signUpTxt:hover{
   color: rgb(199, 68, 68);
+}
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 810px)
+  and (-webkit-min-device-pixel-ratio: 3){ 
+    .welcomeContainer{
+      color: rgb(207, 163, 67);
+      display: grid;
+      justify-self: center;
+      background-color: var(--dark);
+      border-radius: 8px;
+      border: none;
+      width: 50vw;
+      height: 120%;
+      margin-top: 104px;
+    }
 }
