@@ -103,9 +103,8 @@ h1{
 
 /* Portrait and Landscape */
 @media only screen 
-  and (min-device-width: 320px) 
-  and (max-device-width: 810px)
-  and (-webkit-min-device-pixel-ratio: 3){ 
+  and (min-device-width: 280px) 
+  and (max-device-width: 810px){ 
     .welcomeContainer{
       color: rgb(207, 163, 67);
       display: grid;

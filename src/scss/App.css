@@ -16,7 +16,8 @@
 
 .footer {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  padding: 0 16px;
   color: rgb(197, 197, 197);
   background-color: #141414;
   position: fixed;
@@ -46,4 +47,13 @@
 
 .pnfLink a {
   color: var(--mid);
+}
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 280px) 
+  and (max-device-width: 810px){ 
+    .footer {
+      font-size: 8px;
+    }
 }

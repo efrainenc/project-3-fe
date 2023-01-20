@@ -241,9 +241,8 @@ button.searchUser{
 
 /* Portrait and Landscape */
 @media only screen 
-  and (min-device-width: 375px) 
-  and (max-device-width: 812px) 
-  and (-webkit-min-device-pixel-ratio: 3) { 
+  and (min-device-width: 280px) 
+  and (max-device-width: 810px){ 
     .loggedOutOptions{
       scale: 64%;
       margin-left: -64px;
