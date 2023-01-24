@@ -22,7 +22,7 @@ const Header=({user, loggedIn, signOut})=>{
         <ul id="menu">
           <Link to="/home"><li>Home</li></Link>
           <Link to={`/${user.username}`}><li>Profile</li></Link>
-          <Link to='/update/W_I_P' ><li>Settings</li></Link>
+          {/* <Link to='/update/W_I_P' ><li>Settings</li></Link> */}
           <Link onClick={clearLocalStorage} to='/' ><li>Sign Out</li></Link>
         </ul>
       </div>
