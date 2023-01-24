@@ -142,7 +142,7 @@ button.searchUser{
 #menuToggle{
   grid-column: 5;
   justify-self: end;
-  margin-right: 16px;
+  margin-right: 32px;
   display: block;
   position: relative;
   z-index: 1;

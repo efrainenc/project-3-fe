@@ -78,7 +78,8 @@ h1{
 }
 
 .welcomeSubmitButton:hover {
-  background-position: right center;
+  background-color: rgb(226, 188, 105);
+  scale: 1.04;
   color: white;
   text-decoration: none;
 }

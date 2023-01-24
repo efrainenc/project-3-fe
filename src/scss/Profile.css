@@ -99,6 +99,7 @@
 }
 .createPostButton:hover {
   background-color: rgb(221, 181, 94);
+  scale: 1.04;
   color: white;
   text-decoration: none;
 }
