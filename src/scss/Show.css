@@ -3,7 +3,7 @@
 }
 
 .postShow {
-  color: var(--light-color);
+  color: whitesmoke;
   display: grid;
   font-size: 2vw;
   grid-template-columns: repeat(2, 50%);
