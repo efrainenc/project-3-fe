@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getUserToken } from '../../utils/authToken';
-import '../../scss/UpdateProfile.css'
+import '../../scss/EditProfile.css'
 
 const EditProfile=({user})=>{
   // Pull Profile ID from params
@@ -44,32 +44,32 @@ const EditProfile=({user})=>{
   
   // Returns Update Profile Form.
   return(
-    <div className="updateProfileDiv">
-      <h3>Update Profile</h3>
-      <form onSubmit={updateProfile}>
-        <input type="text"
-               value={editForm.usernameProfile}
-               name="usernameProfile"
-               placeholder="Update Username"
-               onChange={handleChange}/>
-        <input type="text"
-               value={editForm.imageProfile}
-               name="imageProfile"
-               placeholder="Update Img URL"
-               onChange={handleChange}/>
-        <input type="text"
-               value={editForm.headerImageProfile}
-               name="headerImageProfile"
-               placeholder="Update Header Img URL"
-               onChange={handleChange}/>
-        <input type="text"
-               value={editForm.bioProfile}
-               name="bioProfile"
-               placeholder="Update Bio"
-               onChange={handleChange}/>
-        <input className="updateProfileBtn" type="submit" value="Update"/>
+      <form className='editProfileContainer' onSubmit={updateProfile}>
+        <div className="editProfileDiv">
+        <h3>Edit Profile</h3>
+          <input type="text"
+                value={editForm.usernameProfile}
+                name="usernameProfile"
+                placeholder="Username.."
+                onChange={handleChange}/>
+          <input type="text"
+                value={editForm.imageProfile}
+                name="imageProfile"
+                placeholder="Profile img url.."
+                onChange={handleChange}/>
+          <input type="text"
+                value={editForm.headerImageProfile}
+                name="headerImageProfile"
+                placeholder="Header img url.."
+                onChange={handleChange}/>
+          <input type="text"
+                value={editForm.bioProfile}
+                name="bioProfile"
+                placeholder="Bio.."
+                onChange={handleChange}/>
+          <input className="editProfileBtn" type="submit" value="Update"/>
+        </ div>
       </form>
-    </ div>
   )
 }
 

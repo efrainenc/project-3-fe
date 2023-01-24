@@ -72,8 +72,8 @@ const Profile= ({user, loggedIn, createFollow})=>{
               {profileMap.imageProfile? <img className="imageProfile" src={profileMap.imageProfile}/>: <img className="imageProfile" src="https://imgur.com/Ddet24V.jpg"/>}
             </div>
             {userMatch && loggedIn ? 
-            <Link className='editProfileContainer' to={`/edit/${profileMap._id}`}>
-              <p className='editProfile'>Edit Profile</p>
+            <Link className='editProfileBtnContainer' to={`/edit/${profileMap._id}`}>
+              <p className='editProfileBtn'>Edit Profile</p>
             </Link> 
             : ""}
             <h2 className='profileName'>{profileMap.usernameProfile}</h2>
