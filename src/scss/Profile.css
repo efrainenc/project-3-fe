@@ -4,7 +4,7 @@
   color: rgb(212, 212, 212);
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr .36fr 1fr; 
+  grid-template-rows: .5fr .36fr 1fr; 
   justify-content: space-around;
   margin: 15px;
   margin-left: 48px;
@@ -184,8 +184,10 @@
   background-color: var(--green);
   border-radius: 6px;
   width: 400px;
+  height: fit-content;
   margin: 10px;
   padding: 10px 0;
+  align-self: flex-end;
 }
 
 .profile-post-card{
@@ -198,6 +200,7 @@
   background-color: var(--green);
   border-radius: 6px;
   width: 400px;
+  height: fit-content;
   margin: 10px;
   padding: 10px 0;
 }
@@ -232,10 +235,11 @@
 /* Post Image */
 .postImage{
   grid-area: 3 / 1 / 6 / 4;
+  
 }
 .postImage img{
   max-width:100%;
-  height:auto;
+  height: auto;
 }
 
 /* post username */
