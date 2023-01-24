@@ -18,11 +18,13 @@
   width: 32vw;
 }
 
-.editProfileBtn{
+.updateBtn{
   margin-top: 8px;
   text-align: center;
+  width: 5vw;
   color: var(--dark);
   font-size: 14px;
+  font-weight: 600;
   padding: 7px 14px;
   background-color: rgb(207, 163, 67);
   border: none;
@@ -31,8 +33,8 @@
   cursor: pointer;
 }
 
-.editProfileBtn:hover{
+.updateBtn:hover{
   background-color: rgb(226, 188, 105);
-  scale: 1.05;
+  scale: 1.04;
   text-decoration: none;
 }

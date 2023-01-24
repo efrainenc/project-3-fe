@@ -5,6 +5,8 @@ import '../../scss/Profile.css'
 
 const Post=({setRefreshPageState})=>{
   // Posts set into state
+  // User Profiles State (this is for showing off the profile data/imgs).
+  const [allProfiles, setAllProfiles] = useState(null)
   const [post, setPost] = useState([]);
   const [newForm, setNewForm] = useState({
     image: "",
@@ -19,6 +21,25 @@ const Post=({setRefreshPageState})=>{
         const allPost= await resPost.json();
         setPost(allPost);
     }catch(err){console.log(err)}
+  }
+  // Fetches Users.
+  const fetchProfile= async()=>{
+    try{const res= await fetch("https://foto-book.herokuapp.com/profile")
+        const getProfiles= await res.json()
+        setAllProfiles(getProfiles)
+    }catch(err){console.log(err)}
+  }
+
+  const getProfilePictures=(postMap)=>{
+    return ( allProfiles ?
+      allProfiles?.map((profileMap) =>{
+        if(profileMap.owner.username === postMap.owner.username){
+          return(
+          <>
+            {profileMap.imageProfile? <img className="homePfp" width={40} height={40} src={profileMap.imageProfile}/>: <img className="homePfp" width={40} height={40} src="https://imgur.com/Ddet24V.jpg"/>}
+          </>)
+        }
+      }): "")
   }
   
   // Function that refreshes the state, thus re rendering the useEffect.
@@ -48,12 +69,13 @@ const Post=({setRefreshPageState})=>{
   }
 
   // useEffect to call getPosts function on page load
-  useEffect(()=>{fetchPosts();},[])
+  useEffect(()=>{fetchPosts(); fetchProfile();},[])
 
 
   return(
       <div className='createPost'>
-        <h3>Post something</h3>
+        {getProfilePictures}
+        <h3>Post something new!</h3>
         <form onSubmit={createPost}>
           <label>
             <input type="text"

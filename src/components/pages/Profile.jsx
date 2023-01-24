@@ -64,21 +64,21 @@ const Profile= ({user, loggedIn, createFollow})=>{
         if(profileMatch){
           // Profile display
           return (
-          <div key={profileMapIndex} className='userProfile'>
-            <div className='profileHeader'>
-              {profileMap.headerImageProfile? <img className="headerImageProfile" src={profileMap.headerImageProfile}/>: <img className="headerImageProfile" src="https://imgur.com/bn91huk.jpg"/>}
+          <div key={profileMapIndex} className='userProfileContainer'>
+            {profileMap.headerImageProfile? <img className="headerImageProfile" src={profileMap.headerImageProfile}/>: <img className="headerImageProfile" src="https://imgur.com/bn91huk.jpg"/>}
+            <div className='userProfile'>
+              <div className='profileImageContainer'>
+                {profileMap.imageProfile? <img className="imageProfile" src={profileMap.imageProfile}/>: <img className="imageProfile" src="https://imgur.com/Ddet24V.jpg"/>}
+                {userMatch && loggedIn ? 
+                  <Link className='editProfileBtnContainer' to={`/edit/${profileMap._id}`}>
+                    <p className='editProfileBtn'>Edit Profile</p>
+                  </Link> 
+                : ""}
+              </div>
+              <h2 className='profileName'>{profileMap.usernameProfile}</h2>
+              <p className='userName'>{userMatch ? "@"+ user.username : "@"+id}</p>
+              <p className='profileBio'>{profileMap.bioProfile}</p>
             </div>
-            <div className='profileImageContainer'>
-              {profileMap.imageProfile? <img className="imageProfile" src={profileMap.imageProfile}/>: <img className="imageProfile" src="https://imgur.com/Ddet24V.jpg"/>}
-            </div>
-            {userMatch && loggedIn ? 
-            <Link className='editProfileBtnContainer' to={`/edit/${profileMap._id}`}>
-              <p className='editProfileBtn'>Edit Profile</p>
-            </Link> 
-            : ""}
-            <h2 className='profileName'>{profileMap.usernameProfile}</h2>
-            <p className='userName'>{userMatch ? "@"+ user.username : "@"+id}</p>
-            <p className='profileBio'>{profileMap.bioProfile}</p>
           </div>
           )}
       }) : '')

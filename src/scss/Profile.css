@@ -27,49 +27,63 @@
 }
 
 .headerImageProfile{
-  width: 100%;
+  max-width: 72%;
   overflow: hidden;
   background-image: url("https://imgur.com/TkHWSVv.jpg");
 }
 
 .imageProfile{
-  margin-top: -48px;
+  margin-top: -8%;
   border-radius: 50%;
+  margin-left: 4%;
   overflow: hidden;
-  width: 42%;
+  max-width: 150px;
+  max-height: 150px;
+  width: 20%;
   border: 6px var(--green) solid;
   aspect-ratio: 1 / 1;
 }
 
 .profileName{
-  margin: 0 0 0 24%;
+  margin: 8px 0 0 5%;
+  font-size: 1.6vw;
   align-self: flex-start;
 }
 .userName{
-  margin: 0 0 0 24%;
+  margin: 0 0 0 5%;
+  font-size: 1.2vw;
   align-self: flex-start;
 }
 
 .profileBio{
   margin: 0;
-  padding: 2px;
+  padding: 16px;
   font-size: 14px;
+}
+
+.userProfileContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .userProfile{
   display: flex;
   flex-direction: column;
   justify-self: center;
-  background-color: var(--green);
+  width: 72%;
   max-width: 72%;
-  height: 600px;
-  padding-bottom: 15px;
+  background-color: var(--green);
+  padding-bottom: 32px;
   border-radius: 2px;
   border: 1px rgb(13, 13, 13) solid;
 }
 
 .profileImageContainer{
-  width: 28%;
+  display: flex;
+  justify-content: space-between;
+  flex-basis: 100%;
 }
 
 /* Create post button */
@@ -109,14 +123,14 @@
 /* Edit Post */
 .editProfileBtnContainer{
   width: fit-content;
-  margin-top: -6%;
-  margin-right: 16px;
-  align-self: end;
+  font-size: 1vw;
+  margin-right: 4%;
+  align-self: center;
 }
 
 .editProfileBtn{
   margin: auto;
-  max-width: 100px;
+  scale: 1vw;
   background-color: rgba(44, 44, 44, .4);
   overflow: hidden;
   color: rgb(207, 163, 67);

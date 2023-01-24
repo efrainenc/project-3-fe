@@ -53,11 +53,13 @@ const EditProfile=({user})=>{
                 placeholder="Username.."
                 onChange={handleChange}/>
           <input type="text"
+                accept="image/png, image/jpeg"
                 value={editForm.imageProfile}
                 name="imageProfile"
                 placeholder="Profile img url.."
                 onChange={handleChange}/>
           <input type="text"
+                accept="image/png, image/jpeg"
                 value={editForm.headerImageProfile}
                 name="headerImageProfile"
                 placeholder="Header img url.."
@@ -67,7 +69,7 @@ const EditProfile=({user})=>{
                 name="bioProfile"
                 placeholder="Bio.."
                 onChange={handleChange}/>
-          <input className="editProfileBtn" type="submit" value="Update"/>
+          <input className="updateBtn" type="submit" value="Update"/>
         </ div>
       </form>
   )
