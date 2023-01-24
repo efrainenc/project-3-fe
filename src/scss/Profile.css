@@ -27,9 +27,8 @@
 }
 
 .headerImageProfile{
-  max-width: 72%;
+  width: 72%;
   overflow: hidden;
-  background-image: url("https://imgur.com/TkHWSVv.jpg");
 }
 
 .imageProfile{
@@ -73,7 +72,6 @@
   flex-direction: column;
   justify-self: center;
   width: 72%;
-  max-width: 72%;
   background-color: var(--green);
   padding-bottom: 32px;
   border-radius: 2px;
