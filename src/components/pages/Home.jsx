@@ -61,7 +61,6 @@ const Home= ({user, loggedIn})=>{
           );
           })
         }
-        {loggedIn?<Post setRefreshPageState={setRefreshPage}/>:''}
       </>
     )
   };
@@ -87,7 +86,7 @@ const Home= ({user, loggedIn})=>{
   useEffect(()=>{fetchPost(); fetchProfile();}, [refreshPage])
 
   // conditional return to return loading and loaded JSX depending on 
-  return(<section className="post-list">{post && post.length ? loaded() : loading()}</section>);
+  return(<>{loggedIn?<Post setRefreshPageState={setRefreshPage}/>:''}<section className="post-list">{post && post.length ? loaded() : loading()}</section></>);
 }
 
 export default Home

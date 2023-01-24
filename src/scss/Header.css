@@ -216,7 +216,7 @@ button.searchUser{
 
 #menu{
   position: absolute;
-  width: 160px;
+  width: 8vw;
   margin: 18px 0 0 -50px;
   padding: 12px 24px;
   background: rgb(24, 24, 24);
@@ -232,11 +232,11 @@ button.searchUser{
 
 #menu li{
   padding: 10px 0;
-  font-size: 22px;
+  font-size: 1.4vw;
 }
 
 #menuToggle input:checked ~ ul{
-  transform: translate(-50%, 0);
+  transform: translate(-40%, 0);
 }
 
 /* Portrait and Landscape */
@@ -253,5 +253,8 @@ button.searchUser{
     }
     .pageName{
       scale: 72%;
+    }
+    #menuToggle input:checked ~ ul{
+      transform: translate(46%, 0);
     }
 }

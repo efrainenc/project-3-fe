@@ -15,6 +15,12 @@
       "posts";
 }
 
+.main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .avatar{
   justify-self: left;
   max-height: 150px;
@@ -110,12 +116,15 @@
 }
 .createPost{
   grid-area: create;
+  display: flex;
+  flex-direction: column;
   padding-bottom: 24px;
   border-radius: 8px;
   background: var(--green);
-  width: 76%;
+  width: 48%;
   max-height: 150px;
-  margin: 48px 0;
+  margin: 104px 0 48px 0;
+
   justify-self: center;
 }
 
@@ -155,7 +164,7 @@
   justify-content: center;
   align-content: flex-start;
   max-width: 90%;
-  margin: 104px 64px 64px 64px;
+  margin: 64px;
   padding: 15px;
   padding-bottom: 48px;
 }
