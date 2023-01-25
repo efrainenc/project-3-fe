@@ -2,17 +2,13 @@
 .profile{
   font-family: 'Space Grotesk', sans-serif;
   color: rgb(212, 212, 212);
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: .5fr .36fr 1fr; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-around;
   margin: 15px;
   margin-left: 48px;
   margin-top: 104px;
-  grid-template-areas: 
-      "profile"
-      "create"
-      "posts";
 }
 
 .main{
@@ -27,7 +23,6 @@
 }
 
 .user{
-  grid-area: profile;
   justify-self: left;
   display: grid;
 }
@@ -115,7 +110,6 @@
   
 }
 .createPost{
-  grid-area: create;
   display: flex;
   flex-direction: column;
   padding-bottom: 24px;
@@ -124,7 +118,6 @@
   width: 48%;
   max-height: 150px;
   margin: 104px 0 48px 0;
-
   justify-self: center;
 }
 
@@ -157,7 +150,6 @@
 
 /* Posts */
 .post-list{
-  grid-area: posts;
   display: flex;
   flex-flow: row-reverse;
   flex-wrap: wrap-reverse;
@@ -170,7 +162,6 @@
 }
 
 .profile-post-list{
-  grid-area: posts;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap-reverse;
